@@ -1,0 +1,18 @@
+##########################################
+#######Some Commonly Used Commands########
+##########################################
+
+
+git init
+git status
+git branch
+git branch <new-branch-name>
+git add <file-names>
+git add .      {put all files into stack}
+git commit -m "Message"
+git checkout <branch-name>
+git log --all --decorate --oneline --graph
+git push --set-upstream origin <branch-name>
+git pull git@github.com:peeyush1999/runtimeterror.git
+git rm <file-name>
+git commit --amend
