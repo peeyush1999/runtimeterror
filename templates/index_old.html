@@ -8,6 +8,8 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    
+
 
     <div id="container" class="container">
         <!-- FORM SECTION -->
@@ -16,22 +18,22 @@
             <div class="col align-items-center flex-col sign-up">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-up">
-                        <form name="myform" onsubmit="validateform()" >
+                        <form>
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
-                                <input type="text" placeholder="Name" name="Name">
+                                <input type="text" placeholder="Name">
                             </div>
                             <div class="input-group">
                                 <i class='bx bx-mail-send'></i>
-                                <input type="email" placeholder="Email" name="Email">
+                                <input type="email" placeholder="Email">
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-lock-alt'></i>
-                                <input type="password" placeholder="Password" name="Password">
+                                <input type="password" placeholder="Password">
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
-                                <input type="text" placeholder="College" name="College">
+                                <input type="text" placeholder="College">
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
@@ -64,20 +66,18 @@
             <div class="col align-items-center flex-col sign-in">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-in">
-                        <form name="mysigninform" onsubmit="validatesigninform()" action="/verifylogin" method="POST">
+                        
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="email" placeholder="Email" name="Email">
+                            <input type="email" placeholder="Email">
                         </div>
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
-                            <input type="password" placeholder="Password" name="Password">
+                            <input type="password" placeholder="Password">
                         </div>
-                        <button type="submit">
+                        <button>
                             Sign in
                         </button>
-                        </form>
-                        
                         <p>
                             <b>
                                 Forgot password?
@@ -132,7 +132,7 @@
         <!-- END CONTENT SECTION -->
     </div>
     <script src="{{ url_for('static', filename='js/main.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/validation.js')}}"></script>
 
 
 {% endblock %}
+
