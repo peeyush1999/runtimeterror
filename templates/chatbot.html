@@ -2,7 +2,7 @@
 <head>
 	<title> Travis </title>
     <link rel="nicon" href="https://i.imgur.com/Qxcwv3Q.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
 <style>
 body{
     background-color:#abd9e9;
@@ -234,6 +234,7 @@ main footer a{
 
 
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 <div id="container">
@@ -242,12 +243,11 @@ main footer a{
         <header>
     
               <div>
-                <img src="static/logo.png" style="height:90px; width:90px;"alt="">
+                <img src="static/images/logo.png" style="height:90px; width:90px;"alt="">
               </div>
               
               <div>
-                <h2>Travis</h2>
-                <h3>Personalized Travel Chat Bot
+                <h2>Chat Bot</h2>
               </div>
             
             
@@ -273,34 +273,65 @@ main footer a{
     </main>
 
 	<script>
-		function getBotResponse() {
-		  var rawText = $("#textInput").val();
-        console.log(rawText);
+        uid=1;
+        workshopid=1;
+        gid=1;
+
+        window.addEventListener('load', (event) => {
         var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes()
-        if(today.getHours() >=12)
-        {
-            time+=" PM";
-        }
-        else
-        {
-            time+=" AM";   
-        }
-		  var userHtml = '<li class="me"><div class="entete"><span class="status green"></span><h2>User &nbsp;</h2><h3>'+time+', Today</h3></div><div class="triangle"></div><div class="message">' + rawText + "</div></li>";
-		  $("#textInput").val("");
-		  $("#chat").append(userHtml);
-		
-		  $.get("/get", { msg: rawText }).done(function(data) {
+        var time = today.getHours() + ":" + today.getMinutes();
+
+        $.get("/getmsg", { wid:workshopid, grpid:gid }).done(function(data) {
             
-		    var botHtml = '<li class="you"><div class="entete"><h3>'+time+', Today &nbsp;</h3><h2>Travis</h2><span class="status blue"></span></div><div class="triangle"></div><div class="message">' + data + "</div></li>";
-		    $("#chat").append(botHtml);
-		    //document
-		      //.getElementById("userInput")
-		      //.scrollIntoView({ block: "start", behavior: "smooth" });
-		      $('#chat').animate({
-		      scrollTop: $('#chat')[0].scrollHeight}, 500);
-		  });
+            
+
+            for(i=0;i<data.length;i++)
+            {
+            console.log(data[i]["text"]);
+            var botHtml = '<li class="you"><div class="entete"><h3>'+time+', Today &nbsp;</h3><h2>Travis</h2><span class="status blue"></span></div><div class="triangle"></div><div class="message">' + data[i]["text"] + "</div></li>";
+            $("#chat").append(botHtml);
+            
+            }
+            //document
+              //.getElementById("userInput")
+              //.scrollIntoView({ block: "start", behavior: "smooth" });
+              $('#chat').animate({
+              scrollTop: $('#chat')[0].scrollHeight}, 10000);
+          });
+
+        });
+
+		function getBotResponse() 
+        {
+    		  var rawText = $("#textInput").val();
+            console.log(rawText);
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes()
+            if(today.getHours() >=12)
+            {
+                time+=" PM";
+            }
+            else
+            {
+                time+=" AM";   
+            }
+    		  var userHtml = '<li class="me"><div class="entete"><span class="status green"></span><h2>User &nbsp;</h2><h3>'+time+', Today</h3></div><div class="triangle"></div><div class="message">' + rawText + "</div></li>";
+    		  $("#textInput").val("");
+    		  $("#chat").append(userHtml);
+    		
+    		  $.get("/addMessage", { msg: rawText, userid: uid, wid:workshopid, grpid:gid }).done(function(data) {
+                
+    		    var botHtml = '<li class="you"><div class="entete"><h3>'+time+', Today &nbsp;</h3><h2>Travis</h2><span class="status blue"></span></div><div class="triangle"></div><div class="message">' + data + "</div></li>";
+    		    $("#chat").append(botHtml);
+    		    //document
+    		      //.getElementById("userInput")
+    		      //.scrollIntoView({ block: "start", behavior: "smooth" });
+    		      $('#chat').animate({
+    		      scrollTop: $('#chat')[0].scrollHeight}, 1000);
+    		  });
 		}
+
+
 		$("#textInput").keypress(function(e) {
 		  if (e.which == 13 && $("#textInput").val()!="" ) {
 		    getBotResponse();
