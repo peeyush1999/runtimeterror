@@ -1,0 +1,30 @@
+<html>
+<body>
+    <ul id="list">
+    </ul>
+    <button id="b1">create</button>
+</body>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('button').forEach(button => {
+            button.onclick = () => {
+                const request = new XMLHttpRequest();
+                request.open('POST', "/create");
+                request.setRequestHeader('Content-type', 'application/json');
+                request.onload = () => {
+                    const response = request.responseText;
+                    console.log(response)
+                    const obj = JSON.parse(response)
+                    for (let x in obj) {
+                        var ul = document.getElementById("list");
+                        var li = document.createElement("li");
+                        li.appendChild(document.createTextNode(obj[x]));
+                        ul.appendChild(li);
+                    }
+                };
+                request.send();
+            };
+        });
+    });
+</script>
+<html>
