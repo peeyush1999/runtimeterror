@@ -1,8 +1,26 @@
-<table border = 1>
-    {% for user in userDetails %}
-    <tr>
-      <td> {{user[0]}} </td>
-      <td> {{user[1]}} </td>
-    </tr>
-    {% endfor %}
-  </table>
+<div id="userdiv">
+  <ul id="list">
+  </ul>
+</div>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+      
+              const request = new XMLHttpRequest();
+              request.open('POST', "/verifylogin");
+              request.setRequestHeader('Content-type', 'application/json');
+              request.onload = () => {
+                  const response = request.responseText;
+                  console.log(response)
+                  const obj = JSON.parse(response)
+                  for (let x in obj) {
+                      var ul = document.getElementById("list");
+                      var li = document.createElement("li");
+                      li.appendChild(document.createTextNode(obj[x]));
+                      ul.appendChild(li);
+                  }
+              };
+              request.send();
+          
+    
+  });
+</script>
