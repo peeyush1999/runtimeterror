@@ -14,31 +14,39 @@ mysql = MySQL(app)
 @app.route('/')
 def users():
     return render_template('index.html')
+
+
 @app.route('/login', methods=['POST'])
 def userdetails():
-    
+    username = request.form.get('Email')
+    conn = mysql.connection
+    cur = conn.cursor()
+    userid = cur.execute("SELECT user.userid,user.name  FROM user where user.username = %s",[username])
+    userDetails = cur.fetchall()
+    cur.execute("INSERT INTO `registration` (`workshopid`, `userid`) VALUES (%s , %s)",[0 , userDetails[0][0]])
+    cur.close()
+    conn.commit()
     return render_template('databaseconnectiondemo.html')
+
+
 @app.route('/verifylogin', methods=['post'])
 def userdeets():
-    #message = ''
-    cur = mysql.connection.cursor()
-    username = request.form.get('Email') 
-    print(type(username))
-    #userid=[]
-    userid = cur.execute("SELECT user.userid,user.name  FROM user where user.username = %s",[username])
-    print(userid)
-    userDetails = cur.fetchall()
-    print(userDetails)
-    # print(name)
-    # print(type(userid))
-    # print(type(name))
-    i=1
-    j=int(userDetails[0][0])
-    cur.execute("INSERT INTO `registration` (`workshopid`, `userid`) VALUES (%s , %s)",[i , j])
-    #mysql.commit()
-    cur.close()
-    d={0:userDetails[0][1]}
+    conn = mysql.connection
+    cur = conn.cursor()
+    d={}
+    count = cur.execute("SELECT user.name FROM user where user.type = 'participant' AND user.userid IN (SELECT reg.userid FROM registration reg)")
+    print(count)
+    if(count > 0):
+        userDetails = cur.fetchall()
+        print(userDetails)
+        cur.close()
+        conn.commit()
+        d = {}
+        i=0
+        for x in userDetails:
+            d[i] = x[0]
+            i = i+1
     return jsonify(d)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(threaded=True,debug=True)

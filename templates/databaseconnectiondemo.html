@@ -1,26 +1,58 @@
-<div id="userdiv">
-  <ul id="list">
-  </ul>
+<div id="accordion">
+<h1>Participants</h1>
+<ul class="participants">
+
+</ul>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-      
-              const request = new XMLHttpRequest();
-              request.open('POST', "/verifylogin");
-              request.setRequestHeader('Content-type', 'application/json');
-              request.onload = () => {
-                  const response = request.responseText;
-                  console.log(response)
-                  const obj = JSON.parse(response)
-                  for (let x in obj) {
-                      var ul = document.getElementById("list");
-                      var li = document.createElement("li");
-                      li.appendChild(document.createTextNode(obj[x]));
-                      ul.appendChild(li);
-                  }
-              };
-              request.send();
-          
-    
-  });
+  var interval = 1000;
+  function doAjax() {
+    $.ajax({
+      type: 'POST',
+      url: '/verifylogin',
+      // data: $(this).serialize(),
+      dataType: 'json',
+      success: function (data) {
+        // $('#hidden').val(data);// first set the value  
+        // console.log(JSON.stringify(data))  
+        // users = JSON.parse(data)
+        // console.log(users)
+
+        users = data
+        const container = document.getElementById('accordion');
+        const ul = document.createElement('ul');
+        $('.participants').remove();
+        ul.className = "participants"
+          for (var key in users) {
+            var value = users[key];
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(value));
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+      },
+      complete: function (data) {
+        // Schedule the next
+        setTimeout(doAjax, interval);
+      }
+    });
+  }
+  setTimeout(doAjax, interval);
+
+    // const request = new XMLHttpRequest();
+    // request.open('POST', "/verifylogin");
+    // request.setRequestHeader('Content-type', 'application/json');
+    // request.onload = () => {
+    //   const response = request.responseText;
+    //   console.log(response)
+    //   const obj = JSON.parse(response)
+    //   for (let x in obj) {
+    //     var ul = document.getElementById("list");
+    //     var li = document.createElement("li");
+    //     li.appendChild(document.createTextNode(obj[x]));
+    //     ul.appendChild(li);
+    //   }
+    // };
+    // request.send();
 </script>
