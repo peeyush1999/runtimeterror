@@ -1,0 +1,90 @@
+{% extends 'sidebar.html'%}
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/prototype.css">
+
+<div style="overflow: hidden">
+ 
+  <p id="destroyInit" class="init">
+    </p>
+
+
+  <main class="page-content" id="bcolor">
+      <div class="container">
+        <h2>Prototype Phase</h2>
+        
+        <div id="wrapper" class="bgOvrly"></div>
+      
+        <section id="content">
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea class="txtBox"></textarea>
+                <input id="crteStkyBtn123" class="crteBtn btn ntActv" type="button" value="Create"  />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section> 
+            <div id="buttondiv"> 
+              <div id="type2"> 
+                <div class="btn-5" id="addBtn123" type="button" style="color:black" onclick="addtoSticky();">
+                  Add Prototype
+                </div>
+                <div class="btn-5" id="clnStorge" type="button" style="color:black">
+                  Clear All Prototype
+                </div>
+              </div>
+            </div>
+            
+            <!-- <input id="clnStorge" value="Clear all your Prototypes" type="button" /> -->
+            <section>
+                <div id="stkyNts" class="stkyCntr">
+                </div>
+            </section>
+        </section>
+    
+      
+
+     
+    </div>
+
+
+  </main>
+  {% include "chatbox.html" %}
+</div>
+
+    <!-- <footer class="text-center">
+        <div class="mb-2">
+          <small>
+            © 2021 made with <i class="fa fa-heart" style="color:red"></i> by - <a target="_blank" rel="noopener noreferrer" >
+              Runtime_Terror
+            </a>
+          </small>
+        </div>
+
+        <div>
+          <a href="https://github.com/azouaoui-med" target="_blank">
+            <img alt="GitHub followers" src="https://img.shields.io/github/followers/azouaoui-med?label=github&style=social" />
+          </a>
+          <a href="https://twitter.com/azouaoui_med" target="_blank">
+            <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/azouaoui_med?label=twitter&style=social" />
+          </a>
+        </div>
+      </footer> -->
+
+  <script>
+   
+   function check()
+   {  
+     $.get("/updatePhase", { curphase:"PRO" }).done(function(data) {
+        console.log(data);
+        if(data=="true")
+        {
+            window.location.replace("http://127.0.0.1:5000/");
+        }
+                  
+        }); 
+   }
+
+   setInterval(function(){ check(); }, 3000);
+
+  </script>
+
+  <script src="../static/js/prototype.js"></script>
+{% endblock %}

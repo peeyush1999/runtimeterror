@@ -1,0 +1,68 @@
+{% extends 'sidebar.html'%}
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/sticky.css">
+<div style="overflow: hidden">
+ 
+  <p id="destroyInit" class="init">
+    </p>
+
+  <main class="page-content">
+      <div class="container">
+        <h2 align="center" style="margin-right: 140px;">Define Phase</h2>
+        
+        <div id="wrapper" ></div>
+      
+        <section id="content" >
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea class="txtBox"></textarea>
+                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" value="Create" />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section>
+
+            <div id="buttondiv" style="margin-right: 140px;"> 
+              <div id="type2"> 
+                <div class="btn-5" id="addBtn" type="button" style="color:black" >
+                  Add Sticky Note
+                </div>
+                <div class="btn-5" id="clnStorge" type="button" style="color:black">
+                  Clear All Sticky Note
+                </div>
+              </div>
+            </div>
+
+<!-- 
+            <input id="addBtn" value=" Click here to add a Sticky Note" type="button" />
+            <input id="clnStorge" value="Clear all your Sticky Notes" type="button" /> -->
+            <section align="center">
+                <ul id="stkyNts" class="stkyCntr">
+                </ul>
+            </section>
+        </section>
+        
+      </div>
+    </main>
+    {% include "chatbox.html" %}
+</div>
+  
+  <script>
+   
+   function check()
+   {  
+     $.get("/updatePhase", { curphase:"DEF" }).done(function(data) {
+        console.log(data);
+        if(data=="true")
+        {
+            window.location.replace("http://127.0.0.1:5000/ideate");
+        }
+                  
+        }); 
+   }
+
+   setInterval(function(){ check(); }, 3000);
+
+  </script>
+   
+  <script src="../static/js/sticky.js"></script>
+{% endblock %}
+
