@@ -106,6 +106,8 @@ def main():
 	return render_template('index.html')
 
 
+
+# functonalities of all participants
 @app.route("/emphasize")
 def participants():
 	global startTime

@@ -16,7 +16,7 @@
             <div class="col align-items-center flex-col sign-up">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-up">
-                        <form name="myform" onsubmit="validateform()" >
+                        <form name="myform" onsubmit="validateform()" action="/register" method="POST">
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
                                 <input type="text" placeholder="Name" name="Name">
@@ -35,18 +35,18 @@
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
-                                <select class="form-select">
+                                <select class="form-select" name="type">
                                     <option selected>Category</option>
-                                    <option value="1">Admin</option>
-                                    <option value="2">Host</option>
-                                    <option value="3">Participant</option>
-                                    <option value="4">Interviewee</option>
+                                    <option value="admin" >Admin</option>
+                                    <option value="participant">Participant</option>
+                                    <option value="interviewee">Interviewee</option>
                                 </select>
                             </div>
+                            <button type="submit">
+                                Register
+                            </button>
                         </form>
-                        <button type="submit">
-                            Register
-                        </button>
+                       
                         <p>
                             <span>
                                 Already have an account?
@@ -64,7 +64,7 @@
             <div class="col align-items-center flex-col sign-in">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-in">
-                        <form name="mysigninform" onsubmit="validatesigninform()" action="/verifylogin" method="POST">
+                        <form name="mysigninform" onsubmit="validatesigninform()" action="/login" method="POST">
                         <div class="input-group">
                             <i class='bx bxs-lock-alt'></i>
                             <input type="email" placeholder="Email" name="Email">

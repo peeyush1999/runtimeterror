@@ -10,7 +10,7 @@
   function doAjax() {
     $.ajax({
       type: 'POST',
-      url: '/verifylogin',
+      url: '/admin/people/showparticipants',
       // data: $(this).serialize(),
       dataType: 'json',
       success: function (data) {
