@@ -1,70 +1,44 @@
-<link href="../static/css/demo.css" rel="stylesheet" id="bootstrap-css">
 <html>
+
 <body>
-    <div id="accordion">
+  <!-- <form name="createTeamsform" action="/admin/createTeams" method="POST">
+    <input type="number" min="1" placeholder="Name" name="count">
+    <button type="submit">
+      create teams
+    </button>
+  </form> -->
+  <div  id="accordion">
 
-    </div>
-    <button id="b1">create</button>
-<!------ Include the above in your HEAD tag ---------->
-
-<div class="wrap">
-    <ul class="tabs group">
-      <li><a class="active" href="#/one">Team</a></li>
-      <li><a href="#/two">Members</a></li>
-      <li><a href="#/three">Tabs</a></li>
-    </ul>
-    
-    <div id="content">
-      <p id="one">Team 1</p>
-      <p id="two">Sexy sexy  consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
-      <p id="three">Tabs , consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
-    </div>
-    
   </div>
-  <!-- <div class="wrap">
-  
-    <ul class="tabs group">
-      <li><a class="active" href="#/one">Light &</a></li>
-      <li><a href="#/two">Sexy</a></li>
-      <li><a href="#/three">Tabs</a></li>
-    </ul>
-    
-    <div id="content">
-      <p id="one">Some text about Light sit amet, consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur </p>
-      <p id="two">Sexy sexy  consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
-      <p id="three">Tabs , consectetur adipisicing elit. Pariatur modi quod quo iure recusandae eligendi q.t, consectetur adipisicing elit. Pariatur modi quod quo iureq</p>
-    </div>
-    
-  </div> -->
+  <button id="b1">create</button>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../static/js/demo.js"></script>
 <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', () => {
-        button = document.getElementById('b1');
-            button.onclick = () => {
-                const request = new XMLHttpRequest();
-                request.open('POST', "/create");
-                request.setRequestHeader('Content-type', 'application/json');
-                request.onload = () => {
-                    const response = request.responseText;
-                    console.log(response)
-                    const obj = JSON.parse(response)
-                    const container = document.getElementById('accordion');
-                    for (let x in obj) {
-                        console.log(x)
-                        const ul = document.createElement('ul');
-                        for(let y in obj[x])
-                        {
-                            var li = document.createElement("li");
-                            li.appendChild(document.createTextNode(obj[x][y]));
-                            ul.appendChild(li);
-                        }
-                        container.appendChild(ul);
-                    }
-                };
-                request.send();
-            };
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    button = document.getElementById('b1');
+    button.onclick = () => {
+      const request = new XMLHttpRequest();
+      request.open('POST', "/admin/createTeams");
+      request.setRequestHeader('Content-type', 'application/json');
+      request.onload = () => {
+        const response = request.responseText;
+        console.log(response)
+        const obj = JSON.parse(response)
+        const container = document.getElementById('accordion');
+        for (let x in obj) {
+          console.log(x)
+          const ul = document.createElement('ul');
+          for (let y in obj[x]) {
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(obj[x][y]));
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        }
+      };
+      request.send();
+    };
+  });
 </script>
 <html>

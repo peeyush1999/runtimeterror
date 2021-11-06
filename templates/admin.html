@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../static/css/sticky.css">
 <link rel="stylesheet" href="../static/css/emphasis.css">
 <div style="overflow: hidden">
- 
+
   <p id="destroyInit" class="init">
     </p>
 
@@ -15,13 +15,13 @@
         <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
           <h2 align="center" style="margin-right: 140px;">Admin Panel</h2>
       </div>
-      
 
 
-       
-        
+
+
+
         <div id="wrapper" ></div>
-      
+
         <section id="content" >
             <section id="stkyOvrly" class="ovrly hidden">
                 <textarea class="txtBox"></textarea>
@@ -29,13 +29,16 @@
                 <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
             </section>
 
-            
+
 
 
             <section align="center">
                 <ul id="stkyNts" class="stkyCntr">
 
-                  
+
+
+                      <li><a href="/admin/teams">Teams</a></li>
+                      <li><a href="/admin/people">People</a></li>
 
 
 
@@ -45,23 +48,22 @@
                 </ul>
             </section>
         </section>
-        
+
       </div>
     </main>
-    
+
 </div>
 
   <script>
-   
+
    function check()
-   {  
+   {
      $.post("/people").done(function(data) {
-        console.log(data);                
-        }); 
+        console.log(data);
+        });
    }
    setInterval(function(){ check(); }, 3000);
 
   </script>
   <script src="../static/js/sticky.js"></script>
 {% endblock %}
-
