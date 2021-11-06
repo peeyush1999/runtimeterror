@@ -4,73 +4,123 @@
 <link rel="stylesheet" href="../static/css/sticky.css">
 <link rel="stylesheet" href="../static/css/emphasis.css">
 <div style="overflow: hidden">
- 
+
   <p id="destroyInit" class="init">
-    </p>
+  </p>
 
   <main class="page-content">
-      <div class="container">
+    <div class="container">
 
 
-        <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
-          <h2 align="center" style="margin-right: 140px;">Emphasis Phase</h2>
+      <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
+        <h2 align="center" style="margin-right: 140px;">Emphasis Phase</h2>
       </div>
-      
 
 
-       
-        
-        <div id="wrapper" ></div>
-      
-        <section id="content" >
-            <section id="stkyOvrly" class="ovrly hidden">
-                <textarea class="txtBox"></textarea>
-                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" value="Create" />
-                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
-            </section>
 
-            <div id="buttondiv" style="margin-right: 140px;"> 
-              <div id="type2"> 
-                <div class="btn-5" id="addBtn" type="button" style="color:black" >
-                  Add Sticky Note
-                </div>
-                <div class="btn-5" id="clnStorge" type="button" style="color:black">
-                  Clear All Sticky Note
-                </div>
-              </div>
+
+
+      <div id="wrapper"></div>
+
+      <section id="content">
+        <section id="stkyOvrly" class="ovrly hidden">
+          <textarea id="notes" class="txtBox"></textarea>
+          <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" onclick="updateDD();" value="Create" />
+          <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+        </section>
+
+        <div id="buttondiv" style="margin-right: 140px;">
+          <div id="type2">
+            <div class="btn-5" id="addBtn" type="button" style="color:black">
+              Add Sticky Note
             </div>
+            <div class="btn-5" id="clnStorge" type="button" style="color:black">
+              Clear All Sticky Note
+            </div>
+          </div>
+        </div>
 
-<!-- 
+        <!-- 
             <input id="addBtn" value=" Click here to add a Sticky Note" type="button" />
             <input id="clnStorge" value="Clear all your Sticky Notes" type="button" /> -->
-            <section align="center">
-                <ul id="stkyNts" class="stkyCntr">
-                </ul>
-            </section>
+        <section align="center">
+          <ul id="stkyNts" class="stkyCntr">
+          </ul>
         </section>
-        
-      </div>
-    </main>
-    {% include "chatbox.html" %}
+      </section>
+
+    </div>
+  </main>
+  {% include "chatbox.html" %}
 </div>
 
-  <script>
-   
-   function check()
-   {  
-     $.get("/updatePhase", { curphase:"EMP" }).done(function(data) {
-        console.log(data);
-        if(data=="true")
-        {
-            window.location.replace("http://127.0.0.1:5000/define");
-        }
-                  
-        }); 
-   }
+<script>
 
-   setInterval(function(){ check(); }, 3000);
+  function getSticky() {
 
-  </script>
-  <script src="../static/js/sticky.js"></script>
+    $.get("/returnSticky").done(function (data) {
+
+      for (i = 0; i < data.length; i++) {
+        console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div>'+data[i]["textnote"]+'</div>' + '<button class="button primary delete" style="float:bottom;" onclick="deleteSticky(\'' + data[i]["notesid"] + '\')">Delete Sticky</button></li>');
+      }
+    });
+
+
+  }
+
+
+  function deleteSticky(id) {
+    console.log(id);
+
+    $.get("/deleteSticky", { noteid: id }).done(function (data) {
+
+      if (data == "true") {
+        $("#" + id).remove();
+      }
+      console.log("Sticky Note Deleted");
+
+
+    });
+
+
+  }
+
+
+  window.addEventListener('load', (event) => { getSticky(); });
+  wid = 2;
+  gid = 1;
+  uid = 1;
+
+  function updateDD() {
+
+    msg = document.getElementById("notes").value;
+
+    $.get("/addSticky", { workid: wid, grpid: gid, userid: uid, notes: msg }).done(function (data) {
+      console.log(data);
+    });
+  }
+
+  function retrieveSticky() {
+
+
+    $.get("/addSticky", { workid: wid, grpid: gid, userid: uid, notes: msg }).done(function (data) {
+      console.log(data);
+    });
+  }
+
+  function check() {
+    $.get("/updatePhase", { curphase: "EMP" }).done(function (data) {
+      console.log(data);
+      if (data == "true") {
+        window.location.replace("http://127.0.0.1:5000/define");
+      }
+
+    });
+  }
+
+  setInterval(function () { check(); }, 3000);
+
+</script>
+<script src="../static/js/sticky.js"></script>
 {% endblock %}
-

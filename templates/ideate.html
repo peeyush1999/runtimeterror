@@ -15,8 +15,8 @@
       
         <section id="content" >
             <section id="stkyOvrly" class="ovrly hidden">
-                <textarea class="txtBox"></textarea>
-                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" value="Create" />
+                <textarea id="notes"  class="txtBox"></textarea>
+                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" onclick="updateDD();" value="Create" />
                 <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
             </section>
 
@@ -46,6 +46,64 @@
 </div>
 
   <script>
+     function getSticky()
+    {
+
+      $.get("/returnSticky").done(function(data) {
+        
+        for(i=0;i<data.length;i++)
+        {
+          console.log("getsticky",data[i]["textnote"]);
+          $('#stkyNts').append('<li class="box" id="' + data[i]["notesid"] + '">' + data[i]["textnote"]+'<button class="button primary delete" onclick="deleteSticky(\''+ data[i]["notesid"]+ '\')">Delete Sticky</button></li>');
+        }
+        });
+
+
+    }
+
+
+    function deleteSticky(id)
+    {
+      console.log(id);
+
+      $.get("/deleteSticky",{noteid:id}).done(function(data) {
+        
+        if(data == "true")
+        {
+          $("#"+id).remove();
+        }
+        console.log("Sticky Note Deleted");
+
+
+        });
+
+
+    }
+
+
+    window.addEventListener('load', (event) => { getSticky(); }); 
+    wid=2;
+    gid=1;
+    uid=1;
+
+    function updateDD()
+    {
+
+      msg=document.getElementById("notes").value;
+
+      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+        console.log(data);
+        });
+    }
+
+    function retrieveSticky()
+    {
+
+
+      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+        console.log(data);
+        });
+    }
    
    function check()
    {  
