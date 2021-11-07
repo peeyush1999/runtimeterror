@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 # Configure db
-#db = yaml.load(open('db.yaml'))
+db = yaml.load(open('db.yaml'))
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'Sahutronics@123'
 app.config['MYSQL_HOST'] = 'localhost'
@@ -66,7 +66,7 @@ def login():
             queryValues)
         cur.close()
         conn.commit()
-	
+    
         if (type == 'admin'):
             return redirect('/admin')
         elif (type == 'participant'):
@@ -153,17 +153,20 @@ def createTeams():
     # connecting to database
     conn = mysql.connection
     cur = conn.cursor()
+    query="DELETE FROM `group` WHERE 1;"
+    cur.execute(query)
+    conn.commit()
     values = cur.execute(
         "SELECT reg.userid FROM registration reg WHERE reg.userid IN (SELECT user.userid FROM user WHERE type = 'participant')"
     )
     if values > 0:
-
+        
         userIds = cur.fetchall()
         createdTeams = arrangeRandom(userIds, 3)
-        # for key in createdTeams.keys():
-        #     for value in createdTeams[key]:
-        #         cur.execute("INSERT INTO `group` (`workshopid`, `userid`) VALUES (%s, %s)",(1,value))
-        #         conn.commit()
+        for key in createdTeams.keys():
+             for value in createdTeams[key]:
+                 cur.execute("INSERT INTO `group` (`workshopid`,`groupid`, `userid`) VALUES (%s,%s, %s)",(1,key,value))
+                 conn.commit()
         conn.commit()
         teams = {}
         for key in createdTeams.keys():
@@ -175,6 +178,7 @@ def createTeams():
                 if (count > 0):
                     name = cur.fetchall()
                     teams[key].append(name[0][0])
+
         return jsonify(teams)
 # end of creating teams functionality
 
@@ -187,135 +191,135 @@ phaseTime = 120
 
 @app.route("/updatePhase",methods=['GET'])
 def updatephase():
-	phase = request.args.get('curphase')
-	
-	#will fetch this time from DB which contains end time
-	global startTime
+    phase = request.args.get('curphase')
+    
+    #will fetch this time from DB which contains end time
+    global startTime
 
-	currTime = int(time.time()) 
-	if(phase == 'EMP'):
-		
-		print(startTime,phaseTime,currTime,)
-		if(startTime+phaseTime < currTime ):
-			return "true"
-		else:
-			return "false"
+    currTime = int(time.time()) 
+    if(phase == 'EMP'):
+        
+        print(startTime,phaseTime,currTime,)
+        if(startTime+phaseTime < currTime ):
+            return "true"
+        else:
+            return "false"
 
-	if(phase == 'DEF'):
-		
-		print(startTime,phaseTime,currTime,)
-		if(startTime+phaseTime*2 < currTime ):
-			return "true"
-		else:
-			return "false"
+    if(phase == 'DEF'):
+        
+        print(startTime,phaseTime,currTime,)
+        if(startTime+phaseTime*2 < currTime ):
+            return "true"
+        else:
+            return "false"
 
 
-	if(phase == 'IDE'):
-		
-		print(startTime,phaseTime,currTime,)
-		if(startTime+phaseTime*3 < currTime ):
-			return "true"
-		else:
-			return "false"
+    if(phase == 'IDE'):
+        
+        print(startTime,phaseTime,currTime,)
+        if(startTime+phaseTime*3 < currTime ):
+            return "true"
+        else:
+            return "false"
 
-	if(phase == 'PRO'):
-		
-		print(startTime,phaseTime,currTime,)
-		if(startTime+phaseTime*4 < currTime ):
-			return "true"
-		else:
-			return "false"
+    if(phase == 'PRO'):
+        
+        print(startTime,phaseTime,currTime,)
+        if(startTime+phaseTime*4 < currTime ):
+            return "true"
+        else:
+            return "false"
 
 
 @app.route("/deleteSticky",methods=['GET'])
 def deleteSticky():
-	
-	cur = mysql.connection.cursor()
-	uid = request.args.get('noteid')
-	query="delete from wall where notesid="+uid+";"
-	cur.execute(query)
-	mysql.connection.commit()
-	cur.close()
-	return "true"
-	
+    
+    cur = mysql.connection.cursor()
+    uid = request.args.get('noteid')
+    query="delete from wall where notesid="+uid+";"
+    cur.execute(query)
+    mysql.connection.commit()
+    cur.close()
+    return "true"
+    
 @app.route("/returnSticky",methods=['GET'])
 def returnSticky():
-	cur = mysql.connection.cursor()
-	query="select * from wall;"
-	cur.execute(query)
-	results = cur.fetchall()
-	
-	payload = []
-	content = {}
-	for result in results:
-		content = {'notesid': result[3], 'textnote': result[4]}
-		payload.append(content)
-		content = {}
+    cur = mysql.connection.cursor()
+    query="select * from wall;"
+    cur.execute(query)
+    results = cur.fetchall()
+    
+    payload = []
+    content = {}
+    for result in results:
+        content = {'notesid': result[3], 'textnote': result[4]}
+        payload.append(content)
+        content = {}
     
 
-	#print(payload);
-	cur.close()
-	return jsonify(payload)
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
 
 
 
 @app.route("/addSticky",methods=['GET'])
 def addSticky():
-	cur = mysql.connection.cursor()
-	wid = request.args.get('workid')
-	gid = request.args.get('grpid')
-	uid = request.args.get('userid')
-	msg = request.args.get('notes')
-	
+    cur = mysql.connection.cursor()
+    wid = request.args.get('workid')
+    gid = request.args.get('grpid')
+    uid = request.args.get('userid')
+    msg = request.args.get('notes')
+    
 
-	query="insert into wall(workshopid,grpid,userid,notes) values(%s,%s,%s,%s);"
-	
-	record = [wid,gid,uid,msg]
-	cur.execute(query, record)
-	mysql.connection.commit()
-	cur.close()
-	return 'Added Successfully'
-	
-	
+    query="insert into wall(workshopid,grpid,userid,notes) values(%s,%s,%s,%s);"
+    
+    record = [wid,gid,uid,msg]
+    cur.execute(query, record)
+    mysql.connection.commit()
+    cur.close()
+    return 'Added Successfully'
+    
+    
 @app.route("/addMessage",methods=['GET'])
 def addMessage():
-	cur = mysql.connection.cursor()
-	msg = request.args.get('msg')
-	userid = request.args.get('userid')
-	wid = request.args.get('wid')
-	grpid = request.args.get('grpid')
-	query="insert into chat(workshopid,groupid,userid,text) values(%s,%s,%s,%s)"
-	
-	record = [wid,grpid,userid,msg]
-	cur.execute(query, record)
-	mysql.connection.commit()
-	cur.close()
-	return 'Added Successfully'
+    cur = mysql.connection.cursor()
+    msg = request.args.get('msg')
+    userid = request.args.get('userid')
+    wid = request.args.get('wid')
+    grpid = request.args.get('grpid')
+    query="insert into chat(workshopid,groupid,userid,text) values(%s,%s,%s,%s)"
+    
+    record = [wid,grpid,userid,msg]
+    cur.execute(query, record)
+    mysql.connection.commit()
+    cur.close()
+    return 'Added Successfully'
 
 @app.route("/getmsg")
 def getmsg():
-	cur = mysql.connection.cursor()
-	query1="select * from chat order by messageid;"
-	cur.execute(query1)
-	results = cur.fetchall()
-	
-	payload = []
-	content = {}
-	for result in results:
-		content = {'uid': result[2], 'text': result[4]}
-		payload.append(content)
-		content = {}
+    cur = mysql.connection.cursor()
+    query1="select * from chat order by messageid;"
+    cur.execute(query1)
+    results = cur.fetchall()
+    
+    payload = []
+    content = {}
+    for result in results:
+        content = {'uid': result[2], 'text': result[4]}
+        payload.append(content)
+        content = {}
     
 
-	#print(payload);
-	cur.close()
-	return jsonify(payload)
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
 
 
 
 @app.route("/verifylogin",methods=['POST'])
 def verifylogin():
-	return 'verifying login credentials'
+    return 'verifying login credentials'
 
 @app.route("/emphasize")
 def participants():
@@ -343,10 +347,8 @@ def define():
 def ideate():
     return render_template('ideate.html')
 
-@app.route("/")
-def main():
-	return render_template('index.html')
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+

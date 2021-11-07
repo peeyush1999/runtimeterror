@@ -6,6 +6,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 import random
 import xlrd
 import sys
+import string
+import random
 
 
 
@@ -32,25 +34,33 @@ def processdata():
 
     
     
-    for row in range(table.nrows):
+    for row in range(30):
         
         driver = webdriver.Firefox(executable_path=r'webdrivers/geckodriver');
         driver.get("http://127.0.0.1:5000/")
+        driver.execute_script("toggle()")
         
-        name = str(table.cell(row,0).value)
-        password=str(table.cell(row,1).value)
+        name = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 7))
+        email = name+"@"+"gmail.com"
+        password="qwerty"
+        college = "IIITH"
         print(name,password)
-        
-        driver.find_element_by_id('LEmail').send_keys(name)
-        driver.find_element_by_id('LPassword').send_keys(password)
-        time.sleep(2)
-        driver.find_element_by_id('Login').click()
+        driver.find_element_by_name('Name').send_keys(name)        
+        driver.find_element_by_name('Email').send_keys(email)
+        driver.find_element_by_name('Password').send_keys(password)
+        driver.find_element_by_name('College').send_keys(college)
+        driver.find_element_by_name('type').send_keys("participant")
+        #driver.find_element_by_id('Email').send_keys(name)
+        driver.find_element_by_id('Password').send_keys(password)
+
+        time.sleep(1)
+        driver.find_element_by_id('register').click()
 
         
                 
         
 
-    #driver.quit()        
+    driver.quit()        
         
 
 processdata()
