@@ -1,9 +1,62 @@
+{% extends 'adminsidebar.html'%}
+
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/sticky.css">
+<link rel="stylesheet" href="../static/css/emphasis.css">
+<div style="overflow: hidden">
+
+  <p id="destroyInit" class="init">
+    </p>
+
+  <main class="page-content">
+      <div class="container">
+
+
+        <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
+          <h2 align="center" style="margin-right: 140px;">Participants</h2>
+      </div>
+
+
+
+
+
+        <div id="wrapper" ></div>
+
+        <section id="content" >
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea class="txtBox"></textarea>
+                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" value="Create" />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section>
+
+
+
+
+            <section align="center">
+
 <div id="accordion">
-<h1>Participants</h1>
 <ul class="participants">
 
 </ul>
 </div>
+
+</section>
+        </section>
+
+      </div>
+    </main>
+
+</div>
+
+
+
+
+
+
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
   var interval = 1000;
@@ -27,6 +80,7 @@
           for (var key in users) {
             var value = users[key];
             var li = document.createElement("li");
+            li.className="box";
             li.appendChild(document.createTextNode(value));
             ul.appendChild(li);
           }
@@ -56,3 +110,4 @@
     // };
     // request.send();
 </script>
+{% endblock %}

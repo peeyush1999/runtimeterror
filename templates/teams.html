@@ -1,6 +1,40 @@
-<html>
+{% extends 'adminsidebar.html'%}
 
-<body>
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/sticky.css">
+<link rel="stylesheet" href="../static/css/emphasis.css">
+<div style="overflow: hidden">
+
+  <p id="destroyInit" class="init">
+    </p>
+
+  <main class="page-content">
+      <div class="container">
+
+
+        <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
+          <h2 align="center" style="margin-right: 140px;">Teams</h2>
+      </div>
+
+
+
+
+
+        <div id="wrapper" ></div>
+
+        <section id="content" >
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea class="txtBox"></textarea>
+                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" value="Create" />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section>
+
+
+
+
+            <section align="center">
+
   <!-- <form name="createTeamsform" action="/admin/createTeams" method="POST">
     <input type="number" min="1" placeholder="Name" name="count">
     <button type="submit">
@@ -11,7 +45,19 @@
 
   </div>
   <button id="b1">create</button>
-</body>
+
+
+
+</section>
+        </section>
+
+      </div>
+    </main>
+
+</div>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../static/js/demo.js"></script>
 <script type="text/javascript">
@@ -26,9 +72,11 @@
         console.log(response)
         const obj = JSON.parse(response)
         const container = document.getElementById('accordion');
+        $('.box').remove();
         for (let x in obj) {
           console.log(x)
           const ul = document.createElement('ul');
+          ul.className="box"//add class here to change ui
           for (let y in obj[x]) {
             var li = document.createElement("li");
             li.appendChild(document.createTextNode(obj[x][y]));
@@ -41,4 +89,4 @@
     };
   });
 </script>
-<html>
+{% endblock %}
