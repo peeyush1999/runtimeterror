@@ -62,7 +62,7 @@
 
       for (i = 0; i < data.length; i++) {
         console.log("getsticky", data[i]["textnote"]);
-        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div>'+data[i]["textnote"]+'</div>' + '<button class="button primary delete" style="float:bottom;" onclick="deleteSticky(\'' + data[i]["notesid"] + '\')">Delete Sticky</button></li>');
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"><i class="fas fa-trash-alt " onclick="deleteSticky(\'' + data[i]["notesid"] + '\')"></i>   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
       }
     });
 

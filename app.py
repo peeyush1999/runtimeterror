@@ -7,8 +7,8 @@ import time
 app = Flask(__name__)
 # Configure db
 db = yaml.load(open('db.yaml'))
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Sahutronics@123'
+app.config['MYSQL_USER'] = 'gagan'
+app.config['MYSQL_PASSWORD'] = 'AMUAOYJT'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_DB'] = 'ssdproject'
 mysql = MySQL(app)
