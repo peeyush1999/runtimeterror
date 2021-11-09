@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	loadStoredNotes();	
+		
 	$(document).on('click', '#crteStkyBtn', addNote);
 	$(document).on('click', '#addBtn', showOvrly);
 	$(document).on('click', '#cnclStkyBtn', cnclOvrly);
@@ -72,12 +72,13 @@ function addtoSticky(note){
 	if(note.length > 0){
 		console.log(note);
 		createSticky(note);
-		localStorage.setItem('note_'+note.length, note);
+		//localStorage.setItem('note_'+note.length, note);
 	}
 }
 
 function createSticky(text){
-	$('#stkyNts').append('<li class="box">'+text+'</li>');
+	//$('#stkyNts').append('<li class="box">'+text+'</li>');
+  location.reload();
 }
 
 

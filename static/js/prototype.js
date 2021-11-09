@@ -97,6 +97,7 @@ function select(id)
 {
 	console.log("select pressed ",id);
 	var myCanvas = document.getElementById("myCanvas"+id);
+	myCanvas.style.cursor = "crosshair"; 
 	var ctx = myCanvas.getContext("2d");
     
     // Fill Window Width and Height
