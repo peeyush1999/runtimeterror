@@ -40,8 +40,9 @@ def processdata():
         name = str(table.cell(row,0).value)
         password=str(table.cell(row,1).value)
         print(name,password)
-        driver.find_element_by_id('Email').send_keys(name)
-        driver.find_element_by_id('Password').send_keys(password)
+        
+        driver.find_element_by_id('LEmail').send_keys(name)
+        driver.find_element_by_id('LPassword').send_keys(password)
         time.sleep(2)
         driver.find_element_by_id('Login').click()
 
