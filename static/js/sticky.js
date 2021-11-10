@@ -78,7 +78,7 @@ function addtoSticky(note){
 
 function createSticky(text){
 	//$('#stkyNts').append('<li class="box">'+text+'</li>');
-  location.reload();
+ 
 }
 
 

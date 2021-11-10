@@ -98,7 +98,9 @@
 
     $.get("/addSticky", { workid: wid, grpid: gid, userid: uid, notes: msg }).done(function (data) {
       console.log(data);
+      location.reload();
     });
+    
   }
 
   function retrieveSticky() {
