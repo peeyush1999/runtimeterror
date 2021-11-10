@@ -335,3 +335,33 @@ margin:15px auto;
 box-shadow:inset 0px 0px 10px 0px #bdbdbd;
 border:1px solid #c6c6c6;
 }
+
+
+
+
+
+
+
+
+
+
+/* MODAL */
+
+
+
+
+
+
+
+
+.wrap { padding: 15px; }
+h1 { font-size: 28px; }
+h4,
+modal-title { font-size: 18px; font-weight: bold; }
+
+.no-borders { border: 0px; }
+.body-message { font-size: 18px; }
+.centered { text-align: center; }
+.btn-primary { background-color: #2086c1; border-color: transparent; outline: none; border-radius: 8px; font-size: 15px; padding: 10px 25px; }
+.btn-primary:hover { background-color: #2086c1; border-color: transparent; }
+.btn-primary:focus { outline: none; }
