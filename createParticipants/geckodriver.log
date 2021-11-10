@@ -1133,3 +1133,252 @@ console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkErr
 
 ###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
 
+1636351047537	geckodriver	INFO	Listening on 127.0.0.1:43025
+1636351048549	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileXvPBPU"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351049665	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXvPBPU/search.json.mozlz4", (void 0)))
+1636351051532	Marionette	INFO	Listening on port 41877
+1636351051624	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+1636351068482	geckodriver	INFO	Listening on 127.0.0.1:38765
+1636351069491	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileEKGlqL"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351070633	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEKGlqL/search.json.mozlz4", (void 0)))
+1636351072406	Marionette	INFO	Listening on port 36397
+1636351072517	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1636351114750	geckodriver	INFO	Listening on 127.0.0.1:54837
+1636351114759	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofilecAc5FH"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351116158	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilecAc5FH/search.json.mozlz4", (void 0)))
+1636351118295	Marionette	INFO	Listening on port 43155
+1636351118406	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1636351136558	geckodriver	INFO	Listening on 127.0.0.1:55027
+1636351136566	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileCnYSri"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351137680	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileCnYSri/search.json.mozlz4", (void 0)))
+1636351139452	Marionette	INFO	Listening on port 45353
+1636351139504	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1636351162698	geckodriver	INFO	Listening on 127.0.0.1:32797
+1636351163703	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileWGG7aX"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351164859	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileWGG7aX/search.json.mozlz4", (void 0)))
+1636351166480	Marionette	INFO	Listening on port 44749
+1636351166533	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+1636351212807	geckodriver	INFO	Listening on 127.0.0.1:50063
+1636351213813	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileopgebW"
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+ATTENTION: default value of option mesa_glthread overridden by environment.
+1636351214873	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileopgebW/search.json.mozlz4", (void 0)))
+1636351216756	Marionette	INFO	Listening on port 45747
+1636351216847	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PClientManager::Msg_ExpectFutureClientSource Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PClientManager::Msg_ForgetFutureClientSource Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+JavaScript warning: http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PClientManager::Msg_ExpectFutureClientSource Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PClientManager::Msg_ForgetFutureClientSource Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+console.error: "stylesheets: fetch failed for https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css, using system principal instead."
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: (new Error("Protocol error (Error): Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919. from: server0.conn0.windowGlobal6442450945/pagestyle27 (resource://devtools/shared/DevToolsUtils.js:556:16)", "resource://devtools/shared/protocol/Front.js", 365))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2152398919.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+console.error: "Error while calling actor 'pagestyle's method 'getApplied'" "Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036."
+console.error: (new Error("Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.", "resource://devtools/shared/DevToolsUtils.js", 556))
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+JavaScript error: resource://devtools/shared/DevToolsUtils.js, line 556: Error: Failed to fetch https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css. Code 2147500036.
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+JavaScript error: http://127.0.0.1:5000/static/js/timer.js, line 18: TypeError: clock is null
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1636351610919	addons.xpi	ERROR	Failed to download system add-on reset-search-defaults@mozilla.com: Error: Failed downloading via XHR, status: 0, reason: error(resource://gre/modules/addons/ProductAddonChecker.jsm:244:16) JS Stack trace: fail@ProductAddonChecker.jsm:244:16
+1636351624900	addons.xpi	ERROR	System addon update list error Error: Failed downloading XML, status: 0, reason: timeout
+1636356979627	Marionette	INFO	Stopped listening on port 41877
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1636356982733	Marionette	INFO	Stopped listening on port 44749
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1636356985207	Marionette	INFO	Stopped listening on port 45353
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1636356990319	Marionette	INFO	Stopped listening on port 36397
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1636363851493	Marionette	INFO	Stopped listening on port 45747
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1636366881082	Marionette	INFO	Stopped listening on port 43155
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
