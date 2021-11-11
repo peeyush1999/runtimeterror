@@ -301,6 +301,7 @@ def addProto():
     wid=1
     gid=1
 
+    #cur.execute("select * from protoTable where ")
 
     query="insert into protoTable(workshopid,grpid,image) values(%s,%s,%s);"
     

@@ -174,6 +174,15 @@
  window.addEventListener('load', (event) => { getSticky(); getProto();}); 
 
 
+ function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
  function upload_sticky(id)
  {
 
@@ -192,8 +201,13 @@ wid=1;
 gid=1;
 
 
+
+
+$("#loading"+id).show();
 $.get("/addProto", { workid: wid, grpid: gid, image: dataUrl }).done(function (data) {
       console.log(data);
+      sleep(1000);
+      $("#loading"+id).hide();
     });
 
  }
@@ -212,29 +226,34 @@ function getSticky()
     }
 
 
-    function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
-function getProto()
-    {
-
-      $.get("/returnProto").done(function(data) {
-        
-        for (i = 0; i < data.length; i++) {
-        console.log("getsticky", data[i]["imgid"]);
-        id=data[i]["imgid"];
+    
 
 
-        
-        
+function add(id,img)
+{
+
+  var str=`<div class='screen' id='mobilescreen'>
+      <div id='speaker'></div>
+        <div id='maincontainer'>
+        <canvas id='myCanvas`+id+`'></canvas>
+        </div>
+
+      <div style="display:flex">
+       <div class='controlder' onclick='select(`+id+`)'>CLEAR</div>
 
 
-        var str="<div class='screen' id='mobilescreen'><div id='speaker'></div><div id='maincontainer'><canvas id='myCanvas"+id+"'></canvas></div><div id='controlder' onclick='select("+id+")'></div><div id='controlder' onclick='upload_sticky("+id+")'>SAVE</div></div>";
+
+       <div class='controlder' id="loading`+id+`" style="display:none;"> <img src="../static/Rainbow.gif" width=50px 
+height=50px ></div>
+
+
+
+
+       <div class='controlder' id="save`+id+`" onclick='upload_sticky(`+id+`)'>SAVE</div>
+
+       </div>
+
+   </div>`;
 
         $('#stkyNts').append(str);
 
@@ -245,7 +264,7 @@ function getProto()
 
         var ctx = myCanvas.getContext('2d');
          var myImage=new Image();
-          myImage.src=data[i]["image"];
+          myImage.src=img;
           myImage.onload=function(){
             ctx.drawImage(myImage,0,0,320,360);
           };
@@ -322,8 +341,19 @@ function getProto()
               evt.preventDefault();
             },false);
 
-            sleep(20);
+
+}
+
+
+function getProto()
+    {
+
+      $.get("/returnProto").done(function(data) {
         
+        for (i = 0; i < data.length; i++) {
+        console.log("getsticky", data[i]["imgid"]);
+        id=data[i]["imgid"];
+        add(id, data[i]["image"]);  
       }
     });
 
