@@ -88,9 +88,9 @@
 
 
   window.addEventListener('load', (event) => { getSticky(); });
-  wid = 2;
-  gid = 1;
-  uid = 1;
+  wid = {{ user['workshopid'] }};
+  gid = {{ user['groupid'] }};
+  uid = {{ user['userid'] }};
 
   function updateDD() {
 

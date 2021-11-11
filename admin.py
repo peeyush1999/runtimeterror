@@ -240,35 +240,10 @@ def updatephase():
             return "false"
 
 
-@app.route("/deleteSticky",methods=['GET'])
-def deleteSticky():
-    
-    cur = mysql.connection.cursor()
-    uid = request.args.get('noteid')
-    query="delete from wall where notesid="+uid+";"
-    cur.execute(query)
-    mysql.connection.commit()
-    cur.close()
-    return "true"
-    
-@app.route("/returnSticky",methods=['GET'])
-def returnSticky():
-    cur = mysql.connection.cursor()
-    query="select * from wall;"
-    cur.execute(query)
-    results = cur.fetchall()
-    
-    payload = []
-    content = {}
-    for result in results:
-        content = {'notesid': result[3], 'textnote': result[4]}
-        payload.append(content)
-        content = {}
-    
 
-    #print(payload);
-    cur.close()
-    return jsonify(payload)
+#========================================================================
+#========================Prototype Part===============================
+#========================================================================
 
 
 @app.route("/returnProto",methods=['GET'])
@@ -311,6 +286,42 @@ def addProto():
     cur.close()
     return 'Proto Added Successfully'
 
+
+#========================================================================
+#========================Sticky Notes Part===============================
+#========================================================================
+
+@app.route("/deleteSticky",methods=['GET'])
+def deleteSticky():
+    
+    cur = mysql.connection.cursor()
+    uid = request.args.get('noteid')
+    query="delete from wall where notesid="+uid+";"
+    cur.execute(query)
+    mysql.connection.commit()
+    cur.close()
+    return "true"
+    
+@app.route("/returnSticky",methods=['GET'])
+def returnSticky():
+    cur = mysql.connection.cursor()
+    query="select * from wall;"
+    cur.execute(query)
+    results = cur.fetchall()
+    
+    payload = []
+    content = {}
+    for result in results:
+        content = {'notesid': result[3], 'textnote': result[4]}
+        payload.append(content)
+        content = {}
+    
+
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
+
+
 @app.route("/addSticky",methods=['GET'])
 def addSticky():
     cur = mysql.connection.cursor()
@@ -328,6 +339,8 @@ def addSticky():
     cur.close()
     return 'Added Successfully'
     
+
+
     
 @app.route("/addMessage",methods=['GET'])
 def addMessage():
@@ -368,7 +381,17 @@ def getmsg():
 def participants():
     global startTime
     startTime = int(time.time())
-    return render_template('emphasize.html')
+
+
+    #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
+
+    wid = 1
+    gid = 1
+    uid = 2
+
+    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+
+    return render_template('emphasize.html',user=data)
 
 @app.route("/waiting")
 def waiting():
@@ -420,7 +443,15 @@ def isCreated():
 
 @app.route("/proto")
 def prototype():
-    return render_template('prototype.html')
+    #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
+
+    wid = 1
+    gid = 1
+    uid = 2
+
+    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+
+    return render_template('prototype.html',user=data)
 
 
 @app.route("/chat")
@@ -430,12 +461,28 @@ def chatbox():
 
 @app.route("/define")
 def define():
-    return render_template('define.html')
+    #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
+
+    wid = 1
+    gid = 1
+    uid = 2
+
+    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    return render_template('define.html',user=data)
 
 
 @app.route("/ideate")
 def ideate():
-    return render_template('ideate.html')
+    #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
+
+    wid = 1
+    gid = 1
+    uid = 2
+
+    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+
+
+    return render_template('ideate.html',user=data)
 
 
 
