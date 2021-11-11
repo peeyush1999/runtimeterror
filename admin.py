@@ -195,7 +195,7 @@ def createTeams():
 # functonalities of all participants
 
 startTime = int(time.time())
-phaseTime = 120
+phaseTime = 3600
 
 
 @app.route("/updatePhase",methods=['GET'])
@@ -271,6 +271,44 @@ def returnSticky():
     return jsonify(payload)
 
 
+@app.route("/returnProto",methods=['GET'])
+def returnProto():
+    cur = mysql.connection.cursor()
+    query="select * from protoTable;"
+    cur.execute(query)
+    results = cur.fetchall()
+    
+    payload = []
+    content = {}
+    for result in results:
+        content = {'imgid': result[0], 'image': result[3]}
+        payload.append(content)
+        content = {}
+    
+
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
+
+@app.route("/addProto",methods=['GET'])
+def addProto():
+    cur = mysql.connection.cursor()
+    app.logger.info(request.args.keys())
+    wid = request.args.get('workid')
+    gid = request.args.get('grpid')
+    img = request.args.get('image')
+    
+    wid=1
+    gid=1
+
+
+    query="insert into protoTable(workshopid,grpid,image) values(%s,%s,%s);"
+    
+    record = [wid,gid,img]
+    cur.execute(query, record)
+    mysql.connection.commit()
+    cur.close()
+    return 'Proto Added Successfully'
 
 @app.route("/addSticky",methods=['GET'])
 def addSticky():

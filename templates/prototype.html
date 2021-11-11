@@ -171,7 +171,32 @@
   </div>
 
   <script>
- window.addEventListener('load', (event) => { getSticky(); }); 
+ window.addEventListener('load', (event) => { getSticky(); getProto();}); 
+
+
+ function upload_sticky(id)
+ {
+
+  var canvas = document.getElementById("myCanvas"+id);
+  var dataUrl=canvas.toDataURL();
+  /*$.ajax({
+  type: "POST",
+  url: "/addProto",
+  dataType:'json',
+  data: {image: dataUrl}
+
+})
+.done(function(respond){console.log("done: "+respond);})
+*/
+wid=1;
+gid=1;
+
+
+$.get("/addProto", { workid: wid, grpid: gid, image: dataUrl }).done(function (data) {
+      console.log(data);
+    });
+
+ }
 function getSticky()
     {
 
@@ -185,6 +210,117 @@ function getSticky()
 
 
     }
+
+function getProto()
+    {
+
+      $.get("/returnProto").done(function(data) {
+        
+        for (i = 0; i < data.length; i++) {
+        console.log("getsticky", data[i]["imgid"]);
+        id=data[i]["imgid"];
+
+
+        
+        
+
+
+        var str="<div class='screen' id='mobilescreen'><div id='speaker'></div><div id='maincontainer'><canvas id='myCanvas"+id+"'></canvas></div><div id='controlder' onclick='select("+id+")'></div><div id='controlder' onclick='upload_sticky("+id+")'>SAVE</div></div>";
+
+        $('#stkyNts').append(str);
+
+        var myCanvas = document.getElementById("myCanvas"+id);
+        
+        myCanvas.width="320"; // Optional
+        myCanvas.height="360"; 
+
+        var ctx = myCanvas.getContext('2d');
+         var myImage=new Image();
+          myImage.src=data[i]["image"];
+          myImage.onload=function(){
+            ctx.drawImage(myImage,0,0,320,360);
+          };
+
+
+          if(myCanvas){
+              var isDown = false;
+              var canvasX, canvasY;
+              ctx.lineWidth = 2.5;
+              
+              $(myCanvas)
+              .mousedown(function(e){
+                isDown = true;
+                ctx.beginPath();
+                canvasX = e.pageX - myCanvas.offsetLeft;
+                canvasY = e.pageY - myCanvas.offsetTop;
+                ctx.moveTo(canvasX, canvasY);
+              })
+              .mousemove(function(e){
+                if(isDown !== false) {
+                  canvasX = e.pageX - myCanvas.offsetLeft;
+                  canvasY = e.pageY - myCanvas.offsetTop;
+                  ctx.lineTo(canvasX, canvasY);
+                  ctx.strokeStyle = "#000";
+                  ctx.stroke();
+                }
+              })
+              .mouseup(function(e){
+                isDown = false;
+                ctx.closePath();
+              });
+            }
+            
+            // Touch Events Handlers
+            draw = {
+              started: false,
+              start: function(evt) {
+
+                ctx.beginPath();
+                ctx.moveTo(
+                  evt.touches[0].pageX,
+                  evt.touches[0].pageY
+                );
+
+                this.started = true;
+
+              },
+              move: function(evt) {
+
+                if (this.started) {
+                  ctx.lineTo(
+                    evt.touches[0].pageX,
+                    evt.touches[0].pageY
+                  );
+
+                  ctx.strokeStyle = "#000";
+                  ctx.lineWidth = 5;
+                  ctx.stroke();
+                }
+
+              },
+              end: function(evt) {
+                this.started = false;
+              }
+            };
+            
+            // Touch Events
+            myCanvas.addEventListener('touchstart', draw.start, false);
+            myCanvas.addEventListener('touchend', draw.end, false);
+            myCanvas.addEventListener('touchmove', draw.move, false);
+            
+            // Disable Page Move
+            document.body.addEventListener('touchmove',function(evt){
+              evt.preventDefault();
+            },false);
+
+
+        
+      }
+    });
+
+
+    }
+
    
    function check()
    {  

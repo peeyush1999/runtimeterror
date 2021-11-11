@@ -290,7 +290,7 @@ function select(id)
 function createSticky(id){
 
 	console.log('called with id',id);
-	var str="<div class='screen' id='mobilescreen'><div id='speaker'></div><div id='maincontainer'><canvas id='myCanvas"+id+"'></canvas></div><div id='controlder' onclick='select("+id+")'></div></div>";
+	var str="<div class='screen' id='mobilescreen'><div id='speaker'></div><div id='maincontainer'><canvas id='myCanvas"+id+"'></canvas></div><div id='controlder' onclick='select("+id+")'></div><div id='controlder' onclick='upload_sticky("+id+")'>SAVE</div></div>";
     
 	$('#stkyNts').append(str);
 }
