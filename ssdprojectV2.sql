@@ -3,6 +3,8 @@
 -- Host: 127.0.0.1    Database: ssdproject
 -- ------------------------------------------------------
 -- Server version	8.0.27-0ubuntu0.21.04.1
+CREATE DATABASE IF NOT EXISTS ssdproject; 
+USE ssdproject;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
