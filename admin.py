@@ -68,13 +68,19 @@ def login():
 
 
         # storing the userid in the registration table
-        
         queryValues = [1, userid]
-        cur.execute(
+        print(userid)
+
+        # checking if the user is loggedin atleast once
+        check_user = cur.execute("SELECT reg.userid FROM registration reg WHERE reg.userid = %s",(userid,))
+
+        # If not inserting his data into registration table
+        if(check_user == 0):
+            cur.execute(
             "INSERT INTO `registration` (`workshopid`, `userid`) VALUES (%s , %s)",
             queryValues)
-        cur.close()
-        conn.commit()
+            cur.close()
+            conn.commit()
     
         if (type == 'admin'):
             return redirect('/admin')
