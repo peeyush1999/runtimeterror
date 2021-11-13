@@ -1,11 +1,12 @@
 from flask import Flask, session, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
-import yaml, json
+import yaml
 import random
 import time
 
 app = Flask(__name__)
 app.secret_key = 'tatanamak'
+
 # Configure db
 db = yaml.load(open('db.yaml'))
 app.config['MYSQL_USER'] = db['mysql_user']
@@ -15,8 +16,12 @@ app.config['MYSQL_DB'] = db['mysql_db']
 mysql = MySQL(app)
 
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/')
 def root():
+
+    session.pop('uid', None)
+    session.pop('wid', None)
     return render_template('index.html')
 
 
@@ -34,7 +39,7 @@ def userdetails():
     # inserting into database
     conn = mysql.connection
     cur = conn.cursor()
-    userid = cur.execute(
+    cur.execute(
         "INSERT INTO `user` (`username`,`name`,`password`,`college`,`type`) VALUES (%s,%s,%s,%s,%s)",
         queryValues)
     cur.close()
@@ -45,6 +50,11 @@ def userdetails():
 # inserting data into register table while logging in
 @app.route('/login', methods=['POST'])
 def login():
+
+
+    session.pop('uid', None)
+    session.pop('wid', None)
+    
     username = request.form.get('Email')
     password = request.form.get('Password')
 
@@ -62,8 +72,8 @@ def login():
 
         #storing username and userid and grp id and workshop and type in session variable
         session['uid'] = userid
-        session['type'] = type
-        session['uname']= uname
+        # session['type'] = type
+        # session['uname']= uname
         session['wid']= "1" #hardcoding the workshop Id
 
 
@@ -89,18 +99,32 @@ def login():
     else:
         return render_template('404.html')
 
+# logout
+@app.route('/logout')
+def logout():
+
+    session.pop('uid', None)
+    session.pop('wid', None)
+    return redirect('/')
+
 
 # functonalities of all admin
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
+    if not session.get("uid"):
+        return redirect("/")
     return render_template('admin.html')
 
 @app.route('/admin/teams', methods=['GET', 'POST'])
 def teams():
+    if not session.get("uid"):
+        return redirect("/")
     return render_template('teams.html')
 
 @app.route('/admin/people', methods=['GET', 'POST'])
 def people():
+    if not session.get("uid"):
+        return redirect("/")
     return render_template('participants.html')
 
 
@@ -108,6 +132,9 @@ def people():
 @app.route('/admin/people/showparticipants', methods=['post'])
 def showparticipants():
 
+
+    if not session.get("uid"):
+        return redirect("/")
     # connecting to database
     conn = mysql.connection
     cur = conn.cursor()
@@ -162,6 +189,9 @@ def arrangeRandom(userIdstuple, count):
 @app.route('/admin/createTeams', methods=["POST"])
 def createTeams():
 
+
+    if not session.get("uid"):
+        return redirect("/")
     # getting count of memebers in each team from form
     rsp = request.json
     count = int(rsp['count'])
@@ -206,6 +236,10 @@ phaseTime = 3600
 
 @app.route("/updatePhase",methods=['GET'])
 def updatephase():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     phase = request.args.get('curphase')
     
     #will fetch this time from DB which contains end time
@@ -254,6 +288,10 @@ def updatephase():
 
 @app.route("/returnProto",methods=['GET'])
 def returnProto():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     query="select * from protoTable;"
     cur.execute(query)
@@ -273,6 +311,10 @@ def returnProto():
 
 @app.route("/addProto",methods=['GET'])
 def addProto():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     app.logger.info(request.args.keys())
     wid = request.args.get('workid')
@@ -300,6 +342,9 @@ def addProto():
 @app.route("/deleteSticky",methods=['GET'])
 def deleteSticky():
     
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     uid = request.args.get('noteid')
     query="delete from wall where notesid="+uid+";"
@@ -310,6 +355,10 @@ def deleteSticky():
     
 @app.route("/returnSticky",methods=['GET'])
 def returnSticky():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     query="select * from wall;"
     cur.execute(query)
@@ -330,6 +379,10 @@ def returnSticky():
 
 @app.route("/addSticky",methods=['GET'])
 def addSticky():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     wid = request.args.get('workid')
     gid = request.args.get('grpid')
@@ -350,6 +403,10 @@ def addSticky():
     
 @app.route("/addMessage",methods=['GET'])
 def addMessage():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     msg = request.args.get('msg')
     userid = request.args.get('userid')
@@ -365,6 +422,10 @@ def addMessage():
 
 @app.route("/getmsg")
 def getmsg():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     query1="select * from chat order by messageid;"
     cur.execute(query1)
@@ -385,6 +446,10 @@ def getmsg():
 
 @app.route("/emphasize")
 def participants():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     global startTime
     startTime = int(time.time())
 
@@ -403,7 +468,13 @@ def participants():
 
 @app.route("/waiting")
 def waiting():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     #useing session variable.........
+    if not session.get("uid"):
+        return redirect("/login")
     info={}
     info['wid']=session['wid']
     info['uid']=session['uid']
@@ -412,6 +483,10 @@ def waiting():
 
 @app.route("/isCreated", methods=["GET"])
 def isCreated():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     cur = mysql.connection.cursor()
     uid = request.args.get('userid')
 
@@ -422,7 +497,7 @@ def isCreated():
     else:
         getGrp = "SELECT userid FROM `group` WHERE groupid = ( SELECT groupid FROM `group` AS g WHERE g.userid = %s );"
         cur.execute(getGrp, [uid])
-        results = cur.fetchall();
+        results = cur.fetchall()
         namelst=[]
 
         for row in results:
@@ -451,6 +526,9 @@ def isCreated():
 
 @app.route("/proto")
 def prototype():
+
+    if not session.get("uid"):
+        return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = 1
@@ -464,11 +542,18 @@ def prototype():
 
 @app.route("/chat")
 def chatbox():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     return render_template('chatbox.html')
 
 
 @app.route("/define")
 def define():
+
+    if not session.get("uid"):
+        return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = 1
@@ -481,6 +566,10 @@ def define():
 
 @app.route("/ideate")
 def ideate():
+
+    if not session.get("uid"):
+        return redirect("/")
+
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = 1
@@ -496,6 +585,9 @@ def ideate():
 
 @app.route("/finalwall")
 def finalwall():
+
+    if not session.get("uid"):
+        return redirect("/")
     # global startTime
     # startTime = int(time.time())
     wid = 1
@@ -504,9 +596,6 @@ def finalwall():
 
     data={"workshopid":wid, "groupid": gid, "userid" : uid}
     return render_template('finalwall.html',user=data)
-
-
-
 
 
 
