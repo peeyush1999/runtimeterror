@@ -383,6 +383,114 @@ def participants():
     startTime = int(time.time())
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = 1
@@ -483,6 +591,21 @@ def ideate():
 
 
     return render_template('ideate.html',user=data)
+
+
+
+@app.route("/finalwall")
+def finalwall():
+    # global startTime
+    # startTime = int(time.time())
+    wid = 1
+    gid = 1
+    uid = 2
+
+    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    return render_template('finalwall.html',user=data)
+
+
 
 
 
