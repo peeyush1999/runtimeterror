@@ -163,8 +163,8 @@ def arrangeRandom(userIdstuple, count):
 def createTeams():
 
     # getting count of memebers in each team from form
-    # count = request.form.get('count')
-
+    rsp = request.json
+    count = int(rsp['count'])
     # connecting to database
     conn = mysql.connection
     cur = conn.cursor()
@@ -177,7 +177,7 @@ def createTeams():
     if values > 0:
         
         userIds = cur.fetchall()
-        createdTeams = arrangeRandom(userIds, 3)
+        createdTeams = arrangeRandom(userIds, count)
         for key in createdTeams.keys():
              for value in createdTeams[key]:
                  cur.execute("INSERT INTO `group` (`workshopid`,`groupid`, `userid`) VALUES (%s,%s, %s)",(1,key,value))
