@@ -1,9 +1,9 @@
 body{
-    background-image: url("../admin.jpg");
+/* background-image: url("../admin.jpg");
  background-repeat: no-repeat, repeat;
  background-position: center; /* Center the image */
- background-repeat: no-repeat; /* Do not repeat the image */
- background-size: cover; /* Resize the background image to cover the entire container */
+ /* background-repeat: no-repeat; /* Do not repeat the image */
+ /* background-size: cover; Resize the background image to cover the entire container */ 
 }
 h2 {
     text-align: center;

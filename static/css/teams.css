@@ -1,27 +1,28 @@
-body{
+/* body{
     background-image: url("../teams3.jpg");
  background-repeat: no-repeat, repeat;
  background-position: center; /* Center the image */
- background-repeat: no-repeat; /* Do not repeat the image */
- background-size: cover; /* Resize the background image to cover the entire container */
-}
-#b1{
-    background-color: white;
+ /* background-repeat: no-repeat; Do not repeat the image */ */
+ /* background-size: cover; Resize the background image to cover the entire container */
+
+  #b1{
+        background-color: rgb(195, 117, 214);
         border: 3px solid #18665c;
         color: #4ca8af;
         text-transform: uppercase;
         height: inherit;
         width: inherit;
         transition: background-color 0.5s ease, color 1s ease;
-        font-size: 30px;
+        font-size: 10px;
         box-shadow: 10px 10px rgba(77, 77, 77, 0.5);
         margin-right: 140px;
+        padding: 15px 32px;
         
       }
       
       #b1:hover {
         background-color: #4c7faf;
-        color: white;
+        color: rgb(136, 72, 192);
       }
       
       ul{
@@ -38,6 +39,7 @@ body{
             line-height: 30px;
             text-align: center;
             letter-spacing: 1px;
+            font-style: italic;
             font-family: 'Raleway', serif;
           }
      
@@ -56,9 +58,9 @@ body{
        
       }    
       h2 {
-        text-align: center;
+        text-align:justify;
         font-weight: normal;
-        color: #fff;
+        color: rgb(37, 3, 70);
         text-transform: uppercase;
         font-size: 50px;
         white-space: nowrap;
@@ -69,18 +71,32 @@ body{
         
        
       }
-      h3{
+      p1{
         text-align: center;
         font-weight: normal;
-        color: #fff;
+        color: rgb(57, 4, 73);
         text-transform: uppercase;
         font-size: 30px;
         white-space: nowrap;
-        
+        font-style: inherit;
         z-index: 1000;
         font-family:Verdana, Geneva, Tahoma, sans-serif;
         
         
        
+      }
+      #myform{
+        border: 3px solid #250c33;
+        color: #08051a;
+        text-transform: uppercase;
+        height: inherit;
+        width: inherit;
+        transition: background-color 0.5s ease, color 1s ease;
+        font-size: 30px;
+        box-shadow: 10px 10px rgba(92, 93, 187, 0.5);
+        margin-right: 140px;
+        text-align: center;
+        
+
       }
      

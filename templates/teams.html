@@ -1,10 +1,10 @@
 {% extends 'adminsidebar.html'%}
 
 {% block rightpanel %}
-
+<link rel="stylesheet" href="../static/css/teams.css">
 <link rel="stylesheet" href="../static/css/sticky.css">
 <link rel="stylesheet" href="../static/css/emphasis.css">
-<link rel="stylesheet" href="../static/css/teams.css">
+
 <div style="overflow: hidden">
 
   <p id="destroyInit" class="init">
@@ -18,13 +18,17 @@
         <h2 align="center" style="margin-right: 140px;">Teams</h2>
         <br>
         <br>
-        <h3 align="center" style="margin-right: 140px;">To create teams for the workshop - click below</h3>
+        <p1 align="center" style="margin-right: 140px;">To create teams for the workshop - Enter the count<br> of members in team and then click on create.</p1>
         <br>
-
+        <br>
         <form id="myForm" method="POST">
-          <input type="number" min="1" placeholder="count" name="count">
+          <input type="number" min="1" placeholder="count" name="count" id ="myform">
         </form>
-        <button id="b1">create</button>
+        <br>
+        <br>
+        <div class="button" style="padding-right: 120px;">
+        <button style="font-size:30px; padding-right: 100px; padding-left:100px; color: rgb(36, 5, 65);" id="b1">CREATE</button>
+        </div>
       </div>
 
 
