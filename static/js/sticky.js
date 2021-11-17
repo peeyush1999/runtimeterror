@@ -76,6 +76,25 @@ function addtoSticky(note){
 	}
 }
 
+
+
+
+function addNote(){
+  var usrInput = $('.txtBox').val();
+//console.log(usrInput);
+
+if(usrInput.length > 0){
+ console.log($(this));
+ $('#').removeClass('ntActv');
+ addtoSticky(usrInput);
+ cnclOvrly();
+ //console.log(notes);
+}else{
+
+}
+}
+
+
 function createSticky(text){
 	//$('#stkyNts').append('<li class="box">'+text+'</li>');
  
