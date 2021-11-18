@@ -456,6 +456,11 @@ def participants():
 
 
 
+
+
+
+
+
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = 1
@@ -517,10 +522,6 @@ def isCreated():
 
         
         return jsonify(participantNames)
-
-
-
-
 
 @app.route("/clearproto",methods=['POST'])
 def clearproto():

@@ -383,6 +383,13 @@ function deleteproto()
 
   }
   
+
+
+
+
+
+
+  
   console.log(dict);
 
   $.post("/clearproto",dict).done(function (data) 
