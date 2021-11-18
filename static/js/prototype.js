@@ -369,6 +369,32 @@ function MousemoveBGColors(options){
 
 
 
+function deleteproto()
+{
+  var tag=document.getElementsByTagName("canvas")
+  dict={}
+  var cnt=0
+  for(var i=0;i<tag.length;i++)
+  {
+      dict[cnt]=tag[i].id;
+      cnt++;
+      console.log(tag[i].id);
+
+  }
+  // for(var i=0;i<tag.length;i++)
+  // {
+  // console.log(dict[i]);
+  // }
+
+  $.post("/clearproto",{"data":dict}).done(function (data) {
+      console.log(data);
+     
+      // $("#loading"+id).hide();
+    });
+
+ }
+
+
 
 
 

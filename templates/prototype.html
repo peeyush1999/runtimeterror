@@ -29,7 +29,7 @@
                 <div class="btn-5" id="addBtn123" type="button" style="color:black" onclick="addtoSticky();">
                   Add Prototype
                 </div>
-                <div class="btn-5" id="clnStorge" type="button" style="color:black">
+                <div class="btn-5" id="clnStorge" type="button" style="color:black" onclick="deleteproto();">
                   Clear All Prototype
                 </div>
                 <div class="btn-5" id="clnStorge" type="button" style="color:black" data-toggle="modal" data-target="#myModal">
@@ -181,9 +181,39 @@
 
 
 
-wid = {{ user['workshopid'] }};
-gid = {{ user['groupid'] }};
-uid = {{ user['userid'] }};
+wid = `{{ user['workshopid'] }}`;
+gid = `{{ user['groupid'] }}`;
+uid = `{{ user['userid'] }}`;
+
+
+
+function deleteproto()
+{
+  var tag=document.getElementsByTagName("canvas")
+  dict={}
+  var cnt=0
+  for(var i=0;i<tag.length;i++)
+  {
+      dict[cnt]=tag[i].id;
+      cnt++;
+      console.log(tag[i].id);
+
+  }
+  // for(var i=0;i<tag.length;i++)
+  // {
+  // console.log(dict[i]);
+  // }
+
+  $.post("/clearproto",{"data":dict}).done(function (data) {
+      console.log(data);
+     
+      // $("#loading"+id).hide();
+    });
+
+ }
+
+
+
 
 
 
