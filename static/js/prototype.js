@@ -376,21 +376,19 @@ function deleteproto()
   var cnt=0
   for(var i=0;i<tag.length;i++)
   {
-      dict[cnt]=tag[i].id;
+  		var p=cnt.toString();
+      dict[p]=tag[i].id;
       cnt++;
       console.log(tag[i].id);
 
   }
-  // for(var i=0;i<tag.length;i++)
-  // {
-  // console.log(dict[i]);
-  // }
+  
+  console.log(dict);
 
-  $.post("/clearproto",{"data":dict}).done(function (data) {
+  $.post("/clearproto",dict).done(function (data) 
+  {
       console.log(data);
-     
-      // $("#loading"+id).hide();
-    });
+   });
 
  }
 

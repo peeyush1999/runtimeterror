@@ -528,11 +528,21 @@ def clearproto():
 
     if not session.get("uid"):
         return redirect("/")
+    
+    
     cur = mysql.connection.cursor()
-    response=request.get_json()
+
+    response=request.form.keys()
+    
+    app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
     app.logger.info(response)
-    for row in response["data"]:
-        id=response["data"][row].split("myCanvas")[-1]
+    
+
+    for row in response:
+        #app.logger.info(request.form.get(row))
+        id=request.form.get(row);
+        id=id.split("myCanvas")[-1]
+        app.logger.info(id)
         query="delete from protoTable where imgid="+id+";"
         cur.execute(query)
     
