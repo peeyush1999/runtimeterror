@@ -41,7 +41,7 @@
             </div>
             
             <!-- <input id="clnStorge" value="Clear all your Prototypes" type="button" /> -->
-            <div style="display:flex;flex-direction:row; ">
+            <div style="display:flex;flex-direction:column; ">
             
               <section style="width: 50%;">
                   <div id="stkyNts" class="stkyCntr">
@@ -152,6 +152,12 @@
   </div>
 
   <script>
+
+    wid = `{{ user['workshopid'] }}`;
+    gid = `{{ user['groupid'] }}`;
+    uid = `{{ user['userid'] }}`;
+
+
  window.addEventListener('load', (event) => { getSticky(); getProto();}); 
 
 
@@ -175,60 +181,27 @@
   dataType:'json',
   data: {image: dataUrl}
 
-})
-.done(function(respond){console.log("done: "+respond);})
-*/
+  })
+  .done(function(respond){console.log("done: "+respond);})
+  */
 
 
 
-wid = `{{ user['workshopid'] }}`;
-gid = `{{ user['groupid'] }}`;
-uid = `{{ user['userid'] }}`;
 
 
-/*
-function deleteproto()
-{
-  var tag=document.getElementsByTagName("canvas")
-  dict={}
-  var cnt=0
-  for(var i=0;i<tag.length;i++)
-  {
-      dict[cnt]=tag[i].id;
-      cnt++;
-      console.log(tag[i].id);
 
-  }
-  // for(var i=0;i<tag.length;i++)
-  // {
-  // console.log(dict[i]);
-  // }
-
-  $.post("/clearproto",{"data":dict}).done(function (data) {
-      console.log(data);
-     
-      // $("#loading"+id).hide();
-    });
-
- }
-
-}
-
-*/
-
-
-$("#loading"+id).show();
-$.get("/addProto", { workid: wid, grpid: gid, image: dataUrl }).done(function (data) {
-      console.log(data);
-      sleep(1000);
-      $("#loading"+id).hide();
-    });
+  $("#loading"+id).show();
+  $.get("/addProto", { workid: wid, grpid: gid, image: dataUrl, imgid:id }).done(function (data) {
+        console.log(data);
+        sleep(1000);
+        $("#loading"+id).hide();
+      });
 
  }
 function getSticky()
     {
 
-      $.get("/returnSticky").done(function(data) {
+      $.get("/returnStickyDefine",{ workid: wid, grpid: gid, userid: uid}).done(function(data) {
         
         for (i = 0; i < data.length; i++) {
         console.log("getsticky", data[i]["textnote"]);
@@ -247,7 +220,7 @@ function add(id,img)
 {
 
   var str=`<div class='screen' id='mobilescreen'>
-      <div id='speaker'></div>
+      <div id='speaker'><i class="fas fa-trash-alt " onclick="deleteprotobyid(`+id+`);removeScreen(this);"></i><br></div>
         <div id='maincontainer'>
         <canvas id='myCanvas`+id+`'></canvas>
         </div>

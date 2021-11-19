@@ -22,6 +22,7 @@ def root():
 
     session.pop('uid', None)
     session.pop('wid', None)
+    session.pop('gid', None)
     return render_template('index.html')
 
 
@@ -54,6 +55,7 @@ def login():
 
     session.pop('uid', None)
     session.pop('wid', None)
+    session.pop('gid', None)
     
     username = request.form.get('Email')
     password = request.form.get('Password')
@@ -320,17 +322,24 @@ def addProto():
     wid = request.args.get('workid')
     gid = request.args.get('grpid')
     img = request.args.get('image')
+    imgid = request.args.get('imgid')
     
-    wid=1
-    gid=1
 
-    #cur.execute("select * from protoTable where ")
+    querycheck = "select * from protoTable where imgid="+imgid+";"
+    val = cur.execute(querycheck)
+    if(val>0):
+        results = cur.fetchall()
+        app.logger.info(str(results[0][0]))
+        queryUpdate="update protoTable set image='"+img+"' where imgid = "+str(results[0][0])+";"
+        cur.execute(queryUpdate)
+        mysql.connection.commit()
+    else:
 
-    query="insert into protoTable(workshopid,grpid,image) values(%s,%s,%s);"
-    
-    record = [wid,gid,img]
-    cur.execute(query, record)
-    mysql.connection.commit()
+        query="insert into protoTable(workshopid,grpid,image) values(%s,%s,%s);"
+        
+        record = [wid,gid,img]
+        cur.execute(query, record)
+        mysql.connection.commit()
     cur.close()
     return 'Proto Added Successfully'
 
@@ -359,15 +368,20 @@ def returnSticky():
     if not session.get("uid"):
         return redirect("/")
 
+
+    wid = request.args.get('workid')
+    userid = request.args.get('userid')
+    grpid = request.args.get('grpid')
+
     cur = mysql.connection.cursor()
-    query="select * from wall;"
+    query="select * from wall where workshopid="+wid+" and grpid= "+grpid+" and userid = "+userid+";"
     cur.execute(query)
     results = cur.fetchall()
     
     payload = []
     content = {}
     for result in results:
-        content = {'notesid': result[3], 'textnote': result[4]}
+        content = {'notesid': result[3], 'textnote': result[4], 'userid': result[2]}
         payload.append(content)
         content = {}
     
@@ -376,6 +390,34 @@ def returnSticky():
     cur.close()
     return jsonify(payload)
 
+
+@app.route("/returnStickyDefine",methods=['GET'])
+def returnStickyDefine():
+
+    if not session.get("uid"):
+        return redirect("/")
+
+
+    wid = request.args.get('workid')
+    userid = request.args.get('userid')
+    grpid = request.args.get('grpid')
+
+    cur = mysql.connection.cursor()
+    query="select * from wall where workshopid="+wid+" and grpid= "+grpid+";"
+    cur.execute(query)
+    results = cur.fetchall()
+    
+    payload = []
+    content = {}
+    for result in results:
+        content = {'notesid': result[3], 'textnote': result[4], 'userid': result[2]}
+        payload.append(content)
+        content = {}
+    
+
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
 
 @app.route("/addSticky",methods=['GET'])
 def addSticky():
@@ -450,17 +492,28 @@ def participants():
     if not session.get("uid"):
         return redirect("/")
 
+
+
     global startTime
     startTime = int(time.time())
 
 
 
-
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    wid = 1
-    gid = 1
-    uid = 2
+    wid = session['wid']
+    #gid = 1
+    uid = session['uid']
+
+    cur = mysql.connection.cursor()
+    query1="select * from `group` where userid = "+str(uid)+" ;"
+    cur.execute(query1)
+    results = cur.fetchall()
+    gid = results[0][2]
+
+    session['gid']=gid
+
+
 
     data={"workshopid":wid, "groupid": gid, "userid" : uid}
 
@@ -562,9 +615,12 @@ def prototype():
         return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    wid = 1
-    gid = 1
-    uid = 2
+    if not session.get("gid"):
+        return redirect("/emphasize")
+
+    wid = session['wid']
+    uid = session['uid']
+    gid = session['gid']
 
     data={"workshopid":wid, "groupid": gid, "userid" : uid}
 
@@ -585,11 +641,15 @@ def define():
 
     if not session.get("uid"):
         return redirect("/")
+
+    if not session.get("gid"):
+        return redirect("/emphasize")
+        
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    wid = 1
-    gid = 1
-    uid = 2
+    wid = session['wid']
+    uid = session['uid']
+    gid = session['gid']
 
     data={"workshopid":wid, "groupid": gid, "userid" : uid}
     return render_template('define.html',user=data)
@@ -601,11 +661,14 @@ def ideate():
     if not session.get("uid"):
         return redirect("/")
 
+    if not session.get("gid"):
+        return redirect("/emphasize")
+        
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    wid = 1
-    gid = 1
-    uid = 2
+    wid = session['wid']
+    uid = session['uid']
+    gid = session['gid']
 
     data={"workshopid":wid, "groupid": gid, "userid" : uid}
 

@@ -46,19 +46,38 @@
 </div>
   
   <script>
-     function getSticky()
-    {
+     wid = `{{ user['workshopid'] }}`;
+  gid = `{{ user['groupid'] }}`;
+  uid = `{{ user['userid'] }}`;
 
-      $.get("/returnSticky").done(function(data) {
-        
-        for (i = 0; i < data.length; i++) {
-        console.log("getsticky", data[i]["textnote"]);
+
+  function getSticky() {
+
+    $.get("/returnStickyDefine",{ workid: wid, grpid: gid, userid: uid}).done(function (data) {
+
+      for (i = 0; i < data.length; i++) 
+      {
+
+        if(data[i]['userid']==uid)
+        {
+
+          console.log("getsticky", data[i]["textnote"]);
         $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"><i class="fas fa-trash-alt " onclick="deleteSticky(\'' + data[i]["notesid"] + '\')"></i>   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+        }  
+        else
+        {
+
+          console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"></div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+        }
+        
       }
     });
 
 
-    }
+  }
 
 
     function deleteSticky(id)

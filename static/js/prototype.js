@@ -195,7 +195,7 @@ function createSticky(id){
 
       <div style="display:flex">
        <div class='controlder' onclick='select(`+id+`)'></div>
-       <div class='controlder' onclick='upload_sticky(`+id+`)'>SAVE</div>
+       <div class='controlder' onclick='upload_sticky(`+id+`);location.reload();'>SAVE</div>
        </div>
 
    </div>`;
@@ -393,6 +393,26 @@ function deleteproto()
  }
 
 
+ function deleteprotobyid(id)
+	{
+	 
+	  dict={"0":id}
+	  
+	  console.log(dict);
+
+	  $.post("/clearproto",dict).done(function (data) 
+	  {
+	      console.log(data);
+	   });
+
+
+
+	 }
+
+function removeScreen(e)
+{
+	e.parentElement.parentElement.remove();
+}
 
 
 

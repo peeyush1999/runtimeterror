@@ -56,9 +56,14 @@
 
 <script>
 
+  wid = `{{ user['workshopid'] }}`;
+  gid = `{{ user['groupid'] }}`;
+  uid = `{{ user['userid'] }}`;
+
+
   function getSticky() {
 
-    $.get("/returnSticky").done(function (data) {
+    $.get("/returnSticky",{ workid: wid, grpid: gid, userid: uid}).done(function (data) {
 
       for (i = 0; i < data.length; i++) {
         console.log("getsticky", data[i]["textnote"]);
@@ -92,9 +97,7 @@
 
 
   window.addEventListener('load', (event) => { getSticky(); });
-  wid = `{{ user['workshopid'] }}`;
-  gid = `{{ user['groupid'] }}`;
-  uid = `{{ user['userid'] }}`;
+  
 
   function updateDD() {
 
@@ -106,6 +109,7 @@
     });
     
   }
+
 
   function retrieveSticky() {
 
