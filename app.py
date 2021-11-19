@@ -56,7 +56,7 @@ def login():
     session.pop('uid', None)
     session.pop('wid', None)
     session.pop('gid', None)
-    
+
     username = request.form.get('Email')
     password = request.form.get('Password')
 
@@ -93,7 +93,7 @@ def login():
             queryValues)
             cur.close()
             conn.commit()
-    
+
         if (type == 'admin'):
             return redirect('/admin')
         elif (type == 'participant'):
@@ -207,7 +207,7 @@ def createTeams():
         "SELECT reg.userid FROM registration reg WHERE reg.userid IN (SELECT user.userid FROM user WHERE type = 'participant')"
     )
     if values > 0:
-        
+
         userIds = cur.fetchall()
         createdTeams = arrangeRandom(userIds, count)
         for key in createdTeams.keys():
@@ -243,13 +243,13 @@ def updatephase():
         return redirect("/")
 
     phase = request.args.get('curphase')
-    
+
     #will fetch this time from DB which contains end time
     global startTime
 
-    currTime = int(time.time()) 
+    currTime = int(time.time())
     if(phase == 'EMP'):
-        
+
         print(startTime,phaseTime,currTime,)
         if(startTime+phaseTime < currTime ):
             return "true"
@@ -257,7 +257,7 @@ def updatephase():
             return "false"
 
     if(phase == 'DEF'):
-        
+
         print(startTime,phaseTime,currTime,)
         if(startTime+phaseTime*2 < currTime ):
             return "true"
@@ -266,7 +266,7 @@ def updatephase():
 
 
     if(phase == 'IDE'):
-        
+
         print(startTime,phaseTime,currTime,)
         if(startTime+phaseTime*3 < currTime ):
             return "true"
@@ -274,7 +274,7 @@ def updatephase():
             return "false"
 
     if(phase == 'PRO'):
-        
+
         print(startTime,phaseTime,currTime,)
         if(startTime+phaseTime*4 < currTime ):
             return "true"
@@ -298,14 +298,14 @@ def returnProto():
     query="select * from protoTable;"
     cur.execute(query)
     results = cur.fetchall()
-    
+
     payload = []
     content = {}
     for result in results:
         content = {'imgid': result[0], 'image': result[3]}
         payload.append(content)
         content = {}
-    
+
 
     #print(payload);
     cur.close()
@@ -323,7 +323,7 @@ def addProto():
     gid = request.args.get('grpid')
     img = request.args.get('image')
     imgid = request.args.get('imgid')
-    
+
 
     querycheck = "select * from protoTable where imgid="+imgid+";"
     val = cur.execute(querycheck)
@@ -336,7 +336,7 @@ def addProto():
     else:
 
         query="insert into protoTable(workshopid,grpid,image) values(%s,%s,%s);"
-        
+
         record = [wid,gid,img]
         cur.execute(query, record)
         mysql.connection.commit()
@@ -350,7 +350,7 @@ def addProto():
 
 @app.route("/deleteSticky",methods=['GET'])
 def deleteSticky():
-    
+
     if not session.get("uid"):
         return redirect("/")
 
@@ -361,7 +361,7 @@ def deleteSticky():
     mysql.connection.commit()
     cur.close()
     return "true"
-    
+
 @app.route("/returnSticky",methods=['GET'])
 def returnSticky():
 
@@ -377,14 +377,14 @@ def returnSticky():
     query="select * from wall where workshopid="+wid+" and grpid= "+grpid+" and userid = "+userid+";"
     cur.execute(query)
     results = cur.fetchall()
-    
+
     payload = []
     content = {}
     for result in results:
         content = {'notesid': result[3], 'textnote': result[4], 'userid': result[2]}
         payload.append(content)
         content = {}
-    
+
 
     #print(payload);
     cur.close()
@@ -406,14 +406,14 @@ def returnStickyDefine():
     query="select * from wall where workshopid="+wid+" and grpid= "+grpid+";"
     cur.execute(query)
     results = cur.fetchall()
-    
+
     payload = []
     content = {}
     for result in results:
         content = {'notesid': result[3], 'textnote': result[4], 'userid': result[2]}
         payload.append(content)
         content = {}
-    
+
 
     #print(payload);
     cur.close()
@@ -430,19 +430,19 @@ def addSticky():
     gid = request.args.get('grpid')
     uid = request.args.get('userid')
     msg = request.args.get('notes')
-    
+
 
     query="insert into wall(workshopid,grpid,userid,notes) values(%s,%s,%s,%s);"
-    
+
     record = [wid,gid,uid,msg]
     cur.execute(query, record)
     mysql.connection.commit()
     cur.close()
     return 'Added Successfully'
-    
 
 
-    
+
+
 @app.route("/addMessage",methods=['GET'])
 def addMessage():
 
@@ -455,7 +455,7 @@ def addMessage():
     wid = request.args.get('wid')
     grpid = request.args.get('grpid')
     query="insert into chat(workshopid,groupid,userid,text) values(%s,%s,%s,%s)"
-    
+
     record = [wid,grpid,userid,msg]
     cur.execute(query, record)
     mysql.connection.commit()
@@ -472,14 +472,14 @@ def getmsg():
     query1="select * from chat order by messageid;"
     cur.execute(query1)
     results = cur.fetchall()
-    
+
     payload = []
     content = {}
     for result in results:
         content = {'uid': result[2], 'text': result[4]}
         payload.append(content)
         content = {}
-    
+
 
     #print(payload);
     cur.close()
@@ -496,6 +496,12 @@ def participants():
 
     global startTime
     startTime = int(time.time())
+
+
+
+
+
+
 
 
 
@@ -559,21 +565,17 @@ def isCreated():
             cur.execute(getName,[row[0]])
             name = cur.fetchall()
             namelst.append(name[0][0])
-            
+
         #print(namelst)
         participantNames={}
         id = 0
         for user in namelst:
             participantNames[id] = user
             id = id + 1
-        
 
-        
+
+
         return jsonify(participantNames)
-
-
-
-
 
 @app.route("/clearproto",methods=['POST'])
 def clearproto():
@@ -581,15 +583,15 @@ def clearproto():
 
     if not session.get("uid"):
         return redirect("/")
-    
-    
+
+
     cur = mysql.connection.cursor()
 
     response=request.form.keys()
-    
+
     app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
     app.logger.info(response)
-    
+
 
     for row in response:
         #app.logger.info(request.form.get(row))
@@ -598,9 +600,9 @@ def clearproto():
         app.logger.info(id)
         query="delete from protoTable where imgid="+id+";"
         cur.execute(query)
-    
-    
-    
+
+
+
     mysql.connection.commit()
     cur.close()
     return "Cleared all Proto"
@@ -644,7 +646,7 @@ def define():
 
     if not session.get("gid"):
         return redirect("/emphasize")
-        
+
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = session['wid']
@@ -663,7 +665,7 @@ def ideate():
 
     if not session.get("gid"):
         return redirect("/emphasize")
-        
+
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = session['wid']
