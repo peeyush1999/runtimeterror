@@ -195,13 +195,18 @@ function createSticky(id){
 
       <div style="display:flex">
        <div class='controlder' onclick='select(`+id+`)'></div>
-       <div class='controlder' onclick='upload_sticky(`+id+`);location.reload();'>SAVE</div>
+       <div class='controlder' onclick='upload_sticky(`+id+`);'>SAVE</div>
        </div>
 
    </div>`;
     
 	$('#stkyNts').append(str);
 }
+
+
+
+
+
 
 //'<li class="box">'+'<div><canvas id="myCanvas'+id+'">s</canvas></div><button onclick="select('+id+');">use</button></li>'
 
@@ -226,6 +231,7 @@ const initButtons = (function(){
 
 
 function MousemoveBGColors(options){
+  
     const _this = this; 
     const defaultOptions = {
         target: "body"
