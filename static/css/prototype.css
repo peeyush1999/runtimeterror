@@ -154,16 +154,6 @@ ul li{
 
 
 
-
-#buttondiv {
-	text-align: center;
-	font-family: "Roboto";
-	color: #fff;
-	letter-spacing:1px;
-  }
- 
-  
-  
   
   .btn-5 {
 	text-align: center;
@@ -176,6 +166,29 @@ ul li{
 	overflow:hidden;
 	margin: 0 20px;
   }
+
+
+#buttondiv {
+	text-align: center;
+	font-family: "Roboto";
+	color: #fff;
+	letter-spacing:1px;
+  }
+ 
+  
+  .btn-6 {
+	text-align: center;
+	display: inline-block;
+	padding: 15px 40px;
+	border: 1px solid rgb(5, 5, 5);
+	cursor: pointer;
+	letter-spacing: 2px;
+	position:relative;
+	overflow:hidden;
+	margin: 0 20px;
+  }
+  
+  
   
   .btn-5:before {
 	content: "";
@@ -194,18 +207,6 @@ ul li{
   }
   
   /* Buton 5 Bitti */
-  
-  .btn-6 {
-	text-align: center;
-	display: inline-block;
-	padding: 15px 40px;
-	border: 1px solid rgb(5, 5, 5);
-	cursor: pointer;
-	letter-spacing: 2px;
-	position:relative;
-	overflow:hidden;
-	margin: 0 20px;
-  }
   
   .btn-6:before {
 	content: "";
@@ -251,6 +252,9 @@ body{
 	font-weight: bold;
   }
  
+
+
+  
   #destroyInit.destroy span:nth-child(1),
   #destroyInit.init span:nth-child(2){
 	display: none;
@@ -262,99 +266,7 @@ body{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /*==== Mobile View Template */
-
-
-
-  @import url(https://fonts.googleapis.com/css?family=Andika);
-
-*
-{
-margin:0px;
-padding:0px;
-outline:none;
-}
-
-#mobilescreen
-{
-width:340px;
-height:480px;
-background:#fff;
-margin:0 auto;
-
-border:2px solid #ccc;
-padding:20px 5px 100px 5px;
-border-radius:20px;
-box-shadow:0px 5px 5px 0px #ccc;
-}
-
-
-#maincontainer
-{
-width:320px;
-margin:0 auto;
-background:#282a36;
-
-height:100%;
-}
-
-.controlder
-{
-width:50px;
-height:50px;
-border-radius:50%;
-background:#f2f2f2;
-margin:25px auto;
-
-box-shadow:inset 0px 0px 10px 0px #bdbdbd;
-border:1px solid #c6c6c6;
-font-size: 12px;
-
-}
-
-
-
-
-
-
-
-
-
-
 /* MODAL */
-
-
-
-
-
-
 
 
 .wrap { padding: 15px; }
@@ -368,3 +280,59 @@ modal-title { font-size: 18px; font-weight: bold; }
 .btn-primary { background-color: #2086c1; border-color: transparent; outline: none; border-radius: 8px; font-size: 15px; padding: 10px 25px; }
 .btn-primary:hover { background-color: #2086c1; border-color: transparent; }
 .btn-primary:focus { outline: none; }
+
+
+
+
+
+
+
+ /*==== Mobile View Template */
+
+
+
+ @import url(https://fonts.googleapis.com/css?family=Andika);
+
+ *
+ {
+ margin:0px;
+ padding:0px;
+ outline:none;
+ }
+ 
+ #mobilescreen
+ {
+ width:340px;
+ height:480px;
+ background:#fff;
+ margin:0 auto;
+ 
+ border:2px solid #ccc;
+ padding:20px 5px 100px 5px;
+ border-radius:20px;
+ box-shadow:0px 5px 5px 0px #ccc;
+ }
+ 
+ 
+ #maincontainer
+ {
+ width:320px;
+ margin:0 auto;
+ background:#282a36;
+ 
+ height:100%;
+ }
+ 
+ .controlder
+ {
+ width:50px;
+ height:50px;
+ border-radius:50%;
+ background:#f2f2f2;
+ margin:25px auto;
+ 
+ box-shadow:inset 0px 0px 10px 0px #bdbdbd;
+ border:1px solid #c6c6c6;
+ font-size: 12px;
+ 
+ }

@@ -83,26 +83,6 @@
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
     function deleteSticky(id)
     {
       console.log(id);
@@ -123,6 +103,15 @@
 
     window.addEventListener('load', (event) => { getSticky(); }); 
 
+    
+    function retrieveSticky()
+    {
+
+
+      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+        console.log(data);
+        });
+    }
     function updateDD()
     {
 
@@ -134,15 +123,6 @@
         });
     }
 
-    function retrieveSticky()
-    {
-
-
-      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
-        console.log(data);
-        });
-    }
-   
    function check()
    {  
      $.get("/updatePhase", { curphase:"IDE" }).done(function(data) {

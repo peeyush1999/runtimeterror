@@ -59,23 +59,6 @@
     transition: all 0.3s ease;
   }
   
-  /*----------------page-wrapper----------------*/
-  
-  .page-wrapper {
-    height: 100vh;
-  }
-  
-  .page-wrapper .theme {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    border-radius: 4px;
-    margin: 2px;
-  }
-  
-  .page-wrapper .theme.chiller-theme {
-    background: #1e2229;
-  }
   
   /*----------------toggeled sidebar----------------*/
   
@@ -348,59 +331,6 @@
     animation: sonar 1.5s infinite;
   }
   
-  /*--------------------------page-content-----------------------------*/
-  
-  .page-wrapper .page-content {
-    display: inline-block;
-    width: 100%;
-    padding-left: 0px;
-    padding-top: 20px;
-  }
-  
-  .page-wrapper .page-content > div {
-    padding: 20px 40px;
-  }
-  
-  .page-wrapper .page-content {
-    overflow-x: hidden;
-  }
-  
-  /*------scroll bar---------------------*/
-  
-  ::-webkit-scrollbar {
-    width: 5px;
-    height: 7px;
-  }
-  ::-webkit-scrollbar-button {
-    width: 0px;
-    height: 0px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #525965;
-    border: 0px none #ffffff;
-    border-radius: 0px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #525965;
-  }
-  ::-webkit-scrollbar-thumb:active {
-    background: #525965;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-    border: 0px none #ffffff;
-    border-radius: 50px;
-  }
-  ::-webkit-scrollbar-track:hover {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-track:active {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-corner {
-    background: transparent;
-  }
-  
   
   /*-----------------------------chiller-theme-------------------------------------------------*/
   
@@ -477,5 +407,79 @@
   
   .chiller-theme .sidebar-footer>a:last-child {
       border-right: none;
+  }
+  
+
+  /*----------------page-wrapper----------------*/
+  
+  .page-wrapper {
+    height: 100vh;
+  }
+  
+  .page-wrapper .theme {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 4px;
+    margin: 2px;
+  }
+  
+  .page-wrapper .theme.chiller-theme {
+    background: #1e2229;
+  }
+  
+
+
+  /*--------------------------page-content-----------------------------*/
+  
+  .page-wrapper .page-content {
+    display: inline-block;
+    width: 100%;
+    padding-left: 0px;
+    padding-top: 20px;
+  }
+  
+  .page-wrapper .page-content > div {
+    padding: 20px 40px;
+  }
+  
+  .page-wrapper .page-content {
+    overflow-x: hidden;
+  }
+  
+  /*------scroll bar---------------------*/
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #525965;
+    border: 0px none #ffffff;
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #525965;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background: #525965;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-track:active {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
   
