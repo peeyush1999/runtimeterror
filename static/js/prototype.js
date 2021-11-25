@@ -193,10 +193,27 @@ function createSticky(id){
         <canvas id='myCanvas`+id+`'></canvas>
         </div>
 
-      <div style="display:flex">
-       <div class='controlder' onclick='select(`+id+`)'></div>
-       <div class='controlder' onclick='upload_sticky(`+id+`);'>SAVE</div>
-       </div>
+        <div style="display:flex;flex-direction:row; padding:15px;">
+        <div class='clearcanvas' onclick='select(`+id+`)'>
+         
+         <i style="color:red;margin:auto;width:auto;" class="fas fa-times-circle fa-3x"></i>
+         </div>
+ 
+ 
+ 
+        <div style="color:green;margin:auto; width:auto;" class='charka'> 
+         <div style="display:none;" id="loading`+id+`">
+           <img src="../static/Rainbow.gif" width=50px height=50px >
+         </div>
+         </div>
+ 
+ 
+ 
+ 
+        <div class='savetodb' id="save`+id+`" onclick='upload_sticky(`+id+`)'>
+        <i style="color:green;margin:auto;width:auto;" class="fas fa-check-circle fa-3x"></i>
+         </div>
+     </div>
 
    </div>`;
     
