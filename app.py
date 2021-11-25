@@ -509,14 +509,14 @@ def waiting():
 
     cur = mysql.connection.cursor()
     query1="select * from `group` where userid = "+str(info['uid'])+" ;"
-    cur.execute(query1)
-    results = cur.fetchall()
-    gid = results[0][2]
-    app.logger.warning(gid);
-    session['gid']=gid
+    if(cur.execute(query1)>0):
+        results = cur.fetchall()
+        gid = results[0][2]
+        app.logger.warning(gid)
+        session['gid']=gid
 
-    if session.get("gid")!=-1:
-        app.logger.warning("sessin gid not set");
+        if session.get("gid")!=-1:
+            app.logger.warning("sessin gid not set")
 
     return render_template('waiting.html',data=info)
 
@@ -537,11 +537,11 @@ def participants():
 
     cur = mysql.connection.cursor()
     query1="select * from `group` where userid = "+str(uid)+" ;"
-    cur.execute(query1)
-    results = cur.fetchall()
-    gid = results[0][2]
+    if(cur.execute(query1)>0):
+        results = cur.fetchall()
+        gid = results[0][2]
 
-    session['gid']=gid
+        session['gid']=gid
 
 
 
@@ -550,17 +550,22 @@ def participants():
     #return render_template('emphasize.html',user=data)
 
 
-    if not session.get("uid"):
-        return redirect("/")
+        if not session.get("uid"):
+            return redirect("/")
 
-    info={}
-    info['wid']=session['wid']
-    info['uid']=session['uid']
-    info['gid']=gid
-    info['name']=session['name']
+        info={}
+        info['wid']=session['wid']
+        info['uid']=session['uid']
+        info['gid']=gid
+        info['name']=session['name']
+        return render_template('emphasize.html',user=info)
+
+    else:
+        return redirect("/waiting")
 
 
-    return render_template('emphasize.html',user=info)
+
+    
 
 @app.route("/isCreated", methods=["GET"])
 def isCreated():
