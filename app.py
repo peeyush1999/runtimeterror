@@ -76,6 +76,7 @@ def login():
         session['uid'] = userid
         # session['type'] = type
         # session['uname']= uname
+        session['gid']=-1
         session['wid']= "1" #hardcoding the workshop Id
 
 
@@ -486,13 +487,35 @@ def getmsg():
     return jsonify(payload)
 
 
+@app.route("/waiting")
+def waiting():
+
+    if not session.get("uid"):
+        return redirect("/")
+    
+    info={}
+    info['wid']=session['wid']
+    info['uid']=session['uid']
+    info['gid']="1"
+
+    cur = mysql.connection.cursor()
+    query1="select * from `group` where userid = "+str(info['uid'])+" ;"
+    cur.execute(query1)
+    results = cur.fetchall()
+    gid = results[0][2]
+    app.logger.warning(gid);
+    session['gid']=gid
+
+    if session.get("gid")!=-1:
+        app.logger.warning("sessin gid not set");
+        
+    return render_template('waiting.html',data=info)
+
 @app.route("/emphasize")
 def participants():
 
     if not session.get("uid"):
         return redirect("/")
-
-
 
     global startTime
     startTime = int(time.time())
@@ -525,20 +548,7 @@ def participants():
 
     return render_template('emphasize.html',user=data)
 
-@app.route("/waiting")
-def waiting():
 
-    if not session.get("uid"):
-        return redirect("/")
-
-    #useing session variable.........
-    if not session.get("uid"):
-        return redirect("/login")
-    info={}
-    info['wid']=session['wid']
-    info['uid']=session['uid']
-    info['gid']="1"
-    return render_template('waiting.html',data=info)
 
 @app.route("/isCreated", methods=["GET"])
 def isCreated():
@@ -617,8 +627,8 @@ def prototype():
         return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    if not session.get("gid"):
-        return redirect("/emphasize")
+    if session.get("gid") != -1:
+        return redirect("/waiting")
 
     wid = session['wid']
     uid = session['uid']
@@ -644,8 +654,8 @@ def define():
     if not session.get("uid"):
         return redirect("/")
 
-    if not session.get("gid"):
-        return redirect("/emphasize")
+    if session.get("gid") == -1:
+        return redirect("/waiting")
 
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
@@ -663,8 +673,8 @@ def ideate():
     if not session.get("uid"):
         return redirect("/")
 
-    if not session.get("gid"):
-        return redirect("/emphasize")
+    if session.get("gid") == -1:
+        return redirect("/waiting")
 
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
