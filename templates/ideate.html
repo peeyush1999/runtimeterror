@@ -45,6 +45,16 @@
         
       </div>
     </main>
+
+    <script type="text/javascript">
+    wid = `{{ user['wid'] }}`;
+  uid = `{{ user['uid'] }}`;
+  gid = `{{ user['gid'] }}`;
+  name = `{{ user['name'] }}`;
+    
+  </script>
+
+    
     {% include "chatbox.html" %}
 </div>
 
@@ -53,13 +63,16 @@
         uid = `{{ user['uid'] }}`;
         gid = `{{ user['gid'] }}`;
         name = `{{ user['name'] }}`;
+
+
+
         document.getElementById('user_name').textContent=name;
         document.getElementById('user_role').textContent="PARTICIPANT";
 
 
         function getSticky() {
 
-          $.get("/returnStickyDefine",{ workid: wid, grpid: gid, userid: uid}).done(function (data) {
+          $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
 
             for (i = 0; i < data.length; i++) 
             {
@@ -90,7 +103,7 @@
     {
       console.log(id);
 
-      $.get("/deleteSticky",{noteid:id}).done(function(data) {
+      $.get("/deleteSticky",{"noteid":id}).done(function(data) {
         
         if(data == "true")
         {
@@ -111,7 +124,7 @@
     {
 
 
-      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
         console.log(data);
         });
     }
@@ -120,12 +133,12 @@
 
       msg=document.getElementById("notes").value;
 
-      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
         console.log(data);
         location.reload();
         });
     }
-
+/*
    function check()
    {  
      $.get("/updatePhase", { curphase:"IDE" }).done(function(data) {
@@ -139,7 +152,7 @@
    }
 
    setInterval(function(){ check(); }, 3000);
-
+*/
   </script>
    
   <script src="../static/js/sticky.js"></script>

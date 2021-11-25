@@ -109,7 +109,13 @@
 
 
 
-
+<script type="text/javascript">
+    wid = `{{ user['wid'] }}`;
+  uid = `{{ user['uid'] }}`;
+  gid = `{{ user['gid'] }}`;
+  name = `{{ user['name'] }}`;
+    
+  </script>
 
 
 
@@ -194,7 +200,7 @@
 
 
   $("#loading"+id).show();
-  $.get("/addProto", { workid: wid, grpid: gid, image: dataUrl, imgid:id }).done(function (data) {
+  $.get("/addProto", { "workid": wid, "grpid": gid, "image": dataUrl, "imgid":id }).done(function (data) {
         console.log(data);
         sleep(1000);
         $("#loading"+id).hide();
@@ -204,7 +210,7 @@
 function getSticky()
     {
 
-      $.get("/returnStickyDefine",{ workid: wid, grpid: gid, userid: uid}).done(function(data) {
+      $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function(data) {
         
         for (i = 0; i < data.length; i++) {
         console.log("getsticky", data[i]["textnote"]);
@@ -357,7 +363,7 @@ function getProto()
 
     }
 
-   
+  /* 
    function check()
    {  
      $.get("/updatePhase", { curphase:"PRO" }).done(function(data) {
@@ -371,7 +377,7 @@ function getProto()
    }
 
    setInterval(function(){ check(); }, 3000);
-
+*/
   </script>
 
   <script src="../static/js/prototype.js"></script>

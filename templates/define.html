@@ -42,6 +42,16 @@
         
       </div>
     </main>
+
+    <script type="text/javascript">
+      wid = `{{ user['wid'] }}`;
+      uid = `{{ user['uid'] }}`;
+      gid = `{{ user['gid'] }}`;
+      name = `{{ user['name'] }}`;
+        
+      </script>
+
+
     {% include "chatbox.html" %}
 </div>
   
@@ -55,8 +65,12 @@
 
 
   function getSticky() {
+    
 
-    $.get("/returnStickyDefine",{ workid: wid, grpid: gid, userid: uid}).done(function (data) {
+
+
+
+    $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
 
       for (i = 0; i < data.length; i++) 
       {
@@ -87,7 +101,7 @@
     {
       console.log(id);
 
-      $.get("/deleteSticky",{noteid:id}).done(function(data) {
+      $.get("/deleteSticky",{"noteid":id}).done(function(data) {
         
         if(data == "true")
         {
@@ -103,16 +117,14 @@
 
 
     window.addEventListener('load', (event) => { getSticky(); }); 
-    wid = `{{ user['workshopid'] }}`;
-    gid = `{{ user['groupid'] }}`;
-    uid = `{{ user['userid'] }}`;
+    
 
     function updateDD()
     {
 
       msg=document.getElementById("notes").value;
 
-      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
         console.log(data);
         location.reload();
         });
@@ -120,11 +132,12 @@
 
     function retrieveSticky()
     {
-      $.get("/addSticky", { workid : wid , grpid: gid , userid:uid , notes:msg } ).done(function(data) {
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
         console.log(data);
         });
     }
    
+   /*
    function check()
    {  
      $.get("/updatePhase", { curphase:"DEF" }).done(function(data) {
@@ -138,7 +151,7 @@
    }
 
    setInterval(function(){ check(); }, 3000);
-
+    */
   </script>
    
   <script src="../static/js/sticky.js"></script>

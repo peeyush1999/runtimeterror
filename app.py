@@ -472,7 +472,13 @@ def getmsg():
         return redirect("/")
 
     cur = mysql.connection.cursor()
-    query1="select * from chat order by messageid;"
+    
+    userid = request.args.get('userid')
+    
+    wid = request.args.get('wid')
+    gid = request.args.get('grpid')
+
+    query1="select * from chat where workshopid ="+wid+" and groupid="+gid+" order by messageid;"
     cur.execute(query1)
     results = cur.fetchall()
 
@@ -523,14 +529,6 @@ def participants():
     global startTime
     startTime = int(time.time())
 
-
-
-
-
-
-
-
-
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
     wid = session['wid']
@@ -547,23 +545,22 @@ def participants():
 
 
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
+    #data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name'] }
 
-    return render_template('emphasize.html',user=data)
+    #return render_template('emphasize.html',user=data)
 
 
     if not session.get("uid"):
         return redirect("/")
 
-    #useing session variable.........
-    if not session.get("uid"):
-        return redirect("/login")
     info={}
     info['wid']=session['wid']
     info['uid']=session['uid']
-    info['gid']="1"
+    info['gid']=gid
     info['name']=session['name']
-    return render_template('waiting.html',data=info)
+
+
+    return render_template('emphasize.html',user=info)
 
 @app.route("/isCreated", methods=["GET"])
 def isCreated():
@@ -642,14 +639,14 @@ def prototype():
         return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    if session.get("gid") != -1:
+    if session.get("gid") == -1:
         return redirect("/waiting")
 
     wid = session['wid']
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
+    data={"wid":wid, "gid": gid, "uid" : uid,"name":session['name']}
 
     return render_template('prototype.html',user=data)
 
@@ -678,7 +675,7 @@ def define():
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
+    data={"wid":wid, "gid": gid, "uid" : uid,"name":session['name']}
     return render_template('define.html',user=data)
 
 
@@ -697,7 +694,11 @@ def ideate():
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
+    app.logger.warning(wid)
+    app.logger.warning(uid)
+    app.logger.warning(gid)
+
+    data={"wid":wid, "gid": gid, "uid" : uid, "name" : session['name'] }
 
 
     return render_template('ideate.html',user=data)

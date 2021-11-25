@@ -3,15 +3,57 @@ var toggle1=document.querySelector(".js-chatbox-toggle");
 var cbox=document.querySelector(".js-chatbox");
 var cmd= document.querySelector(".js-chatbox-display");
 
-uid=1;
-workshopid=1;
-gid=1;
+
+workshopid=wid;
+
+function updateMsg()
+{
+
+console.log('UpdateMsg');
+$("#chat").empty();
+
+$.get("/getmsg", { "wid":workshopid, "grpid":gid }).done(function(data) 
+{
+    
+    for(i=0;i<data.length;i++)
+    {
+
+
+    console.log(data[i]["text"]);
+    console.log(data[i]["uid"]);
+
+
+    const chatSection = document.createElement("p");
+    chatSection.textContent = data[i]["text"];
+    chatSection.classList.add("chatbox__display-chat");
+    if(uid != data[i]["uid"])
+    {
+      console.log("check");
+      console.log(uid == data[i]["uid"])
+      chatSection.classList.add("selfMessage");
+    }
+
+    cmd.appendChild(chatSection);
+    
+    }
+    //document
+      //.getElementById("userInput")
+      //.scrollIntoView({ block: "start", behavior: "smooth" });
+      $('#chat').animate({
+      scrollTop: $('#chat')[0].scrollHeight}, 5000);
+  });
+
+}
+
+setInterval(function () { updateMsg(); }, 5000);
 
 window.addEventListener('load', (event) => {
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes();
 
-$.get("/getmsg", { wid:workshopid, grpid:gid }).done(function(data) 
+
+
+$.get("/getmsg", { "wid":workshopid, "grpid":gid }).done(function(data) 
 {
     
     for(i=0;i<data.length;i++)
@@ -20,6 +62,13 @@ $.get("/getmsg", { wid:workshopid, grpid:gid }).done(function(data)
     const chatSection = document.createElement("p");
     chatSection.textContent = data[i]["text"];
     chatSection.classList.add("chatbox__display-chat");
+
+    if(uid != data[i]["uid"])
+    {
+      console.log("check");
+      console.log(uid == data[i]["uid"])
+      chatSection.classList.add("selfMessage");
+    }
     cmd.appendChild(chatSection);
     
     }
@@ -71,7 +120,7 @@ function getBotResponse()
   scrollTop: $('#chat')[0].scrollHeight}, 1000);
 
 
-  $.get("/addMessage", { msg: rawText, userid: uid, wid:workshopid, grpid:gid }).done(function(data) {
+  $.get("/addMessage", { "msg": rawText, "userid": uid, "wid" :workshopid, "grpid" :gid }).done(function(data) {
   
   });
 }

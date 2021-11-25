@@ -1,6 +1,12 @@
 *, *::after, *::before {
 	box-sizing: border-box;
 }
+
+.selfMessage
+{
+	background: gray !important;
+	color: white !important;
+}
 .chatboxbody {
 	font-family: "Raleway", sans-serif;
 }
