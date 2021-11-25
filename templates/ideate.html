@@ -31,6 +31,9 @@
                 <div class="btn-5" id="clnStorge" type="button" style="color:black">
                   Clear All Sticky Note
                 </div>
+                <div class="btn-5" type="button" style="color:black" onclick="pushFinalWall();">
+                  Push To Final Wall
+                </div>
               </div>
             </div>
 
@@ -116,6 +119,38 @@
 
 
     }
+
+
+    function pushFinalWall()
+    {
+      var tag=document.getElementsByClassName("box")
+      dict={}
+      var cnt=0
+      for(var i=0;i<tag.length;i++)
+      {
+          var p=cnt.toString();
+          dict[p]=tag[i].id;
+          cnt++;
+        
+
+          id = tag[i].id;
+
+        
+          msg = document.getElementById(id).innerText;
+         
+         $.get("/addStickyFinal", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg, "notesid":id } ).done(function(data) {
+        console.log(data);
+        
+        });
+
+      }
+      
+
+
+     }
+
+
+
 
     window.addEventListener('load', (event) => { getSticky(); }); 
 

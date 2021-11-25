@@ -383,7 +383,36 @@ function MousemoveBGColors(options){
 
 
 
+function pushFinalWall()
+{
+  var tag=document.getElementsByTagName("canvas")
+  dict={}
+  var cnt=0
+  for(var i=0;i<tag.length;i++)
+  {
+  		var p=cnt.toString();
+      dict[p]=tag[i].id;
+      cnt++;
+      console.log(tag[i].id);
 
+      id = tag[i].id;
+      var canvas = document.getElementById(id);
+		  var dataUrl=canvas.toDataURL();
+		  
+		  $("#loading"+id).show();
+		  $.get("/addProtoFinal", { "workid": wid, "grpid": gid, "image": dataUrl, "imgid":id }).done(function (data) {
+		        console.log(data);
+		        sleep(100);
+		        $("#loading"+id).hide();
+		      });
+			
+
+
+  }
+  
+
+
+ }
 
 function deleteproto()
 {

@@ -347,6 +347,73 @@ def addProto():
     return 'Proto Added Successfully'
 
 
+@app.route("/clearproto",methods=['POST'])
+def clearproto():
+
+
+    if not session.get("uid"):
+        return redirect("/")
+
+
+    cur = mysql.connection.cursor()
+
+    response=request.form.keys()
+
+    app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
+    app.logger.info(response)
+
+
+    for row in response:
+        #app.logger.info(request.form.get(row))
+        id=request.form.get(row);
+        id=id.split("myCanvas")[-1]
+        app.logger.info(id)
+        query="delete from protoTable where imgid="+id+";"
+        cur.execute(query)
+        query="delete from finalwall where imgid="+id+";"
+        cur.execute(query)
+
+    mysql.connection.commit()
+    cur.close()
+    return "Cleared all Proto"
+
+@app.route("/addProtoFinal",methods=['GET'])
+def addProtoFinal():
+
+    if not session.get("uid"):
+        return redirect("/")
+
+    
+    cur = mysql.connection.cursor()
+    app.logger.info(request.args.keys())
+    wid = request.args.get('workid')
+    gid = request.args.get('grpid')
+    img = request.args.get('image')
+    imgid = request.args.get('imgid')
+    imgid = imgid.split('myCanvas')[-1]
+    app.logger.warning(imgid)
+
+    #return 'Proto Added Successfully--'
+
+    querycheck = "select * from finalwall where imgid="+imgid+";"
+    val = cur.execute(querycheck)
+    if(val>0):
+        results = cur.fetchall()
+        app.logger.info(str(results[0][0]))
+        queryUpdate="update finalwall set image='"+img+"' where imgid = "+str(results[0][0])+";"
+        cur.execute(queryUpdate)
+        mysql.connection.commit()
+    else:
+
+        query="insert into finalwall(workshopid,grpid,image,imgid) values(%s,%s,%s,%s);"
+
+        record = [wid,gid,img,imgid]
+        cur.execute(query, record)
+        mysql.connection.commit()
+    cur.close()
+    return 'Proto Added Successfully'
+
+
 #========================================================================
 #========================Sticky Notes Part===============================
 #========================================================================
@@ -358,8 +425,10 @@ def deleteSticky():
         return redirect("/")
 
     cur = mysql.connection.cursor()
-    uid = request.args.get('noteid')
-    query="delete from wall where notesid="+uid+";"
+    noteid = request.args.get('noteid')
+    query="delete from wall where notesid="+noteid+";"
+    cur.execute(query)
+    query="delete from finalwall where notesid="+noteid+";"
     cur.execute(query)
     mysql.connection.commit()
     cur.close()
@@ -422,6 +491,49 @@ def returnStickyDefine():
     cur.close()
     return jsonify(payload)
 
+
+
+
+
+
+@app.route("/returnStickyFinalWall",methods=['GET'])
+def returnStickyFinalWall():
+
+    if not session.get("uid"):
+        return redirect("/")
+
+
+    wid = request.args.get('workid')
+    grpid = request.args.get('grpid')
+
+    cur = mysql.connection.cursor()
+    query="select * from finalwall where workshopid="+wid+" and grpid= "+grpid+";"
+    cur.execute(query)
+    results = cur.fetchall()
+
+    payload = []
+    content = {}
+    for result in results:
+        content = {'notesid': result[2], 'textnote': result[3], 'imgid': result[4], 'image': result[5]}
+        payload.append(content)
+        content = {}
+
+
+    #print(payload);
+    cur.close()
+    return jsonify(payload)
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route("/addSticky",methods=['GET'])
 def addSticky():
 
@@ -443,7 +555,31 @@ def addSticky():
     cur.close()
     return 'Added Successfully'
 
+@app.route("/addStickyFinal",methods=['GET'])
+def addStickyFinal():
 
+    if not session.get("uid"):
+        return redirect("/")
+
+    cur = mysql.connection.cursor()
+    wid = request.args.get('workid')
+    gid = request.args.get('grpid')
+    msg = request.args.get('notes')
+    nid = request.args.get('notesid')
+
+    querycheck = "select * from finalwall where notesid="+nid+";"
+    val = cur.execute(querycheck)
+    if(val>0):
+        return 'Already Present'
+
+    else:
+        query="insert into finalwall(workshopid,grpid, notes,notesid) values(%s,%s,%s,%s);"
+
+        record = [wid,gid,msg,nid]
+        cur.execute(query, record)
+        mysql.connection.commit()
+        cur.close()
+        return 'Added Successfully'
 
 
 @app.route("/addMessage",methods=['GET'])
@@ -604,35 +740,7 @@ def isCreated():
 
         return jsonify(participantNames)
 
-@app.route("/clearproto",methods=['POST'])
-def clearproto():
 
-
-    if not session.get("uid"):
-        return redirect("/")
-
-
-    cur = mysql.connection.cursor()
-
-    response=request.form.keys()
-
-    app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
-    app.logger.info(response)
-
-
-    for row in response:
-        #app.logger.info(request.form.get(row))
-        id=request.form.get(row);
-        id=id.split("myCanvas")[-1]
-        app.logger.info(id)
-        query="delete from protoTable where imgid="+id+";"
-        cur.execute(query)
-
-
-
-    mysql.connection.commit()
-    cur.close()
-    return "Cleared all Proto"
 
 
 
@@ -717,11 +825,12 @@ def finalwall():
         return redirect("/")
     # global startTime
     # startTime = int(time.time())
-    wid = 1
-    gid = 1
-    uid = 2
+    wid = session['wid']
+    uid = session['uid']
+    gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    data={"wid":wid, "gid": gid, "uid" : uid,"name":session['name']}
+
     return render_template('finalwall.html',user=data)
 
 

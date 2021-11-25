@@ -1,9 +1,9 @@
 
  {% block rightpanel %} 
 
-
-
-
+<link rel="stylesheet" href="../static/css/prototype.css">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/bd7dad32c1.js" crossorigin="anonymous"></script>
 
  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../static/css/finalwall.css">
@@ -27,11 +27,213 @@
         <br />
         <span></span>
  
+
+        
+
  
      </div>
+     <div>
+     <ul id="protosticky" class="stkyCntr">
+        </ul>
+      </div>
+      <div>
+        <ul id="stkyNts" class="stkyCntr">
+        </ul>
+      </div>
    </main>
  
  </div>
+
+
+ <script>
+
+  wid = `{{ user['wid'] }}`;
+  uid = `{{ user['uid'] }}`;
+  gid = `{{ user['gid'] }}`;
+  name = `{{ user['name'] }}`;
+  //document.getElementById('user_name').textContent=name;
+  //document.getElementById('user_role').textContent="PARTICIPANT";
+
+
+ window.addEventListener('load', (event) => {  getProto(); getSticky();}); 
+
+
+ function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+function getSticky()
+    {
+
+      $.get("/returnStickyFinalWall",{ "workid": wid, "grpid": gid}).done(function(data) {
+        
+        for (i = 0; i < data.length; i++) {
+
+        if(data[i]["textnote"]!=null)
+        {
+        console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;">   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+        }
+      }
+    });
+
+
+    }
+
+
+    
+
+
+function add(id,img)
+{
+
+  var str=`<div class='screen' id='mobilescreen'>
+      <div id='speaker'><i class="fas fa-trash-alt " onclick="deleteprotobyid(`+id+`);removeScreen(this);"></i><br></div>
+        <div id='maincontainer'>
+        <canvas id='myCanvas`+id+`'></canvas>
+        </div>
+
+      <div style="display:flex;flex-direction:row; padding:15px;">
+       <div class='clearcanvas' onclick='select(`+id+`)'>
+        
+        <i style="color:red;margin:auto;width:auto;" class="fas fa-times-circle fa-3x"></i>
+        </div>
+
+
+
+       <div style="color:green;margin:auto; width:auto;" class='charka'> 
+        <div style="display:none;" id="loading`+id+`">
+          <img src="../static/Rainbow.gif" width=50px height=50px >
+        </div>
+        </div>
+
+
+
+
+       <div class='savetodb' id="save`+id+`" onclick='upload_sticky(`+id+`)'>
+       <i style="color:green;margin:auto;width:auto;" class="fas fa-check-circle fa-3x"></i>
+        </div>
+    </div>
+
+   </div>`;
+
+        $('#stkyNts').append(str);
+
+        var myCanvas = document.getElementById("myCanvas"+id);
+        
+        myCanvas.width="320"; // Optional
+        myCanvas.height="360"; 
+
+        var ctx = myCanvas.getContext('2d');
+         var myImage=new Image();
+          myImage.src=img;
+          myImage.onload=function(){
+            ctx.drawImage(myImage,0,0,320,360);
+          };
+
+
+          if(myCanvas){
+              var isDown = false;
+              var canvasX, canvasY;
+              ctx.lineWidth = 2.5;
+              
+              $(myCanvas)
+              .mousedown(function(e){
+                isDown = true;
+                ctx.beginPath();
+                canvasX = e.pageX - myCanvas.offsetLeft;
+                canvasY = e.pageY - myCanvas.offsetTop;
+                ctx.moveTo(canvasX, canvasY);
+              })
+              .mousemove(function(e){
+                if(isDown !== false) {
+                  canvasX = e.pageX - myCanvas.offsetLeft;
+                  canvasY = e.pageY - myCanvas.offsetTop;
+                  ctx.lineTo(canvasX, canvasY);
+                  ctx.strokeStyle = "#000";
+                  ctx.stroke();
+                }
+              })
+              .mouseup(function(e){
+                isDown = false;
+                ctx.closePath();
+              });
+            }
+            
+            // Touch Events Handlers
+            draw = {
+              started: false,
+              start: function(evt) {
+
+                ctx.beginPath();
+                ctx.moveTo(
+                  evt.touches[0].pageX,
+                  evt.touches[0].pageY
+                );
+
+                this.started = true;
+
+              },
+              move: function(evt) {
+
+                if (this.started) {
+                  ctx.lineTo(
+                    evt.touches[0].pageX,
+                    evt.touches[0].pageY
+                  );
+
+                  ctx.strokeStyle = "#000";
+                  ctx.lineWidth = 5;
+                  ctx.stroke();
+                }
+
+              },
+              end: function(evt) {
+                this.started = false;
+              }
+            };
+            
+            // Touch Events
+            //myCanvas.addEventListener('touchstart', draw.start, false);
+            //myCanvas.addEventListener('touchend', draw.end, false);
+            //myCanvas.addEventListener('touchmove', draw.move, false);
+            
+            // Disable Page Move
+            document.body.addEventListener('touchmove',function(evt){
+              evt.preventDefault();
+            },false);
+
+
+}
+
+
+function getProto()
+    {
+
+      $.get("/returnProto").done(function(data) {
+        
+        for (i = 0; i < data.length; i++) {
+        console.log("getProto", data[i]["imgid"]);
+        id=data[i]["imgid"];
+
+        if(data[i]["textnote"]==null)
+        {
+          add(id, data[i]["image"]);  
+        }
+        
+      }
+    });
+
+
+    }
+
+  </script>
+
  
  {% endblock %}
 
