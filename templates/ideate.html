@@ -49,10 +49,10 @@
 </div>
 
   <script>
-        wid = `{{ data['wid'] }}`;
-        uid = `{{ data['uid'] }}`;
-        gid = `{{ data['gid'] }}`;
-        name = `{{ data['name'] }}`;
+        wid = `{{ user['wid'] }}`;
+        uid = `{{ user['uid'] }}`;
+        gid = `{{ user['gid'] }}`;
+        name = `{{ user['name'] }}`;
         document.getElementById('user_name').textContent=name;
         document.getElementById('user_role').textContent="PARTICIPANT";
 

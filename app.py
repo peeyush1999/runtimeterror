@@ -499,6 +499,7 @@ def waiting():
     info['wid']=session['wid']
     info['uid']=session['uid']
     info['gid']="1"
+    info['name']=session['name']
 
     cur = mysql.connection.cursor()
     query1="select * from `group` where userid = "+str(info['uid'])+" ;"
