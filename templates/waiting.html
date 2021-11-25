@@ -31,10 +31,12 @@
 <script>
 
  
-  wid = {{ data['wid'] }};
-  uid = {{ data['uid'] }};
-  gid = {{ data['gid'] }};
-
+  wid = `{{ data['wid'] }}`;
+  uid = `{{ data['uid'] }}`;
+  gid = `{{ data['gid'] }}`;
+  name = `{{ data['name'] }}`;
+  document.getElementById('user_name').textContent=name;
+  document.getElementById('user_role').textContent="PARTICIPANT";
 
   function check() {
     $.get("/isCreated", { userid: uid }).done(function (data) {
