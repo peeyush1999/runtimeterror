@@ -13,7 +13,7 @@ $("textarea").on("change keyup input",function(){
 	this.value=this.value.substring(0,max);
 	else $("#crteStkyBtn").addClass("ntActv")});
 
-	console.log(localStorage.length);
+	console.log(localStorage.length); 
 });
 
 function cleanNotes(){
@@ -203,14 +203,7 @@ function createSticky(id){
 	$('#stkyNts').append(str);
 }
 
-
-
-
-
-
 //'<li class="box">'+'<div><canvas id="myCanvas'+id+'">s</canvas></div><button onclick="select('+id+');">use</button></li>'
-
-
 // BACKGROUND
 
 const bg = new MousemoveBGColors();
