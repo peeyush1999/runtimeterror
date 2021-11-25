@@ -64,18 +64,20 @@ def login():
     conn = mysql.connection
     cur = conn.cursor()
     values = cur.execute(
-        "SELECT user.userid,user.type,user.username  FROM user where user.username = %s AND user.password = %s",
+        "SELECT user.userid,user.type,user.username,user.name FROM user where user.username = %s AND user.password = %s",
         [username, password])
     if (values > 0):
         userDetails = cur.fetchall()
         userid = userDetails[0][0]
         type = userDetails[0][1]
         uname = userDetails[0][2]
+        name = userDetails[0][3]
 
         #storing username and userid and grp id and workshop and type in session variable
         session['uid'] = userid
+
         # session['type'] = type
-        # session['uname']= uname
+        session['name']= name
         session['wid']= "1" #hardcoding the workshop Id
 
 
@@ -521,7 +523,7 @@ def participants():
 
 
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
 
     return render_template('emphasize.html',user=data)
 
@@ -538,6 +540,7 @@ def waiting():
     info['wid']=session['wid']
     info['uid']=session['uid']
     info['gid']="1"
+    info['name']=session['name']
     return render_template('waiting.html',data=info)
 
 @app.route("/isCreated", methods=["GET"])
@@ -624,7 +627,7 @@ def prototype():
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
 
     return render_template('prototype.html',user=data)
 
@@ -653,7 +656,7 @@ def define():
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
     return render_template('define.html',user=data)
 
 
@@ -672,7 +675,7 @@ def ideate():
     uid = session['uid']
     gid = session['gid']
 
-    data={"workshopid":wid, "groupid": gid, "userid" : uid}
+    data={"workshopid":wid, "groupid": gid, "userid" : uid,"name":session['name']}
 
 
     return render_template('ideate.html',user=data)

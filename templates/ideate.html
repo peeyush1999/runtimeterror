@@ -49,9 +49,12 @@
 </div>
 
   <script>
-        wid = `{{ user['workshopid'] }}`;
-        gid = `{{ user['groupid'] }}`;
-        uid = `{{ user['userid'] }}`;
+        wid = `{{ data['wid'] }}`;
+        uid = `{{ data['uid'] }}`;
+        gid = `{{ data['gid'] }}`;
+        name = `{{ data['name'] }}`;
+        document.getElementById('user_name').textContent=name;
+        document.getElementById('user_role').textContent="PARTICIPANT";
 
 
         function getSticky() {

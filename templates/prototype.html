@@ -41,7 +41,7 @@
             </div>
             
             <!-- <input id="clnStorge" value="Clear all your Prototypes" type="button" /> -->
-            <div style="display:flex;flex-direction:column; ">
+            <div style="display:flex;flex-direction:column-reverse; ">
             
               <section style="width: 50%;">
                   <div id="stkyNts" class="stkyCntr">
@@ -153,9 +153,12 @@
 
   <script>
 
-    wid = `{{ user['workshopid'] }}`;
-    gid = `{{ user['groupid'] }}`;
-    uid = `{{ user['userid'] }}`;
+  wid = `{{ data['wid'] }}`;
+  uid = `{{ data['uid'] }}`;
+  gid = `{{ data['gid'] }}`;
+  name = `{{ data['name'] }}`;
+  document.getElementById('user_name').textContent=name;
+  document.getElementById('user_role').textContent="PARTICIPANT";
 
 
  window.addEventListener('load', (event) => { getSticky(); getProto();}); 
