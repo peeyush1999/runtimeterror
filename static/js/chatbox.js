@@ -3,8 +3,6 @@ var toggle1=document.querySelector(".js-chatbox-toggle");
 var cbox=document.querySelector(".js-chatbox");
 var cmd= document.querySelector(".js-chatbox-display");
 
-
-
 uid=1;
 workshopid=1;
 gid=1;
@@ -13,10 +11,9 @@ window.addEventListener('load', (event) => {
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes();
 
-$.get("/getmsg", { wid:workshopid, grpid:gid }).done(function(data) {
+$.get("/getmsg", { wid:workshopid, grpid:gid }).done(function(data) 
+{
     
-    
-
     for(i=0;i<data.length;i++)
     {
     console.log(data[i]["text"]);
@@ -77,10 +74,7 @@ function getBotResponse()
   $.get("/addMessage", { msg: rawText, userid: uid, wid:workshopid, grpid:gid }).done(function(data) {
   
   });
-
-
 }
-
 
 $("#textInput").keypress(function(e) {
   console.log("input pressed");

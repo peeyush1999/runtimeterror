@@ -16,8 +16,7 @@ function validateform(){
         alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
         return false;  
     }  
-   
-   
+     
 } 
 function validatesigninform() {
     var y=document.mysigninform.Email.value;  
@@ -34,5 +33,4 @@ function validatesigninform() {
         return false;  
     }    
     
-
 }
