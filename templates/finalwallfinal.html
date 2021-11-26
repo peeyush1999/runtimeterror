@@ -6,24 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../static/css/prototype.css">
+    <!-- <link rel="stylesheet" href="../static/css/prototype.css"> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/bd7dad32c1.js" crossorigin="anonymous"></script>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../static/css/finalwall.css">
+    <link rel="stylesheet" href="../static/css/finalwallfinal.css">
 
     <title>Document</title>
 </head>
 
-<body style="">
+<body>
 
-    <div style="overflow: scroll;">
-        <div>
-            <ul id="protosticky" class="stkyCntr">
-            </ul>
+    <div>
+        <div >
+            <div id="protosticky" class="">
+            </div>
         </div>
-        <div>
+        <div style="clear:both;">
             <ul id="stkyNts" class="stkyCntr">
             </ul>
         </div>
@@ -78,8 +78,8 @@
 
         function add(id, img) {
 
-            var str = `<div class='screen' id='mobilescreen'>
-        <div id='speaker'><i class="fas fa-trash-alt " onclick="deleteprotobyid(`+ id + `);removeScreen(this);"></i><br></div>
+            var str = `<div class='screen' id='mobilescreen' style="float:left;">
+        <div id='speaker'><br></div>
           <div id='maincontainer'>
           <canvas id='myCanvas`+ id + `'></canvas>
           </div>
@@ -99,7 +99,7 @@
   
      </div>`;
 
-            $('#stkyNts').append(str);
+            $('#protosticky').append(str);
 
             var myCanvas = document.getElementById("myCanvas" + id);
 

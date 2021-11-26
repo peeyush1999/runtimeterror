@@ -53,12 +53,11 @@
 
 
 
-
 body{
 	text-align:center;
 	font-size: 16px;
 }
-
+/*
 ul li{
 	list-style-type:none;
 }
@@ -321,6 +320,46 @@ modal-title { font-size: 18px; font-weight: bold; }
  background:#282a36;
  
  height:100%;
+ }
+ 
+ .controlder
+ {
+ width:50px;
+ height:50px;
+ border-radius:50%;
+ background:#f2f2f2;
+ margin:25px auto;
+ 
+ box-shadow:inset 0px 0px 10px 0px #bdbdbd;
+ border:1px solid #c6c6c6;
+ font-size: 12px;
+ 
+ } */
+
+
+
+
+
+
+
+
+ #mobilescreen
+ {
+ width:340px;
+ height:370px;
+ background:#fff;
+ margin:0;
+ border:2px solid #ccc;
+ padding:20px 5px 100px 5px;
+ border-radius:20px;
+ box-shadow:0px 5px 5px 0px #ccc;
+ }
+ #maincontainer
+ {
+ width:320px;
+ margin:0 auto;
+ background:#282a36;
+ height:360px;
  }
  
  .controlder
