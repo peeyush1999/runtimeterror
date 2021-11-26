@@ -17,13 +17,16 @@
 </head>
 
 <body style="">
-    <div>
-        <ul id="protosticky" class="stkyCntr">
-        </ul>
-    </div>
-    <div>
-        <ul id="stkyNts" class="stkyCntr">
-        </ul>
+
+    <div style="overflow: scroll;">
+        <div>
+            <ul id="protosticky" class="stkyCntr">
+            </ul>
+        </div>
+        <div>
+            <ul id="stkyNts" class="stkyCntr">
+            </ul>
+        </div>
     </div>
 
 
@@ -81,14 +84,14 @@
           <canvas id='myCanvas`+ id + `'></canvas>
           </div>
   
-        <div style="display:flex;flex-direction:row; padding:15px;">
+        <div style="display:flex;">
        
   
   
   
-         <div class='controlder' > 
+        <div class='controlder' onclick='select(`+id+`)'></div>
           
-          </div>
+        </div>
   
   
   
