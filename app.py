@@ -831,7 +831,7 @@ def finalwall():
 
     data={"wid":wid, "gid": gid, "uid" : uid,"name":session['name']}
 
-    return render_template('finalwall.html',user=data)
+    return render_template('finalwallfinal.html',user=data)
 
 
 
