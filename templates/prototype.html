@@ -10,7 +10,7 @@
     </p> 
 
 
-  <main class="page-content" id="bcolor" style="width: 1290px;">
+  <main class="page-content1" id="bcolor" style="width: 1290px;">
       <div class="container">
         <div class="animated animatedFadeInUp fadeInUp" id="protoheading">
           <h2 align="center" style="margin-right: 140px;">PROTOTYPE PHASE</h2>
@@ -46,7 +46,7 @@
             <!-- <input id="clnStorge" value="Clear all your Prototypes" type="button" /> -->
             <div style="display:flex;flex-direction:column-reverse; ">
             
-              <section style="width: 75%;">
+              <section style="width: 100%;">
                 <div id="protosticky" class="">
                 </div>
                 <div style="clear:both;">
@@ -234,7 +234,7 @@ function getSticky()
 function add(id,img)
 {
 
-  var str=`<div class='screen' id='mobilescreen' style="float:left">
+  var str=`<div class='screen' id='mobilescreen' style="margin:10px;float:left">
       <div id='speaker'><i class="fas fa-trash-alt " onclick="deleteprotobyid(`+id+`);removeScreen(this);"></i><br></div>
         <div id='maincontainer'>
         <canvas id='myCanvas`+id+`'></canvas>

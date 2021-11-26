@@ -187,7 +187,7 @@ function select(id)
 function createSticky(id){
 
 	console.log('called with id',id);
-	var str=`<div class='screen' id='mobilescreen'>
+	var str=`<div class='screen' id='mobilescreen' style="margin:10px;float:left">
       <div id='speaker'></div>
         <div id='maincontainer'>
         <canvas id='myCanvas`+id+`'></canvas>
@@ -217,7 +217,7 @@ function createSticky(id){
 
    </div>`;
     
-	$('#stkyNts').append(str);
+	$('#protosticky').append(str);
 }
 
 //'<li class="box">'+'<div><canvas id="myCanvas'+id+'">s</canvas></div><button onclick="select('+id+');">use</button></li>'
