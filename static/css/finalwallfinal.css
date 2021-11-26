@@ -5,7 +5,7 @@
  background:#fff;
  margin:0;
  border:2px solid #ccc;
- padding:20px 5px 100px 5px;
+ padding:20px 5px 100px 5px !important;
  border-radius:20px;
  box-shadow:0px 5px 5px 0px #ccc;
  }
@@ -39,6 +39,8 @@
     padding-left: 10px;
 	float:left;
 	margin: 1%;
+	font-size:1.2em;
+	text-align: center;
 	-webkit-font-smoothing: antialiased;
 	box-shadow: 0px 5px 15px rgba(0,0,0,.5);
 	-webkit-box-shadow: 0px 5px 15px rgba(0,0,0,.5);

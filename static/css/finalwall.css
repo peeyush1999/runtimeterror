@@ -1,7 +1,7 @@
 html {
-    height: 100%;
+    height: auto;
     background: radial-gradient(ellipse at bottom, #38A3A5 0%, #22577A 100%);
-    overflow: hidden; }
+  }
   
   #stars {
     width: 1px;

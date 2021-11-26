@@ -12,18 +12,26 @@
 
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../static/css/finalwallfinal.css">
+    <link rel="stylesheet" href="../static/css/finalwall.css">
+
+    
 
     <title>Document</title>
-</head>
+</head> 
 
 <body>
+    <div id="stars" ></div>
+        <div id="stars2" ></div>
+        <div id="stars3"></div>
 
     <div>
-        <div >
-            <div id="protosticky" class="">
+        <div>
+            <h1 style="text-align: center;color:white;"><strong>WIREFRAME</strong></h1>
+            <div id="protosticky" style="margin:auto; width:80%;">
             </div>
         </div>
         <div style="clear:both;">
+            <h1 style="text-align: center;margin-top: 50px;color:white;"><strong>STICKY NOTES</strong></h1>
             <ul id="stkyNts" class="stkyCntr">
             </ul>
         </div>
@@ -78,7 +86,7 @@
 
         function add(id, img) {
 
-            var str = `<div class='screen' id='mobilescreen' style="float:left;">
+            var str = `<div class='screen' id='mobilescreen' style="margin:20px 10px 80px 50px;float:left;">
         <div id='speaker'><br></div>
           <div id='maincontainer'>
           <canvas id='myCanvas`+ id + `'></canvas>
