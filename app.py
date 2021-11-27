@@ -720,28 +720,37 @@ def isCreated():
     if(numRow==0):
         return "false"
     else:
-        getGrp = "SELECT userid FROM `group` WHERE groupid = ( SELECT groupid FROM `group` AS g WHERE g.userid = %s );"
-        cur.execute(getGrp, [uid])
-        results = cur.fetchall()
-        namelst=[]
 
-        for row in results:
-            getName = "SELECT name FROM `user` WHERE userid= %s"
-            print(row[0])
-            cur.execute(getName,[row[0]])
-            name = cur.fetchall()
-            namelst.append(name[0][0])
+        querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+        cur.execute(querygetstatus)
+        status = cur.fetchall()
+        if(status[0][1] == 1):
+            return "true";
 
-        #print(namelst)
-        participantNames={}
-        id = 0
-        for user in namelst:
-            participantNames[id] = user
-            id = id + 1
+        else:
+
+            getGrp = "SELECT userid FROM `group` WHERE groupid = ( SELECT groupid FROM `group` AS g WHERE g.userid = %s );"
+            cur.execute(getGrp, [uid])
+            results = cur.fetchall()
+            namelst=[]
+
+            for row in results:
+                getName = "SELECT name FROM `user` WHERE userid= %s"
+                print(row[0])
+                cur.execute(getName,[row[0]])
+                name = cur.fetchall()
+                namelst.append(name[0][0])
+
+            #print(namelst)
+            participantNames={}
+            id = 0
+            for user in namelst:
+                participantNames[id] = user
+                id = id + 1
 
 
 
-        return jsonify(participantNames)
+            return jsonify(participantNames)
 
 
 

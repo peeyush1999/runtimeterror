@@ -40,7 +40,7 @@ $.get("/getmsg", { "wid":workshopid, "grpid":gid }).done(function(data)
       //.getElementById("userInput")
       //.scrollIntoView({ block: "start", behavior: "smooth" });
       $('#chat').animate({
-      scrollTop: $('#chat')[0].scrollHeight}, 5000);
+      scrollTop: $('#chat')[0].scrollHeight}, 50);
   });
 
 }
@@ -75,8 +75,8 @@ $.get("/getmsg", { "wid":workshopid, "grpid":gid }).done(function(data)
     //document
       //.getElementById("userInput")
       //.scrollIntoView({ block: "start", behavior: "smooth" });
-      $('#chat').animate({
-      scrollTop: $('#chat')[0].scrollHeight}, 5000);
+      /*$('#chat').animate({
+      scrollTop: $('#chat')[0].scrollHeight}, 5000);*/
   });
 
 });
@@ -118,9 +118,9 @@ function getBotResponse()
   chatSection.classList.add("selfMessage");
   cmd.appendChild(chatSection);
 
-  $('#chat').animate({
+  /*$('#chat').animate({
   scrollTop: $('#chat')[0].scrollHeight}, 1000);
-
+*/
 
   $.get("/addMessage", { "msg": rawText, "userid": uid, "wid" :workshopid, "grpid" :gid }).done(function(data) {
   
