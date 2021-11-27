@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/bd7dad32c1.js" crossorigin="anonymous"></script>
+
+    
+	  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+   
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="../static/css/sidebar.css">
+    <link rel="stylesheet" href="../static/css/chatbox.css">
+    <link rel="stylesheet" href="../static/css/timer.css">
+
+    <title>Wall</title>
+  </head>
+  <body>
+
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+   
+
+    <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+          <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+          <div class="sidebar-content">
+            <div class="sidebar-brand">
+              <a href="#">Virtual Design Workshop</a>
+              <div id="close-sidebar">
+                <i class="fas fa-times"></i>
+              </div>
+            </div>
+
+
+            <div class="clock-container">
+              <h1 class="Clock-title">Clock</h1>
+              <div id="clockdiv">
+              <div style="display:none">
+                  <span class="days" ></span>
+                  <div class="smalltext">Days</div>
+              </div>
+              <div>
+                  <span class="hours"></span>
+                  <div class="smalltext">Hr</div>
+              </div>
+              <div>
+                  <span class="minutes"></span>
+                  <div class="smalltext">Min</div>
+              </div>
+              <div>
+                  <span class="seconds"></span>
+                  <div class="smalltext">Sec</div>
+              </div>
+              </div>
+            </div>
+
+
+            <div class="sidebar-header">
+              <div class="user-pic">
+                <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" alt="User picture">
+              </div>
+              <div class="user-info">
+                <span id="user_name" class="user-name"></span>
+                 
+                <span id="user_role" class="user-role"></span>
+                <span class="user-status">
+                  <i class="fa fa-circle"></i>
+                  <span>Online</span>
+                </span>
+              </div>
+            </div>
+            <!-- sidebar-header  -->
+            
+            <!-- sidebar-search  -->
+            <div class="sidebar-menu" style="text-align:left;">
+              <ul>
+                <li class="header-menu">
+                  <span>PHASES OF WORKSHOP</span>
+                </li>
+               
+                <li>
+                  <a href="./emphasize">
+                    <i class="fa fa-book"></i>
+                    <span>Emphasis Phase</span>
+                     
+                  </a>
+                </li>
+                <li>
+                  <a href="./define">
+                    <i class="fa fa-book"></i>
+                    <span>Define Phase</span>
+                    
+                  </a>
+                </li>
+                <li>
+                  <a href="./ideate">
+                    <i class="fa fa-book"></i>
+                    <span>Ideate Phase</span>
+                   
+                  </a>
+                </li>
+                <li>
+                  <a href="./proto">
+                    <i class="fa fa-book"></i>
+                    <span>Prototype Phase</span>
+                   
+                  </a>
+                </li>
+                <li>
+                  <a href="./finalwall">
+                    <i class="fa fa-book"></i>
+                    <span>Final Wall</span>
+                   
+                  </a>
+                </li>
+                <li>
+                  <a href="/logout">
+                    <i class="fa fa-book"></i>
+                    <span>LOGOUT</span>
+                    
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+            <!-- sidebar-menu  -->
+          </div>
+          <!-- sidebar-content  -->
+          <div class="sidebar-footer">
+            <a href="#">
+              <i class="fa fa-envelope"></i>
+              <!-- <i class="fas fa-sms"></i> -->
+            </a>
+           
+          </div>
+        </nav>
+        <!-- sidebar-wrapper  -->
+
+        {% block rightpanel %}
+        {% block chatbox %}
+        {% endblock %}
+
+        {% endblock %}
+        <!-- page-content" -->
+      </div>
+      <!-- page-wrapper -->
+
+      
+
+</body>
+
+
+<script src="../static/js/sidebar.js"></script> 
+<script src="../static/js/timer.js"></script>
+
+</html>

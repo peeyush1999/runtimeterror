@@ -1,0 +1,390 @@
+{% extends 'sidebar.html'%}
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/prototype.css">
+
+
+<div style="overflow: hidden">
+ 
+  <p id="destroyInit" class="init">
+    </p> 
+
+
+  <main class="page-content1" id="bcolor" style="width: 1290px;">
+      <div class="container">
+        <div class="animated animatedFadeInUp fadeInUp" id="protoheading">
+          <h2 align="center" style="margin-right: 140px;">PROTOTYPE PHASE</h2>
+        </div>
+        
+        <div id="wrapper" class="bgOvrly"></div>
+      
+        <section id="content">
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea class="txtBox"></textarea>
+                <input id="crteStkyBtn123" class="crteBtn btn ntActv" type="button" value="Create"  />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section> 
+            <div id="buttondiv"> 
+              <div id="type2"> 
+                <div class="btn-5" id="addBtn123" type="button" style="color:black" onclick="addtoSticky();">
+                  Add Prototype
+                </div>
+                <div class="btn-5" id="clnStorge" type="button" style="color:black" onclick="deleteproto();">
+                  Clear All Prototype
+                </div>
+                <div class="btn-5"  type="button" style="color:black" data-toggle="modal" data-target="#myModal">
+                  Show Sticky
+                </div>
+                <div class="btn-5" type="button" style="color:black" onclick="pushFinalWall();">
+                  Push Final Wall
+                </div>
+
+                
+              </div>
+            </div>
+            
+            <!-- <input id="clnStorge" value="Clear all your Prototypes" type="button" /> -->
+            <div style="display:flex;flex-direction:column-reverse; ">
+            
+              <section style="width: 100%;">
+                <div id="protosticky" class="">
+                </div>
+                <div style="clear:both;">
+
+                </div>
+              </section>
+            </div>
+        </section>
+
+
+
+     
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </main>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    wid = `{{ user['wid'] }}`;
+  uid = `{{ user['uid'] }}`;
+  gid = `{{ user['gid'] }}`;
+  name = `{{ user['name'] }}`;
+    
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  {% include "chatbox.html" %}
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Sticky</h4>
+
+          <ul id="stkyNts" class="stkyCntr">
+                      </ul>
+        </div>
+        
+                    
+                      
+                    
+                      
+
+                    
+                    
+              
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+  wid = `{{ user['wid'] }}`;
+  uid = `{{ user['uid'] }}`;
+  gid = `{{ user['gid'] }}`;
+  name = `{{ user['name'] }}`;
+  document.getElementById('user_name').textContent=name;
+  document.getElementById('user_role').textContent="PARTICIPANT";
+
+
+ window.addEventListener('load', (event) => { getSticky(); getProto();}); 
+
+
+ function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
+
+ function upload_sticky(id)
+ {
+
+  var canvas = document.getElementById("myCanvas"+id);
+  var dataUrl=canvas.toDataURL();
+  /*$.ajax({
+  type: "POST",
+  url: "/addProto",
+  dataType:'json',
+  data: {image: dataUrl}
+
+  })
+  .done(function(respond){console.log("done: "+respond);})
+  */
+
+
+
+
+
+
+  $("#loading"+id).show();
+  $.get("/addProto", { "workid": wid, "grpid": gid, "image": dataUrl, "imgid":id }).done(function (data) {
+        console.log(data);
+        sleep(1000);
+        $("#loading"+id).hide();
+      });
+
+ }
+function getSticky()
+    {
+
+      $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function(data) {
+        
+        for (i = 0; i < data.length; i++) {
+        console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;">   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+      }
+    });
+
+
+    }
+
+
+    
+
+
+function add(id,img)
+{
+
+  var str=`<div class='screen' id='mobilescreen' style="margin:10px;float:left">
+      <div id='speaker'><i class="fas fa-trash-alt " onclick="deleteprotobyid(`+id+`);removeScreen(this);"></i><br></div>
+        <div id='maincontainer'>
+        <canvas id='myCanvas`+id+`'></canvas>
+        </div>
+
+      <div style="display:flex;flex-direction:row; padding:15px;">
+       <div class='clearcanvas' onclick='select(`+id+`)'>
+        
+        <i style="color:red;margin:auto;width:auto;" class="fas fa-times-circle fa-3x"></i>
+        </div>
+
+
+
+       <div style="color:green;margin:auto; width:auto;" class='charka'> 
+        <div style="display:none;" id="loading`+id+`">
+          <img src="../static/Rainbow.gif" width=50px height=50px >
+        </div>
+        </div>
+
+
+
+
+       <div class='savetodb' id="save`+id+`" onclick='upload_sticky(`+id+`)'>
+       <i style="color:green;margin:auto;width:auto;" class="fas fa-check-circle fa-3x"></i>
+        </div>
+    </div>
+
+   </div>`;
+
+        $('#protosticky').append(str);
+
+        var myCanvas = document.getElementById("myCanvas"+id);
+        
+        myCanvas.width="320"; // Optional
+        myCanvas.height="360"; 
+
+        var ctx = myCanvas.getContext('2d');
+         var myImage=new Image();
+          myImage.src=img;
+          myImage.onload=function(){
+            ctx.drawImage(myImage,0,0,320,360);
+          };
+
+
+          if(myCanvas){
+              var isDown = false;
+              var canvasX, canvasY;
+              ctx.lineWidth = 2.5;
+              
+              $(myCanvas)
+              .mousedown(function(e){
+                isDown = true;
+                ctx.beginPath();
+                canvasX = e.pageX - myCanvas.offsetLeft;
+                canvasY = e.pageY - myCanvas.offsetTop;
+                ctx.moveTo(canvasX, canvasY);
+              })
+              .mousemove(function(e){
+                if(isDown !== false) {
+                  canvasX = e.pageX - myCanvas.offsetLeft;
+                  canvasY = e.pageY - myCanvas.offsetTop;
+                  ctx.lineTo(canvasX, canvasY);
+                  ctx.strokeStyle = "#000";
+                  ctx.stroke();
+                }
+              })
+              .mouseup(function(e){
+                isDown = false;
+                ctx.closePath();
+              });
+            }
+            
+            // Touch Events Handlers
+            draw = {
+              started: false,
+              start: function(evt) {
+
+                ctx.beginPath();
+                ctx.moveTo(
+                  evt.touches[0].pageX,
+                  evt.touches[0].pageY
+                );
+
+                this.started = true;
+
+              },
+              move: function(evt) {
+
+                if (this.started) {
+                  ctx.lineTo(
+                    evt.touches[0].pageX,
+                    evt.touches[0].pageY
+                  );
+
+                  ctx.strokeStyle = "#000";
+                  ctx.lineWidth = 5;
+                  ctx.stroke();
+                }
+
+              },
+              end: function(evt) {
+                this.started = false;
+              }
+            };
+            
+            // Touch Events
+            myCanvas.addEventListener('touchstart', draw.start, false);
+            myCanvas.addEventListener('touchend', draw.end, false);
+            myCanvas.addEventListener('touchmove', draw.move, false);
+            
+            // Disable Page Move
+            document.body.addEventListener('touchmove',function(evt){
+              evt.preventDefault();
+            },false);
+
+
+}
+
+
+function getProto()
+    {
+
+      $.get("/returnProto").done(function(data) {
+        
+        for (i = 0; i < data.length; i++) {
+        console.log("getsticky", data[i]["imgid"]);
+        id=data[i]["imgid"];
+        add(id, data[i]["image"]);  
+      }
+    });
+
+
+    }
+
+  /* 
+   function check()
+   {  
+     $.get("/updatePhase", { curphase:"PRO" }).done(function(data) {
+        console.log(data);
+        if(data=="true")
+        {
+            window.location.replace("http://127.0.0.1:5000/");
+        }
+                  
+        }); 
+   }
+
+   setInterval(function(){ check(); }, 3000);
+*/
+  </script>
+
+  <script src="../static/js/prototype.js"></script>
+{% endblock %}

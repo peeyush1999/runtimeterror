@@ -1,0 +1,48 @@
+#mobilescreen
+ {
+ width:340px;
+ height:370px;
+ background:#fff;
+ margin:0;
+ border:2px solid #ccc;
+ padding:20px 5px 100px 5px !important;
+ border-radius:20px;
+ box-shadow:0px 5px 5px 0px #ccc;
+ }
+ #maincontainer
+ {
+ width:320px;
+ margin:0 auto;
+ background:#282a36;
+ height:360px;
+ }
+ 
+ .controlder
+ {
+ width:50px;
+ height:50px;
+ border-radius:50%;
+ background:#f2f2f2;
+ margin:25px auto;
+ 
+ box-shadow:inset 0px 0px 10px 0px #bdbdbd;
+ border:1px solid #c6c6c6;
+ font-size: 12px;
+ 
+ }
+
+ .box{
+	background: #b6f4ff url('http://static.listhings.com/img/generic-note-bg.png') left top repeat-x;
+	width: 300px;
+	height: 300px;
+	padding-top: 20px;
+    padding-left: 10px;
+	float:left;
+	margin: 1%;
+	font-size:1.2em;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+	-webkit-box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+	-moz-box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+}

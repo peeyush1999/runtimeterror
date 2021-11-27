@@ -1,0 +1,256 @@
+{% extends 'sidebar.html'%}
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/sticky.css">
+<link rel="stylesheet" href="../static/css/define.css">
+<div style="overflow: hidden">
+ 
+  <p id="destroyInit" class="init">
+    </p>
+
+  <main class="page-content1">
+      <div class="container">
+        <div class="animated animatedFadeInUp fadeInUp" id="defineheading">
+          <h2 align="center" style="margin-right: 140px;">DEFINE PHASE</h2>
+        </div>
+        
+        <div id="wrapper" ></div>
+      
+        <section id="content" >
+            <section id="stkyOvrly" class="ovrly hidden">
+                <textarea id="notes" class="txtBox"></textarea>
+                <input id="crteStkyBtn" class="crteBtn btn ntActv" type="button" onclick="updateDD();" value="Create" />
+                <input id="cnclStkyBtn" class="cnlBtn btn" type="button" value="Cancel" />
+            </section>
+
+            <div id="buttondiv" style="margin-right: 140px;"> 
+              <div id="type2"> 
+                <div class="btn-5" id="addBtn" type="button" style="color:black" >
+                  Add Sticky Note
+                </div>
+                <div class="btn-5" id="clnStorge" type="button" style="color:black">
+                  Clear All Sticky Note
+                </div>
+              </div>
+            </div>
+
+            <section align="center">
+                <ul id="stkyNts" class="stkyCntr">
+                </ul>
+            </section>
+        </section>
+        
+      </div>
+    </main>
+
+    <script type="text/javascript">
+      wid = `{{ user['wid'] }}`;
+      uid = `{{ user['uid'] }}`;
+      gid = `{{ user['gid'] }}`;
+      name = `{{ user['name'] }}`;
+        
+      </script>
+
+
+    {% include "chatbox.html" %}
+</div>
+  
+  <script>
+    wid = `{{ user['wid'] }}`;
+    uid = `{{ user['uid'] }}`;
+    gid = `{{ user['gid'] }}`;
+    name = `{{ user['name'] }}`;
+    document.getElementById('user_name').textContent=name;
+    document.getElementById('user_role').textContent="PARTICIPANT";
+
+
+  function getSticky() {
+    
+
+
+
+
+    $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
+
+      for (i = 0; i < data.length; i++) 
+      {
+
+        if(data[i]['userid']==uid)
+        {
+
+          console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"><i class="fas fa-trash-alt " onclick="deleteSticky(\'' + data[i]["notesid"] + '\')"></i>   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+        }  
+        else
+        {
+
+          console.log("getsticky", data[i]["textnote"]);
+        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"></div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+        }
+        
+      }
+    });
+
+
+  }
+
+
+    function deleteSticky(id)
+    {
+      console.log(id);
+
+      $.get("/deleteSticky",{"noteid":id}).done(function(data) {
+        
+        if(data == "true")
+        {
+          $("#"+id).remove();
+        }
+        console.log("Sticky Note Deleted");
+
+
+        });
+
+
+    }
+
+
+    window.addEventListener('load', (event) => { getSticky(); }); 
+    
+
+    function updateDD()
+    {
+
+      msg=document.getElementById("notes").value;
+
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
+        console.log(data);
+        location.reload();
+        });
+    }
+
+    function retrieveSticky()
+    {
+      $.get("/addSticky", { "workid" : wid , "grpid": gid , "userid":uid , "notes":msg } ).done(function(data) {
+        console.log(data);
+        });
+    }
+   
+   /*
+   function check()
+   {  
+     $.get("/updatePhase", { curphase:"DEF" }).done(function(data) {
+        console.log(data);
+        if(data=="true")
+        {
+            window.location.replace("http://127.0.0.1:5000/ideate");
+        }
+                  
+        }); 
+   }
+
+   setInterval(function(){ check(); }, 3000);
+    */
+  </script>
+   
+  <script src="../static/js/sticky.js"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

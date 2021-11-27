@@ -1,0 +1,74 @@
+{% extends 'sidebar.html'%}
+{% block rightpanel %}
+
+<link rel="stylesheet" href="../static/css/sticky.css">
+<link rel="stylesheet" href="../static/css/emphasis.css">
+<div style="overflow: hidden">
+
+  <p id="destroyInit" class="init">
+  </p>
+
+  <main class="page-content">
+    <div class="container">
+
+
+      <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
+        <h2 align="center" style="margin-right: 140px;">WAITING LOBBY</h2>
+      </div>
+
+      <div id="wrapper"></div>
+
+      Please Wait For the Host To start the workshop!!!!
+
+      <div  id="accordion"><div><h1> Your Team Members <h1></div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+
+ 
+  wid = `{{ data['wid'] }}`;
+  uid = `{{ data['uid'] }}`;
+  gid = `{{ data['gid'] }}`;
+  name = `{{ data['name'] }}`;
+  document.getElementById('user_name').textContent=name;
+  document.getElementById('user_role').textContent="PARTICIPANT";
+
+  function check() {
+    $.get("/isCreated", { userid: uid }).done(function (data) {
+      //console.log(data);
+      if (data == "true") {
+        window.location.replace("http://127.0.0.1:5000/emphasize");
+      }
+
+
+
+
+      $('.lst').remove();
+        
+          const container = document.getElementById('accordion');
+          const ul = document.createElement('ul');
+          ul.className="lst"//add class here to change ui
+          for (let y in data) {
+            console.log(y)
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(data[y]));
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        
+
+    });
+  }
+
+  setInterval(function () { check(); }, 5000);
+
+ 
+
+</script>
+<script src="../static/js/sticky.js"></script>
+{% endblock %}

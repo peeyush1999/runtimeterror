@@ -1,0 +1,224 @@
+body{
+	text-align:center;
+	font-size: 16px;
+}
+
+ul li{
+	list-style-type:none;
+}
+
+.stkyCntr{
+	margin: 5%;
+}
+  
+.box{
+	background: #b6f4ff url('http://static.listhings.com/img/generic-note-bg.png') left top repeat-x;
+	width: 300px;
+	height: 300px;
+	padding-top: 20px;
+	float:left;
+	margin: 1%;
+	-webkit-font-smoothing: antialiased;
+	box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+	-webkit-box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+	-moz-box-shadow: 0px 5px 15px rgba(0,0,0,.5);
+	overflow: scroll;
+}
+
+.ovrly{
+	text-align: center;
+	width: 50%;
+	height: 50%;
+	margin: auto;
+	z-index: 3;
+	right: 0;
+	left: 0;
+	top: 0;
+	position: absolute;
+	bottom: 0;
+}
+
+.hidden{
+	display:none;
+}
+
+.hideOvrly{
+	height: 100%;
+	z-index: 2 !important;
+	background-color: black;
+	opacity:0.4;
+	transition: background-color .218s ease-in;
+}
+
+.bgOvrly{
+	 z-index: -1;
+	 position: absolute;
+	 width:100%;
+	 height:100%;
+}
+
+.txtBox{
+	height: 65%;
+	width: 75%;
+	margin: 4% auto;
+	display: block;
+}
+
+.btn{
+	width: 37%;
+	padding: 25px 10px;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 17px;
+}
+
+.cnlBtn{
+	background-color: white;
+	color: #313131;
+	text-shadow: 0 1px 2px rgba(255,255,255,0.4);
+	border: 1px solid #b2b2b2;
+}
+
+.crteBtn{
+	background-color: #88E0EF;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+	border: 1px solid #88E0EF;
+	color: black;
+}
+
+.ntActv{
+	opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+#buttondiv {
+	text-align: center;
+	font-family: "Roboto";
+	color: #fff;
+	letter-spacing:1px;
+  }
+ 
+  
+  /*---------------------------------------------------------------- BUTTON START*/
+  
+  .btn-5 {
+	text-align: center;
+	display: inline-block;
+	padding: 15px 40px;
+	border: 1px solid rgb(5, 5, 5);
+	cursor: pointer;
+	letter-spacing: 2px;
+	position:relative;
+	overflow:hidden;
+	margin: 0 20px;
+  }
+  
+  .btn-5:before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 0;
+	background : #fff;
+	left: 0;
+	bottom: 0;
+	transition: all .3s;
+	opacity: 0.3;
+  }
+  
+  .btn-5:hover:before {
+	width: 100%;
+  }
+  
+  /* Buton 5 Bitti */
+  
+  .btn-6 {
+	text-align: center;
+	display: inline-block;
+	padding: 15px 40px;
+	border: 1px solid rgb(5, 5, 5);
+	cursor: pointer;
+	letter-spacing: 2px;
+	position:relative;
+	overflow:hidden;
+	margin: 0 20px;
+  }
+  
+  .btn-6:before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 0;
+	background : #fff;
+	left: 100%;
+	bottom: 0;
+	transition: all .3s;
+	opacity: 0.3;
+  }
+  
+  .btn-6:hover:before {
+	width: 100%;
+	left:0;
+  }
+  
+
+/*==== Button End*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*---------------- BACKGROUND =================================================================*/
+
+
+body{
+	background: rgb(168, 218, 218);
+	margin: 0;
+	font-family: sans-serif;
+	display:grid;
+	justify-content: center;
+	align-content: center;
+	text-align:center;
+	min-height: 100vh;
+  }
+  #destroyInit{
+   
+	padding: .5rem 1.2rem;
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	background: none;
+	border-radius: 1.5rem;
+	cursor: pointer;
+	font-weight: bold;
+  }
+ 
+  #destroyInit.destroy span:nth-child(1),
+  #destroyInit.init span:nth-child(2){
+	display: none;
+  }
+  #destroyInit.init span:nth-child(1),
+  #destroyInit.destroy span:nth-child(2){
+	display: block;
+  }
+ 
