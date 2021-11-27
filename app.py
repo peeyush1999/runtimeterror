@@ -297,8 +297,11 @@ def returnProto():
     if not session.get("uid"):
         return redirect("/")
 
+    wid = request.args.get('workid')
+    userid = request.args.get('userid')
+    grpid = request.args.get('grpid')
     cur = mysql.connection.cursor()
-    query="select * from protoTable;"
+    query="select * from protoTable where grpid="+grpid+";"
     cur.execute(query)
     results = cur.fetchall()
 
@@ -830,6 +833,21 @@ def finalwall():
     gid = session['gid']
 
     data={"wid":wid, "gid": gid, "uid" : uid,"name":session['name']}
+
+    return render_template('finalwallfinal.html',user=data)
+
+
+@app.route("/finalwall/<id>")
+def finalwallAdmin(id):
+
+    if not session.get("uid"):
+        return redirect("/")
+    # global startTime
+    # startTime = int(time.time())
+    wid = "1"
+    gid = id
+
+    data={"wid":wid, "gid": id}
 
     return render_template('finalwallfinal.html',user=data)
 

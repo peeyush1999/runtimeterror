@@ -45,9 +45,7 @@
     <script>
 
         wid = `{{ user['wid'] }}`;
-        uid = `{{ user['uid'] }}`;
         gid = `{{ user['gid'] }}`;
-        name = `{{ user['name'] }}`;
         //document.getElementById('user_name').textContent=name;
         //document.getElementById('user_role').textContent="PARTICIPANT";
 
@@ -127,7 +125,7 @@
 
         function getProto() {
 
-            $.get("/returnProto").done(function (data) {
+            $.get("/returnProto",{ "workid": wid, "grpid": gid }).done(function (data) {
 
                 for (i = 0; i < data.length; i++) {
                     console.log("getProto", data[i]["imgid"]);

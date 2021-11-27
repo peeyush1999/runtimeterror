@@ -357,7 +357,7 @@ function add(id,img)
 function getProto()
     {
 
-      $.get("/returnProto").done(function(data) {
+      $.get("/returnProto",{ "workid": wid, "grpid": gid, "userid": uid}).done(function(data) {
         
         for (i = 0; i < data.length; i++) {
         console.log("getsticky", data[i]["imgid"]);
