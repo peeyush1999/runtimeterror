@@ -613,16 +613,7 @@ def ideate():
 
     return render_template('ideate.html',user=data)
 
-@app.route("/pushprotoatwall")
-def pushprotoatwall():
-    
 
-
-
-@app.route("/pushstickyatwall")
-def pushstickyatwall():
-
-    
 
 @app.route("/finalwall")
 def finalwall():
