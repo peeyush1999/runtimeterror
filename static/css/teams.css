@@ -6,7 +6,7 @@
 */
  /* background-size: cover; Resize the background image to cover the entire container */
 
-  #b1 {
+  .create-button {
   background-color: rgb(195, 117, 214);
   border: 3px solid #18665c;
   color: #4ca8af;
@@ -20,7 +20,7 @@
   padding: 15px 32px;
 }
 
-#b1:hover {
+.create-button:hover {
   background-color: #4c7faf;
   color: rgb(136, 72, 192);
 }

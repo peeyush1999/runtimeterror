@@ -76,7 +76,7 @@ def login():
         #storing username and userid and grp id and workshop and type in session variable
         session['uid'] = userid
 
-        # session['type'] = type
+        session['type'] = type
         session['gid']=-1
         session['name']= name
         session['wid']= "1" #hardcoding the workshop Id
@@ -124,11 +124,16 @@ def admin():
 def teams():
     if not session.get("uid"):
         return redirect("/")
+    if session.get("type") != "admin":
+        return redirect("/")
+
     return render_template('teams.html')
 
 @app.route('/admin/people', methods=['GET', 'POST'])
 def people():
     if not session.get("uid"):
+        return redirect("/")
+    if session.get("type") != "admin":
         return redirect("/")
     return render_template('participants.html')
 
@@ -139,6 +144,8 @@ def showparticipants():
 
 
     if not session.get("uid"):
+        return redirect("/")
+    if session.get("type") != "admin":
         return redirect("/")
     # connecting to database
     conn = mysql.connection
@@ -197,6 +204,9 @@ def createTeams():
 
     if not session.get("uid"):
         return redirect("/")
+    
+    if session.get("type") != "admin":
+        return redirect("/")
     # getting count of memebers in each team from form
     rsp = request.json
     count = int(rsp['count'])
@@ -204,8 +214,12 @@ def createTeams():
     conn = mysql.connection
     cur = conn.cursor()
     query="DELETE FROM `group` WHERE 1;"
-    cur.execute(query)
     conn.commit()
+    # query="SELECT * FROM `group`;"
+    # total = cur.execute(query)
+    # if(total > 0):
+    #     return {}
+   
     values = cur.execute(
         "SELECT reg.userid FROM registration reg WHERE reg.userid IN (SELECT user.userid FROM user WHERE type = 'participant')"
     )
@@ -238,6 +252,26 @@ def createTeams():
             teams.popitem()
         return jsonify(teams)
 # end of creating teams functionality
+
+@app.route('/startworkshop', methods=["PUT"])
+def startworkshop():
+
+    if not session.get("uid"):
+        return redirect("/")
+    
+    if session.get("type") != "admin":
+        return redirect("/")
+
+    conn = mysql.connection
+    cur = conn.cursor()
+    query="SELECT * FROM `workshopdetails`;"
+    total = cur.execute(query)
+    if(total > 0):
+        return "-1"
+    cur.execute("INSERT INTO `workshopdetails` (`workshopid`,`startflag`) VALUES (%s,%s)",(1,1))
+    conn.commit()
+    return "updated successfully"
+
 
 
 # functonalities of all participants
