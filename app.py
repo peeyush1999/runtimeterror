@@ -229,6 +229,13 @@ def createTeams():
                     name = cur.fetchall()
                     teams[key].append(name[0][0])
 
+        # if the last teams has only one person merging him with before team
+        last_team = list(teams.items())[-1]
+        if(len(last_team[1]) == 1):
+            last_before_team = list(teams.items())[-2]
+            team_no = last_before_team[0]
+            teams[team_no].append(last_team[1][0])
+            teams.popitem()
         return jsonify(teams)
 # end of creating teams functionality
 

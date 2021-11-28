@@ -2,101 +2,106 @@
     background-image: url("../teams3.jpg");
  background-repeat: no-repeat, repeat;
  background-position: center; /* Center the image */
- /* background-repeat: no-repeat; Do not repeat the image */ */
+/* background-repeat: no-repeat; Do not repeat the image */
+*/
  /* background-size: cover; Resize the background image to cover the entire container */
 
-  #b1{
-        background-color: rgb(195, 117, 214);
-        border: 3px solid #18665c;
-        color: #4ca8af;
-        text-transform: uppercase;
-        height: inherit;
-        width: inherit;
-        transition: background-color 0.5s ease, color 1s ease;
-        font-size: 10px;
-        box-shadow: 10px 10px rgba(77, 77, 77, 0.5);
-        margin-right: 140px;
-        padding: 15px 32px;
-        
-      }
-      
-      #b1:hover {
-        background-color: #4c7faf;
-        color: rgb(136, 72, 192);
-      }
-      
-      ul{
-   
-        padding:0px;
-       
-        list-style:none;
-      }
-      
-      
-        li{
-            color: #065c58;
-            font-size: 30px;
-            line-height: 30px;
-            text-align: center;
-            letter-spacing: 1px;
-            font-style: italic;
-            font-family: 'Raleway', serif;
-          }
-     
-          
-      
-      
-      
-      li span{
-        font-size:16px;
-      
-        color:#a0a29d;
-        margin-right:40px;
-         height: 32px;
-        line-height: 32px;
-      
-       
-      }    
-      h2 {
-        text-align:justify;
-        font-weight: normal;
-        color: rgb(37, 3, 70);
-        text-transform: uppercase;
-        font-size: 50px;
-        white-space: nowrap;
-        
-        z-index: 1000;
-        font-family: 'Bangers', cursive;
-        
-        
-       
-      }
-      p1{
-        text-align: center;
-        font-weight: normal;
-        color: rgb(57, 4, 73);
-        text-transform: uppercase;
-        font-size: 30px;
-        white-space: nowrap;
-        font-style: inherit;
-        z-index: 1000;
-        font-family:Verdana, Geneva, Tahoma, sans-serif;
-        
-        
-       
-      }
-      #myform{
-        border: 3px solid #250c33;
-        color: #08051a;
-        text-transform: uppercase;
-        height: inherit;
-        width: inherit;
-        transition: background-color 0.5s ease, color 1s ease;
-        font-size: 30px;
-        box-shadow: 10px 10px rgba(92, 93, 187, 0.5);
-        margin-right: 140px;
-        text-align: center;
-        
+  #b1 {
+  background-color: rgb(195, 117, 214);
+  border: 3px solid #18665c;
+  color: #4ca8af;
+  text-transform: uppercase;
+  height: inherit;
+  width: inherit;
+  transition: background-color 0.5s ease, color 1s ease;
+  font-size: 10px;
+  box-shadow: 10px 10px rgba(77, 77, 77, 0.5);
+  margin-right: 140px;
+  padding: 15px 32px;
+}
 
-      }
-     
+#b1:hover {
+  background-color: #4c7faf;
+  color: rgb(136, 72, 192);
+}
+
+ul {
+  padding: 0px;
+
+  list-style: none;
+}
+
+li {
+  color: #065c58;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-style: italic;
+  font-family: "Raleway", serif;
+}
+
+li span {
+  font-size: 16px;
+
+  color: #a0a29d;
+  margin-right: 40px;
+  height: 32px;
+  line-height: 32px;
+}
+h2 {
+  text-align: justify;
+  font-weight: normal;
+  color: rgb(37, 3, 70);
+  text-transform: uppercase;
+  font-size: 50px;
+  white-space: nowrap;
+
+  z-index: 1000;
+  font-family: "Bangers", cursive;
+}
+p1 {
+  text-align: center;
+  font-weight: normal;
+  color: rgb(57, 4, 73);
+  text-transform: uppercase;
+  font-size: 30px;
+  white-space: nowrap;
+  font-style: inherit;
+  z-index: 1000;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#myform {
+  border: 3px solid #250c33;
+  color: #08051a;
+  text-transform: uppercase;
+  height: inherit;
+  width: inherit;
+  transition: background-color 0.5s ease, color 1s ease;
+  font-size: 30px;
+  box-shadow: 10px 10px rgba(92, 93, 187, 0.5);
+  margin-right: 140px;
+  text-align: center;
+}
+.admin-button {
+  font-size: 30px;
+  padding-right: 100px;
+  padding-left: 100px;
+  color: rgb(36, 5, 65);
+}
+.see-wall {
+  align-items: center;
+  margin-top: 30px;
+  font-size: 17px;
+  padding: 4px 3px;
+  width: 200px;
+  color: rgb(36, 5, 65);
+  transition: background-color 0.1s ease, color 0.1s ease;
+  text-transform: uppercase;
+  font-family: "Raleway", serif;
+  border: 2px solid #7c7c7c;
+}
+.see-wall:hover {
+  background-color: #4c7faf;
+  color: white;
+}
