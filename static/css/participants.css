@@ -3,7 +3,7 @@
 .participant-ul{
    
    padding:0px;
-   list-style: decimal;
+   list-style: none;
  }
  .participant-list{
     font-size: 20px;
