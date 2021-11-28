@@ -64,35 +64,46 @@
     document.getElementById('user_role').textContent="PARTICIPANT";
 
 
+  lastSticky=[]
+
   function getSticky() {
     
 
 
-
-
-    $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
-
-      for (i = 0; i < data.length; i++) 
-      {
-
-        if(data[i]['userid']==uid)
-        {
-
-          console.log("getsticky", data[i]["textnote"]);
-        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"><i class="fas fa-trash-alt " onclick="deleteSticky(\'' + data[i]["notesid"] + '\')"></i>   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
-
-        }  
-        else
-        {
-
-          console.log("getsticky", data[i]["textnote"]);
-        $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"></div><div>'+data[i]["textnote"]+'</div>' + '</li>');
-
-        }
+    
         
-      }
-    });
 
+        $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
+
+
+          if( JSON.stringify(lastSticky) != JSON.stringify(data))
+          {
+
+            $("#stkyNts").empty();
+          for (i = 0; i < data.length; i++) 
+          {
+            
+            if(data[i]['userid']==uid)
+            {
+
+              //console.log("getsticky", data[i]["textnote"]);
+            $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"><i class="fas fa-trash-alt " onclick="deleteSticky(\'' + data[i]["notesid"] + '\')"></i>   </div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+            }  
+            else
+            {
+
+              //console.log("getsticky", data[i]["textnote"]);
+            $('#stkyNts').append('<li class="box" style="display:block;" id="' + data[i]["notesid"] + '">' + '<div style =" align-items=right;"></div><div>'+data[i]["textnote"]+'</div>' + '</li>');
+
+            }
+            
+          }
+
+           lastSticky=data;
+         }
+        });
+      
 
   }
 
@@ -149,9 +160,9 @@
                   
         }); 
    }
-
-   setInterval(function(){ check(); }, 3000);
-    */
+  */
+   setInterval(function(){ getSticky(); }, 3000);
+    
   </script>
    
   <script src="../static/js/sticky.js"></script>

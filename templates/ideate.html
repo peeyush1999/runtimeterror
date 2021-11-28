@@ -72,10 +72,15 @@
         document.getElementById('user_name').textContent=name;
         document.getElementById('user_role').textContent="PARTICIPANT";
 
-
+        lastSticky=[];
         function getSticky() {
 
           $.get("/returnStickyDefine",{ "workid": wid, "grpid": gid, "userid": uid}).done(function (data) {
+
+            if( JSON.stringify(lastSticky) != JSON.stringify(data))
+            {
+
+              $("#stkyNts").empty();
 
             for (i = 0; i < data.length; i++) 
             {
@@ -96,6 +101,10 @@
               }
               
             }
+
+            lastSticky=data;
+          }
+          
           });
 
 
@@ -185,9 +194,9 @@
                   
         }); 
    }
-
-   setInterval(function(){ check(); }, 3000);
 */
+   setInterval(function(){ getSticky(); }, 5000);
+
   </script>
    
   <script src="../static/js/sticky.js"></script>

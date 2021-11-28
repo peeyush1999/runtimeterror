@@ -64,6 +64,7 @@
     document.getElementById("myForm").reset();
     button = document.getElementById('b1');
     button.onclick = () => {
+      //$( "#b1" ).prop( "disabled", true );
       var elements = document.getElementById("myForm").elements;
       var formjson = {};
       for (var i = 0; i < elements.length; i++) {
@@ -114,12 +115,6 @@
       request.send(JSON.stringify(formjson));
     };
   });
-
-  function seewall() {
-    route = "/finalwall/" + this.id;
-    // console.log(route);
-    location.href = route;
-  }
 
 
   start_workshp_btn = document.getElementById('b2');
@@ -174,8 +169,11 @@
         }
       }
 
-    };
-    request.send();
+  function seewall() {
+    route ="/finalwall/"+this.id;
+    console.log(route);
+    //location.href = route;
+    window.open(route, '_blank').focus();
   }
   window.onload = getTeams
 

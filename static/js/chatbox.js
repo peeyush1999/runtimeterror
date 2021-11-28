@@ -5,42 +5,50 @@ var cmd= document.querySelector(".js-chatbox-display");
 
 
 workshopid=wid;
-
+lastChat = []
 function updateMsg()
 {
 
 //console.log('UpdateMsg');
-$("#chat").empty();
+
 
 $.get("/getmsg", { "wid":workshopid, "grpid":gid }).done(function(data) 
 {
-    
-    for(i=0;i<data.length;i++)
-    {
-
-
-    //console.log(data[i]["text"]);
     //console.log(data[i]["uid"]);
-
-
-    const chatSection = document.createElement("p");
-    chatSection.textContent = data[i]["text"];
-    chatSection.classList.add("chatbox__display-chat");
-    if(uid == data[i]["uid"])
-    {
-      //console.log("check");
-      //console.log(uid == data[i]["uid"])
-      chatSection.classList.add("selfMessage");
-    }
-
-    cmd.appendChild(chatSection);
     
-    }
+      if( JSON.stringify(lastChat) != JSON.stringify(data))
+      {
+        $("#chat").empty();
+
+        for(i=0;i<data.length;i++)
+        {
+
+            //console.log(data[i]["uid"]);
+
+          const chatSection = document.createElement("p");
+          chatSection.textContent = data[i]["text"];
+          chatSection.classList.add("chatbox__display-chat");
+          if(uid == data[i]["uid"])
+          {
+            //console.log("check");
+            //console.log(uid == data[i]["uid"])
+            chatSection.classList.add("selfMessage");
+          }
+
+          cmd.appendChild(chatSection);
+          
+          }
+          lastChat = data;
+          //console.log('Hello');
+          //console.log(JSON.stringify(lastChat));
+
+          $('#chat').animate({
+          scrollTop: $('#chat')[0].scrollHeight}, 50);
+      }
     //document
       //.getElementById("userInput")
       //.scrollIntoView({ block: "start", behavior: "smooth" });
-      $('#chat').animate({
-      scrollTop: $('#chat')[0].scrollHeight}, 50);
+      
   });
 
 }
