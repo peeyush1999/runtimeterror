@@ -47,23 +47,6 @@ ul {
   font-style: bold;
   font-family: "Raleway", serif;
 }
-li {
-  color: #065c58;
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: 1px;
-  font-style: italic;
-  font-family: "Raleway", serif;
-}
-
-li span {
-  font-size: 16px;
-
-  color: #a0a29d;
-  margin-right: 40px;
-  height: 32px;
-  line-height: 32px;
-}
 h2 {
   text-align: justify;
   font-weight: normal;
@@ -72,7 +55,7 @@ h2 {
   font-size: 40px;
   white-space: nowrap;
   z-index: 1000;
-  font-family:'Times New Roman', Times, serif;
+  font-family: 'Bangers', cursive;
   margin-bottom: 20px;
 }
 #myform {
@@ -80,7 +63,7 @@ h2 {
   color: #08051a;
   text-transform: uppercase;
   transition: background-color 0.5s ease, color 1s ease;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   height: 30px;
   display: inline;
@@ -114,3 +97,10 @@ h2 {
   margin: 10px;
   display: inline;
 }
+.ul-team li{
+  color: #065c58;
+  font-size: 19px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: "Raleway", serif;
+ } 

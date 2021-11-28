@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="../static/css/teams.css">
 <link rel="stylesheet" href="../static/css/sticky.css">
 <link rel="stylesheet" href="../static/css/emphasis.css">
-
 <div style="overflow: hidden">
 
   <main class="page-content">
@@ -12,18 +11,16 @@
 
       <div class="animated animatedFadeInUp fadeInUp teams-heading" id="empathizeheading">
         <h2>Teams</h2>
-        
+
         <div class="button" style="padding-right: 120px;">
           <form id="myForm" class="form-count" method="POST">
             <input type="number" min="1" placeholder="count" name="count" id="myform">
           </form>
-          <button style="color: rgb(36, 5, 65);"
-            class="create-button" id="b1">CREATE TEAMS</button>
-          <button style="color: rgb(36, 5, 65);"
-            class="create-button button2" id="b2">START
+          <button style="color: rgb(36, 5, 65);" class="create-button" id="b1">CREATE TEAMS</button>
+          <button style="color: rgb(36, 5, 65);" class="create-button button2" id="b2">START
             WORKSHOP</button>
         </div>
-         <div id="accordion">
+        <div id="accordion">
 
         </div>
 
@@ -50,9 +47,9 @@
       }
       console.log(formjson);
       if (formjson["count"] == "") {
-          alert("Provide count ");
-          return;
-        }
+        alert("Provide count ");
+        return;
+      }
       document.getElementById("myForm").reset();
       // console.log(formjson)
       const request = new XMLHttpRequest();
@@ -77,6 +74,7 @@
             h4.appendChild(document.createTextNode(tema_no));
             ul.className = "box"//add class here to change ui
             ul.appendChild(h4);
+            ul.classList.add('ul-team');
             const btn = document.createElement("button");
             btn.classList.add('see-wall');
             btn.id = x;
@@ -108,8 +106,7 @@
       if (response == "-1") {
         alert("Workshop is already started");
       }
-      else
-      {
+      else {
         alert("Workshop started");
       }
     }
@@ -118,21 +115,19 @@
 
 
   function seewall() {
-    route ="/finalwall/"+this.id;
+    route = "/finalwall/" + this.id;
     console.log(route);
     // location.href = route;
     window.open(route, '_blank').focus();
   }
-  function getTeams()
-  {
+  function getTeams() {
     const request = new XMLHttpRequest();
     request.open('POST', "/admin/getTeams");
     request.setRequestHeader('Content-type', 'application/json');
     request.onload = () => {
       const response = request.responseText;
       const obj = JSON.parse(response)
-      if (!jQuery.isEmptyObject(obj)) 
-      {
+      if (!jQuery.isEmptyObject(obj)) {
         const container = document.getElementById('accordion');
         $('.box').remove();
         for (let x in obj) {
@@ -143,6 +138,7 @@
           h4.appendChild(document.createTextNode(tema_no));
           ul.className = "box"//add class here to change ui
           ul.appendChild(h4);
+          ul.classList.add('ul-team');
           const btn = document.createElement("button");
           btn.classList.add('see-wall');
           btn.id = x;
@@ -160,7 +156,7 @@
     }
     request.send();
   }
-  
+
   window.onload = getTeams
 
 
