@@ -6,7 +6,7 @@
 */
  /* background-size: cover; Resize the background image to cover the entire container */
 
-  #b1 {
+  .create-button {
   background-color: rgb(195, 117, 214);
   border: 3px solid #18665c;
   color: #4ca8af;
@@ -20,21 +20,28 @@
   padding: 15px 32px;
 }
 
-#b1:hover {
+.create-button:hover {
   background-color: #4c7faf;
   color: rgb(136, 72, 192);
 }
 
 ul {
   padding: 0px;
-
   list-style: none;
 }
 
+.box h4 {
+  color: #065c58;
+  font-size: 22px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-style: bold;
+  font-family: "Raleway", serif;
+}
 li {
   color: #065c58;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 20px;
   text-align: center;
   letter-spacing: 1px;
   font-style: italic;

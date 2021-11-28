@@ -28,26 +28,29 @@
         <br>
         <div class="button" style="padding-right: 120px;">
           <button style="font-size:30px; padding-right: 100px; padding-left:100px; color: rgb(36, 5, 65);"
-            id="b1">CREATE</button>
+            class="create-button" id="b1">CREATE</button>
+          <button style="font-size:30px; padding-right: 100px; padding-left:100px; color: rgb(36, 5, 65);"
+            class="create-button" id="b2">START
+            WORKSHOP</button>
+
         </div>
-      </div>
 
 
-      <div id="wrapper"></div>
+        <div id="wrapper"></div>
 
-      <section id="content">
+        <section id="content">
 
 
-        <section align="center">
+          <section align="center">
 
-          <div id="accordion">
+            <div id="accordion">
 
-          </div>
+            </div>
 
+          </section>
         </section>
-      </section>
 
-    </div>
+      </div>
   </main>
 
 </div>
@@ -58,6 +61,7 @@
 <script src="../static/js/demo.js"></script>
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("myForm").reset();
     button = document.getElementById('b1');
     button.onclick = () => {
       //$( "#b1" ).prop( "disabled", true );
@@ -67,7 +71,13 @@
         var item = elements.item(i);
         formjson[item.name] = item.value;
       }
-      console.log(formjson)
+      console.log(formjson);
+      if (formjson["count"] == "") {
+          alert("Provide count ");
+          return;
+        }
+      document.getElementById("myForm").reset();
+      // console.log(formjson)
       const request = new XMLHttpRequest();
       request.open('POST', "/admin/createTeams");
       request.setRequestHeader('Content-type', 'application/json');
@@ -75,13 +85,87 @@
         const response = request.responseText;
         console.log(response)
         const obj = JSON.parse(response)
+        if (jQuery.isEmptyObject(obj)) {
+          alert("Teams are already created");
+        }
+        else {
+          const container = document.getElementById('accordion');
+          $('.box').remove();
+
+          for (let x in obj) {
+            // console.log(x)
+            const ul = document.createElement('ul');
+            const h4 = document.createElement("h4");
+            tema_no = 'Team No: ' + x;
+            h4.appendChild(document.createTextNode(tema_no));
+            ul.className = "box"//add class here to change ui
+            ul.appendChild(h4);
+            const btn = document.createElement("button");
+            btn.classList.add('see-wall');
+            btn.id = x;
+            btn.appendChild(document.createTextNode('see wall'));
+            btn.onclick = seewall;
+            for (let y in obj[x]) {
+              var li = document.createElement("li");
+              li.appendChild(document.createTextNode(obj[x][y]));
+              ul.appendChild(li);
+            }
+            ul.appendChild(btn);
+            container.appendChild(ul);
+          }
+        }
+
+      };
+      // JSON.stringify({ "count": count })
+      request.send(JSON.stringify(formjson));
+    };
+  });
+
+
+  start_workshp_btn = document.getElementById('b2');
+  start_workshp_btn.onclick = () => {
+    const request = new XMLHttpRequest();
+    request.open('PUT', "/startworkshop");
+    request.onload = () => {
+      const response = request.responseText;
+      if (response == "-1") {
+        alert("Workshop is already started");
+      }
+      else
+      {
+        alert("Workshop started");
+      }
+    }
+    request.send();
+  }
+
+
+  function seewall() {
+    route ="/finalwall/"+this.id;
+    console.log(route);
+    // location.href = route;
+    window.open(route, '_blank').focus();
+  }
+  function getTeams()
+  {
+    const request = new XMLHttpRequest();
+    request.open('POST', "/admin/getTeams");
+    request.setRequestHeader('Content-type', 'application/json');
+    request.onload = () => {
+      const response = request.responseText;
+      const obj = JSON.parse(response)
+      if (!jQuery.isEmptyObject(obj)) 
+      {
         const container = document.getElementById('accordion');
         $('.box').remove();
-
         for (let x in obj) {
-          console.log(x)
+          // console.log(x)
           const ul = document.createElement('ul');
+          const h4 = document.createElement("h4");
+          tema_no = 'Team No: ' + x;
+          h4.appendChild(document.createTextNode(tema_no));
           ul.className = "box"//add class here to change ui
+          ul.appendChild(h4);
           const btn = document.createElement("button");
           btn.classList.add('see-wall');
           btn.id = x;
@@ -95,18 +179,13 @@
           ul.appendChild(btn);
           container.appendChild(ul);
         }
-      };
-      // JSON.stringify({ "count": count })
-      request.send(JSON.stringify(formjson));
-    };
-  });
-
-  function seewall() {
-    route ="/finalwall/"+this.id;
-    console.log(route);
-    //location.href = route;
-    window.open(route, '_blank').focus();
+      }
+    }
+    request.send();
   }
+  
+  window.onload = getTeams
+
 
 
 
