@@ -331,7 +331,7 @@ def addProto():
         return redirect("/")
 
     cur = mysql.connection.cursor()
-    app.logger.info(request.args.keys())
+    #app.logger.info(request.args.keys())
     wid = request.args.get('workid')
     gid = request.args.get('grpid')
     img = request.args.get('image')
@@ -342,7 +342,7 @@ def addProto():
     val = cur.execute(querycheck)
     if(val>0):
         results = cur.fetchall()
-        app.logger.info(str(results[0][0]))
+        #app.logger.info(str(results[0][0]))
         queryUpdate="update protoTable set image='"+img+"' where imgid = "+str(results[0][0])+";"
         cur.execute(queryUpdate)
         mysql.connection.commit()
@@ -369,15 +369,15 @@ def clearproto():
 
     response=request.form.keys()
 
-    app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
-    app.logger.info(response)
+    #app.logger.info("sfdkjhsdkljsdhkjsdfhkjsdfhsfdakl")
+    #app.logger.info(response)
 
 
     for row in response:
         #app.logger.info(request.form.get(row))
         id=request.form.get(row);
         id=id.split("myCanvas")[-1]
-        app.logger.info(id)
+        #app.logger.info(id)
         query="delete from protoTable where imgid="+id+";"
         cur.execute(query)
         query="delete from finalwall where imgid="+id+";"
@@ -395,13 +395,13 @@ def addProtoFinal():
 
     
     cur = mysql.connection.cursor()
-    app.logger.info(request.args.keys())
+    #app.logger.info(request.args.keys())
     wid = request.args.get('workid')
     gid = request.args.get('grpid')
     img = request.args.get('image')
     imgid = request.args.get('imgid')
     imgid = imgid.split('myCanvas')[-1]
-    app.logger.warning(imgid)
+    #app.logger.warning(imgid)
 
     #return 'Proto Added Successfully--'
 
@@ -673,7 +673,18 @@ def participants():
         return redirect("/")
 
     global startTime
-    startTime = int(time.time())
+    #startTime = int(time.time())
+    
+
+    #*********************************************
+    cur = mysql.connection.cursor()
+    querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+    cur.execute(querygetstatus)
+    status = cur.fetchall()
+    if(status[0][1] == 0):
+        return redirect("/waiting");
+    #*********************************************
+
 
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
@@ -681,7 +692,7 @@ def participants():
     #gid = 1
     uid = session['uid']
 
-    cur = mysql.connection.cursor()
+    
     query1="select * from `group` where userid = "+str(uid)+" ;"
     if(cur.execute(query1)>0):
         results = cur.fetchall()
@@ -771,8 +782,15 @@ def prototype():
         return redirect("/")
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
-    if session.get("gid") == -1:
-        return redirect("/waiting")
+    #*********************************************
+    cur = mysql.connection.cursor()
+    querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+    cur.execute(querygetstatus)
+    status = cur.fetchall()
+    if(status[0][1] == 0):
+        return redirect("/waiting");
+    #*********************************************
+
 
     wid = session['wid']
     uid = session['uid']
@@ -798,8 +816,15 @@ def define():
     if not session.get("uid"):
         return redirect("/")
 
-    if session.get("gid") == -1:
-        return redirect("/waiting")
+    #*********************************************
+    cur = mysql.connection.cursor()
+    querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+    cur.execute(querygetstatus)
+    status = cur.fetchall()
+    if(status[0][1] == 0):
+        return redirect("/waiting");
+    #*********************************************
+
 
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
@@ -817,8 +842,15 @@ def ideate():
     if not session.get("uid"):
         return redirect("/")
 
-    if session.get("gid") == -1:
-        return redirect("/waiting")
+    #*********************************************
+    cur = mysql.connection.cursor()
+    querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+    cur.execute(querygetstatus)
+    status = cur.fetchall()
+    if(status[0][1] == 0):
+        return redirect("/waiting");
+    #*********************************************
+
 
     #*********** Run Sql Query To fetch wid, Gid Uid From DAtabase
 
@@ -826,9 +858,9 @@ def ideate():
     uid = session['uid']
     gid = session['gid']
 
-    app.logger.warning(wid)
-    app.logger.warning(uid)
-    app.logger.warning(gid)
+    #app.logger.warning(wid)
+    #app.logger.warning(uid)
+    #app.logger.warning(gid)
 
     data={"wid":wid, "gid": gid, "uid" : uid, "name" : session['name'] }
 
@@ -842,6 +874,16 @@ def finalwall():
 
     if not session.get("uid"):
         return redirect("/")
+
+    #*********************************************
+    cur = mysql.connection.cursor()
+    querygetstatus = "SELECT * from workshopdetails where workshopid=1";
+    cur.execute(querygetstatus)
+    status = cur.fetchall()
+    if(status[0][1] == 0):
+        return redirect("/waiting");
+    #*********************************************
+
     # global startTime
     # startTime = int(time.time())
     wid = session['wid']

@@ -3,28 +3,42 @@
 
 <link rel="stylesheet" href="../static/css/sticky.css">
 <link rel="stylesheet" href="../static/css/emphasis.css">
+<style>
+  .teamlist{
+    font-size: 1.4em;
+    margin-right: 50px;
+    margin-top: 30px;
+    color: blue;
+    font-weight: bold;
+  }
+  #teams{
+    color: green;
+    font-weight: bold;
+  }
+  </style>
 <div style="overflow: hidden">
 
   <p id="destroyInit" class="init">
   </p>
 
   <main class="page-content">
-    <div class="container">
+    <div class="container" style="height: 70vh;margin-right: 140px;">
 
 
       <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
-        <h2 align="center" style="margin-right: 140px;">WAITING LOBBY</h2>
+        <h2 align="center" style="">WAITING LOBBY</h2>
       </div>
 
       <div id="wrapper"></div>
 
-      Please Wait For the Host To start the workshop!!!!
+      
 
-      <div  id="accordion"><div><h1> Your Team Members <h1></div>
+      <div  id="accordion"><div><span id="teams" style="font-size: 1.6em;"> </span></div>
 
       </div>
 
     </div>
+    <h2 style="color: red;">Please Wait For the Host To start the workshop!!!!</h2>
   </main>
 </div>
 
@@ -44,15 +58,19 @@
       if (data == "true") {
         window.location.replace("http://127.0.0.1:5000/emphasize");
       }
+      else if(data == "false")
+      {
+          document.getElementById('teams').innerText = "Teams Are Not Alloted Yet !!!!";
+      }
+      else
+      {
 
-
-
-
-      $('.lst').remove();
+        document.getElementById('teams').innerText = "Your Team Members";
+        $('.teamlist').remove();
         
           const container = document.getElementById('accordion');
           const ul = document.createElement('ul');
-          ul.className="lst"//add class here to change ui
+          ul.className="teamlist"//add class here to change ui
           for (let y in data) {
             console.log(y)
             var li = document.createElement("li");
@@ -61,11 +79,17 @@
           }
           container.appendChild(ul);
         
+      }
+
+
+
+
+      
 
     });
   }
 
-  setInterval(function () { check(); }, 5000);
+  setInterval(function () { check(); }, 3000);
 
  
 
