@@ -23,6 +23,8 @@ def root():
     session.pop('uid', None)
     session.pop('wid', None)
     session.pop('gid', None)
+    session.pop('type',None)
+    session.pop('name',None)
     return render_template('index.html')
 
 
@@ -56,6 +58,8 @@ def login():
     session.pop('uid', None)
     session.pop('wid', None)
     session.pop('gid', None)
+    session.pop('type',None)
+    session.pop('name',None)
 
     username = request.form.get('Email')
     password = request.form.get('Password')
