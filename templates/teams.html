@@ -71,6 +71,11 @@
         var item = elements.item(i);
         formjson[item.name] = item.value;
       }
+      console.log(formjson);
+      if (formjson["count"] == "") {
+          alert("Provide count ");
+          return;
+        }
       document.getElementById("myForm").reset();
       // console.log(formjson)
       const request = new XMLHttpRequest();
@@ -134,6 +139,13 @@
     request.send();
   }
 
+
+  function seewall() {
+    route ="/finalwall/"+this.id;
+    console.log(route);
+    // location.href = route;
+    window.open(route, '_blank').focus();
+  }
   function getTeams()
   {
     const request = new XMLHttpRequest();
@@ -168,14 +180,12 @@
           container.appendChild(ul);
         }
       }
-
-  function seewall() {
-    route ="/finalwall/"+this.id;
-    console.log(route);
-    //location.href = route;
-    window.open(route, '_blank').focus();
+    }
+    request.send();
   }
+  
   window.onload = getTeams
+
 
 
 
