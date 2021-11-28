@@ -27,14 +27,21 @@
 
 ul {
   padding: 0px;
-
   list-style: none;
 }
 
+.box h4 {
+  color: #065c58;
+  font-size: 22px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-style: bold;
+  font-family: "Raleway", serif;
+}
 li {
   color: #065c58;
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 20px;
   text-align: center;
   letter-spacing: 1px;
   font-style: italic;
