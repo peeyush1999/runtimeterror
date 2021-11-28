@@ -853,9 +853,9 @@ def isCreated():
     else:
 
         querygetstatus = "SELECT * from workshopdetails where workshopid=1"
-        cur.execute(querygetstatus)
+        num = cur.execute(querygetstatus)
         status = cur.fetchall()
-        if (status[0][1] == 1):
+        if (num>0 and status[0][1] == 1):
             return "true"
 
         else:
