@@ -60,6 +60,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     button = document.getElementById('b1');
     button.onclick = () => {
+      //$( "#b1" ).prop( "disabled", true );
       var elements = document.getElementById("myForm").elements;
       var formjson = {};
       for (var i = 0; i < elements.length; i++) {
@@ -103,7 +104,8 @@
   function seewall() {
     route ="/finalwall/"+this.id;
     console.log(route);
-    location.href = route;
+    //location.href = route;
+    window.open(route, '_blank').focus();
   }
 
 
