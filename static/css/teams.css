@@ -24,7 +24,15 @@
   background-color: #4c7faf;
   color: rgb(136, 72, 192);
 }
-
+.teams-heading {
+  text-align: center;
+  font-family: "Raleway", serif;
+}
+.teams-heading h2 {
+  text-align: center;
+  margin-right: 120px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 ul {
   padding: 0px;
   list-style: none;
@@ -61,34 +69,21 @@ h2 {
   font-weight: normal;
   color: rgb(37, 3, 70);
   text-transform: uppercase;
-  font-size: 50px;
+  font-size: 40px;
   white-space: nowrap;
-
   z-index: 1000;
-  font-family: "Bangers", cursive;
-}
-p1 {
-  text-align: center;
-  font-weight: normal;
-  color: rgb(57, 4, 73);
-  text-transform: uppercase;
-  font-size: 30px;
-  white-space: nowrap;
-  font-style: inherit;
-  z-index: 1000;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family:'Times New Roman', Times, serif;
+  margin-bottom: 20px;
 }
 #myform {
-  border: 3px solid #250c33;
+  width: 250px;
   color: #08051a;
   text-transform: uppercase;
-  height: inherit;
-  width: inherit;
   transition: background-color 0.5s ease, color 1s ease;
-  font-size: 30px;
-  box-shadow: 10px 10px rgba(92, 93, 187, 0.5);
-  margin-right: 140px;
+  font-size: 20px;
   text-align: center;
+  height: 30px;
+  display: inline;
 }
 .admin-button {
   font-size: 30px;
@@ -111,4 +106,11 @@ p1 {
 .see-wall:hover {
   background-color: #4c7faf;
   color: white;
+}
+.button button {
+  width: 250px;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 10px;
+  display: inline;
 }

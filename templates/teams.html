@@ -7,48 +7,25 @@
 
 <div style="overflow: hidden">
 
-  <p id="destroyInit" class="init">
-  </p>
-
   <main class="page-content">
     <div class="container">
 
-      <div class="animated animatedFadeInUp fadeInUp" id="empathizeheading">
-        <h2 align="center" style="margin-right: 140px;">Teams</h2>
-        <br>
-        <br>
-        <p1 align="center" style="margin-right: 140px;">To create teams for the workshop - Enter the count<br> of
-          members in team and then click on create.</p1>
-        <br>
-        <br>
-        <form id="myForm" method="POST">
-          <input type="number" min="1" placeholder="count" name="count" id="myform">
-        </form>
-        <br>
-        <br>
+      <div class="animated animatedFadeInUp fadeInUp teams-heading" id="empathizeheading">
+        <h2>Teams</h2>
+        
         <div class="button" style="padding-right: 120px;">
-          <button style="font-size:30px; padding-right: 100px; padding-left:100px; color: rgb(36, 5, 65);"
-            class="create-button" id="b1">CREATE</button>
-          <button style="font-size:30px; padding-right: 100px; padding-left:100px; color: rgb(36, 5, 65);"
-            class="create-button" id="b2">START
+          <form id="myForm" class="form-count" method="POST">
+            <input type="number" min="1" placeholder="count" name="count" id="myform">
+          </form>
+          <button style="color: rgb(36, 5, 65);"
+            class="create-button" id="b1">CREATE TEAMS</button>
+          <button style="color: rgb(36, 5, 65);"
+            class="create-button button2" id="b2">START
             WORKSHOP</button>
+        </div>
+         <div id="accordion">
 
         </div>
-
-
-        <div id="wrapper"></div>
-
-        <section id="content">
-
-
-          <section align="center">
-
-            <div id="accordion">
-
-            </div>
-
-          </section>
-        </section>
 
       </div>
   </main>
