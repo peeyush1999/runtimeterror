@@ -71,7 +71,7 @@ Accessing the Website
 - Peeyush Sahu
 - Gagan Agarwal
 - Karan Negi
-- Krupa Kirnammai
+- Krupa Kiranmai
 - Abhidha Jain
 
   
